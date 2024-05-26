@@ -3,7 +3,7 @@ import React from 'react';
 function LoginForm() {
     return (
         <div className="d-flex justify-content-center align-items-center vh-100">
-            <form>
+            <form className='Form-move-right'>
                 <div className="mb-3">
                     <label htmlFor="exampleUsername" className="form-label">
                         Username
@@ -27,6 +27,9 @@ function LoginForm() {
                         className="form-control"
                         id="exampleInputPassword1"
                     />
+                    <div id="Usernamehelp" className="form-text">
+                        This field is mandatory.
+                    </div>
                     <div id="Usernamehelp" className="form-text">
                         Password must be 8 characters long, and contain numbers, english letters, uppercase letters and symbols.
                     </div>

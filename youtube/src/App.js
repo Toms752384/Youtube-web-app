@@ -4,8 +4,11 @@ import LoginLeft from './login screen/LoginLeft'
 function App() {
   return (
     <>
-    <LoginLeft></LoginLeft>
-    <LoginForm></LoginForm>
+      <div className='container fluid'>
+        <div className='row'>
+            <LoginForm></LoginForm>
+        </div>
+      </div>
     </>
   );
 }
