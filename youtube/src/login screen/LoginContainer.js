@@ -1,24 +1,47 @@
 import React from 'react';
-import LoginForm from './LoginForm';
-import LoginLeft from './LoginLeft';
-import LoginLogo from './LoginLogo';
-import logo from './logo.png'
-
+import Logo from './Logo.png'
 function LoginContainer() {
   return (
-    <>
-      <div className="d-flex justify-content-center align-items-center vh-100">
-        <div className="d-flex justify-content-between align-items-center">
-          <LoginLeft />
-          <LoginForm />
+    <div className="container form-container">
+      <div className="rectangle">
+        <img src={Logo} alt="Logo" className="my-image" />
+        <div className="form-floating mb-3">
+          <input
+            type="email"
+            className="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+          />
+          <label htmlFor="floatingInput">Username</label>
+        </div>
+        <div className="form-floating mb-3">
+          <input
+            type="password"
+            className="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+          />
+          <label htmlFor="floatingPassword">Password</label>
+          <div className="form-text text-center">
+            Password must be at least 8 characters long, and contain numbers,
+            english letters and symbols.
+          </div>
+        </div>
+        <div className="form-floating mb-3 text-center">
+          <button type="button" className="btn btn-danger">
+            Sign In
+          </button>
+        </div>
+        <div className="form-text mb-3 text-center">
+          Not a member yet? Sign up today!
+        </div>
+        <div className="form-floating mb-3 text-center">
+          <button type="button" className="btn btn-danger">
+            Sign Up
+          </button>
         </div>
       </div>
-      <div>
-        <div className="mb-1">
-          <img src={logo} className="small-image logo-sign-in" alt="YouTube Logo" />
-        </div>
-      </div>
-    </>
+    </div>
   );
 }
 
