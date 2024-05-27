@@ -45,3 +45,5 @@
 5. Logo should be interactive.
 6. Buttouns should be the same.
 7. Using the same icons in the screens between the android version and react version.
+
+commit number 1
