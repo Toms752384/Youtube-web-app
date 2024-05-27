@@ -3,7 +3,7 @@ import React from 'react';
 function LoginLeft() {
   return (
     <>
-      <div className="d-flex flex-column align-items-center vh-100 justify-content-center">
+      <div className="d-flex flex-column align-items-center vh-100 justify-content-center text-sign-in">
         {/* Big Text */}
         <div className="mb-4">
           <h1 className="display-4">Sign In</h1>

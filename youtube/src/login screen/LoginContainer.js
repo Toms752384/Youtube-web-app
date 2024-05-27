@@ -15,7 +15,7 @@ function LoginContainer() {
       </div>
       <div>
         <div className="mb-1">
-          <img src={logo} className="small-image" alt="YouTube Logo" />
+          <img src={logo} className="small-image logo-sign-in" alt="YouTube Logo" />
         </div>
       </div>
     </>

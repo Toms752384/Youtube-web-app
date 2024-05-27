@@ -48,8 +48,7 @@
 .small-image {
   width: 300px; 
   height: auto;
-  margin-top: -1300px ;
-  margin-left: 580px;
+
 }
 
 .small-font{
@@ -66,13 +65,12 @@
 
 .justify-content-center {
   justify-content: center;
-  margin-top: -20px;
   
 }
 
 .align-items-center {
   align-items: center;
-  padding: 150px;
+  padding: 100px;
 }
 
 .justify-content-between {
@@ -84,9 +82,18 @@
 }
 
 .form-text{
-  padding-bottom: 5px;
+  padding: 5px;
 }
 
 .mb-4{
   margin-top: 30px;
+}
+
+.logo-sign-in{
+  margin-top: -950px ;
+  margin-left: 380px;
+}
+
+.text-sign-in{
+  margin-top: 100px
 }
