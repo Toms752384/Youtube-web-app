@@ -1,13 +1,11 @@
 import './App.css';
-import LoginContainer from './login screen/LoginContainer';
-import LoginForm from './login screen/LoginForm';
-import LoginLeft from './login screen/LoginLeft'
 import React from 'react';
-import LoginLogo from './login screen/LoginLogo';
+import headerOfRegist from './Registration screen/headerOfRegist';
+import impo from './Registration screen/impo';
 
 function App() {
   return (
-    <LoginContainer></LoginContainer>
+    <impo></impo>
   );
 }
 
