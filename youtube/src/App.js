@@ -1,11 +1,12 @@
-import './App.css';
+
 import React from 'react';
-import headerOfRegist from './Registration screen/headerOfRegist';
-import impo from './Registration screen/impo';
+import RegistrationContainer from './RegistrationScreen/RegistrationContainer';
+import './RegistrationScreen/DesignRegist.css';
 
 function App() {
   return (
-    <impo></impo>
+    <RegistrationContainer>
+    </RegistrationContainer>
   );
 }
 
