@@ -4,10 +4,11 @@ import LoginForm from './login screen/LoginForm';
 import LoginLeft from './login screen/LoginLeft'
 import React from 'react';
 import LoginLogo from './login screen/LoginLogo';
+import AddVideoContainer from './add video screen/AddVideoContainer';
 
 function App() {
   return (
-    <LoginContainer></LoginContainer>
+    <AddVideoContainer></AddVideoContainer>
   );
 }
 
