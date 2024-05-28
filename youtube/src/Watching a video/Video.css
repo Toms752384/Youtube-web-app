@@ -1,0 +1,62 @@
+body {
+    background-color: #181818;
+    color: #fff;
+}
+.header {
+    background-color: #202020;
+    padding: 10px 20px;
+}
+.header img {
+    width: 100px;
+}
+.video-player {
+    background-color: #000;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+.video-player iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.channel-info img {
+    border-radius: 50%;
+}
+.sidebar .video-item img {
+    width: 40%;
+    height: auto;
+}
+.comment-section {
+    margin-top: 20px;
+}
+.comment img {
+    border-radius: 50%;
+}
+.comment .comment-content {
+    background-color: #282828;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+.comment .username {
+    font-weight: bold;
+}
+.comment .text {
+    margin-top: 5px;
+}
+.video-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.video-actions i {
+    font-size: 1.25rem;
+}
+.video-actions .like-count {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

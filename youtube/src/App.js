@@ -5,11 +5,12 @@ import React from 'react';
 import LoginContainer from './login screen/LoginContainer';
 import './login screen/Login.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
+import VideoContainer from './Watching a video/VideoContainer';
+import './Watching a video/Video.css'
 
 function App() {
   return (
-    <LoginContainer></LoginContainer>
+    <VideoContainer></VideoContainer>
   );
 }
 
