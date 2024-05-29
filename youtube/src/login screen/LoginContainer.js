@@ -1,24 +1,17 @@
 import React from 'react';
-import LoginForm from './LoginForm';
-import LoginLeft from './LoginLeft';
-import LoginLogo from './LoginLogo';
-import logo from './logo.png'
+import Logo from './Logo.js'
+import LoginForm from './LoginForm.js'
+import MoveToRegistration from './MoveToRegistration.js';
 
 function LoginContainer() {
   return (
-    <>
-      <div className="d-flex justify-content-center align-items-center vh-100">
-        <div className="d-flex justify-content-between align-items-center">
-          <LoginLeft />
-          <LoginForm />
-        </div>
+    <div className="container form-container">
+      <div className="rectangle">
+        <Logo></Logo>
+        <LoginForm></LoginForm>
+        <MoveToRegistration></MoveToRegistration>
       </div>
-      <div>
-        <div className="mb-1">
-          <img src={logo} className="small-image logo-sign-in" alt="YouTube Logo" />
-        </div>
-      </div>
-    </>
+    </div>
   );
 }
 
