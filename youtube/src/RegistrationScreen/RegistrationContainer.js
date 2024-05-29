@@ -2,7 +2,7 @@
 import React from 'react';
 import confetti from 'canvas-confetti';
 import './DesignRegist.css';
-import logo from '../login screen/YouTube-Logo-removebg-preview.png';
+import logo from '../login screen/logo.png';
 import RegistForm from './RegistForm';
 import RegistButton from './RegistButton';
 import RegistLogo from './RegistLogo';

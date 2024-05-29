@@ -1,16 +1,12 @@
 
-// import './App.css';
 import React from 'react';
-import AddVideoContainer from './add video screen/AddVideoContainer';
-import LoginContainer from './login screen/LoginContainer';
-// import headerOfRegist from './Registration screen/headerOfRegist';
-import LoginContainer from './login screen/LoginContainer';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import VideoContainer from './Watching a video/VideoContainer';
-
+import RegistrationContainer from './RegistrationScreen/RegistrationContainer.js';
+import LoginContainer from './login screen/LoginContainer.js'
+import VideoContainer from './Watching a video/VideoContainer.js'
+import AddVideoContainer from './add video screen/AddVideoContainer.js'
 function App() {
   return (
-     <LoginContainer></LoginContainer>
+    <AddVideoContainer></AddVideoContainer>
   );
 }
 

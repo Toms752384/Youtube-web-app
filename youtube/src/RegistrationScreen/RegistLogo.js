@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from '../login screen/YouTube-Logo-removebg-preview.png';
+import logo from '../login screen/logo.png';
 
 function RegistLogo() {
   return (
-      <img src={logo} alt="Logo" className="my-image" />
+      <img src={logo} alt="logo" className="my-image" />
   );
 }
 
