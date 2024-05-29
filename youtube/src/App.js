@@ -1,12 +1,13 @@
 
 import React from 'react';
-import RegistrationContainer from './RegistrationScreen/RegistrationContainer';
-import './RegistrationScreen/DesignRegist.css';
+import LoginLogo from './login screen/LoginLogo';
+import AddVideoContainer from './add video screen/AddVideoContainer';
+
 
 function App() {
   return (
-    <RegistrationContainer>
-    </RegistrationContainer>
+    <AddVideoContainer></AddVideoContainer>
+
   );
 }
 
