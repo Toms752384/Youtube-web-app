@@ -1,4 +1,4 @@
-import YoutubeLogo from './Logo.png'
+import YoutubeLogo from './logo.png'
 
 function Logo() {
     return (
