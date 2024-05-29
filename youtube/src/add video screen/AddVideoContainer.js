@@ -1,6 +1,7 @@
 import './AddVideoContainer.css';
 import videos from "../database/videos.json";
 import { useState } from "react";
+import Logo from '../login screen/Logo';
 
 
 function AddVideoContainer() {
@@ -19,6 +20,7 @@ function AddVideoContainer() {
 
     return (
         <>
+             <Logo></Logo> 
             <div className="container mt-5 "> {/* Bootstrap container with top margin */}
                 {/* Row for the close button positioned at the top-left */}
                 <button type="button" className="btn-close position-absolute top-0 start-0 m-3" aria-label="Close"></button>
