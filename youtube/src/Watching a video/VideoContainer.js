@@ -1,22 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './Video.css';
+import WatchIcon from './WatchIcon';
+import WatchSearch from './WatchSearch';
+import WatchIconCamera from './WatchIconCamera';
 
 function VideoContainer() {
     return (
         <>
             <header className="header d-flex justify-content-between align-items-center">
-                <div className="d-flex align-items-center">
-                    <i className="bi bi-list text-white mr-3" style={{ fontSize: '1.5rem' }}></i>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Logo" />
-                </div>
-                <div className="search-bar flex-grow-1 d-flex justify-content-center">
-                    <input type="text" className="form-control" placeholder="Search" style={{ maxWidth: '400px' }} />
-                </div>
-                <div className="d-flex align-items-center">
-                    <i className="bi bi-camera-video text-white mx-2" style={{ fontSize: '1.5rem' }}></i>
-                    <i className="bi bi-bell text-white mx-2" style={{ fontSize: '1.5rem' }}></i>
-                </div>
+                <WatchIcon/>
+                <WatchSearch/>
+                <WatchIconCamera/>
+
             </header>
             <div className="container-fluid mt-4">
                 <div className="row">
