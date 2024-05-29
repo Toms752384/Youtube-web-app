@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../login screen/logo.png';
+import logo from './logo.png';
 
 function RegistLogo() {
   return (
