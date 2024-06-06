@@ -18,7 +18,7 @@ function App() {
           <Route path='/' element={<LoginContainer />} />
           <Route path='/signup' element={<RegistrationContainer />} />
           <Route path='/video' element={<VideoContainer />} />
-          <Route path='add' element={<AddVideoContainer />}></Route> 
+          <Route path='/add' element={<AddVideoContainer />}></Route> 
         </Routes>
       </Router>
     </div>
