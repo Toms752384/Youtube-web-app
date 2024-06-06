@@ -6,10 +6,7 @@ import VideoContainer from './Watching a video/VideoContainer.js';
 import AddVideoContainer from './add video screen/AddVideoContainer.js';
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
-  Link,
-  BrowserRouter,
   Routes
 } from 'react-router-dom';
 
@@ -19,9 +16,9 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<LoginContainer />} />
-          <Route path='/Signup' element={<RegistrationContainer />} />
-          <Route path='/Video' element={<VideoContainer />} />
-          <Route path='Add' element={<AddVideoContainer />}></Route> 
+          <Route path='/signup' element={<RegistrationContainer />} />
+          <Route path='/video' element={<VideoContainer />} />
+          <Route path='/add' element={<AddVideoContainer />}></Route> 
         </Routes>
       </Router>
     </div>
