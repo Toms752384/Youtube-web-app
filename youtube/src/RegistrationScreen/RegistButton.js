@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
 
 function RegistButton() {
+  //handle a local of users
+  const [users, setUsers] = useState([]);
+
+  //handle on click
   const handleClick = () => {
     var valid = verifyRegistration();
     if(valid){
-      confetti()
+      const newUser = createNewUser();
+      console.log(users);
+      setUsers([...users, newUser]);
+      confetti();
     };
   };
 
+  //function to create new user
+  const createNewUser = () => {
+    var userName = document.getElementById("username").value;
+    var password = document.getElementById("floatingPassword").value;
+    var nickname = document.getElementById("nickname").value;
+    return { userName, password, nickname };
+  };
+  
   return (
     //register button
     <div className="Dubi">
@@ -29,7 +44,7 @@ function verifyRegistration() {
 
   // verify username - store the return value of verifyUsername in a variable
   if(verifyUsername(userName) === false){
-    alert("enter username!");
+    alert("enter new username!");
     return false;
   }
 
@@ -60,6 +75,9 @@ function verifyUsername(userName){
   if(userName === ""){
     return false;
   }
+
+  //check if user name already taken
+
   return true;
 }
 
