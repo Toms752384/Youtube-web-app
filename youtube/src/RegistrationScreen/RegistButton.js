@@ -10,7 +10,6 @@ function RegistButton() {
     var valid = verifyRegistration();
     if (valid) {
       const newUser = createNewUser();
-      console.log(users);
       if (isUniqueUser(newUser)) {
         setUsers([...users, newUser]);
         confetti();
