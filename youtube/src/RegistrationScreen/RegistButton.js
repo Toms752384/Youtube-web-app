@@ -8,22 +8,43 @@ function RegistButton() {
   //handle on click
   const handleClick = () => {
     var valid = verifyRegistration();
-    if(valid){
+    if (valid) {
       const newUser = createNewUser();
       console.log(users);
-      setUsers([...users, newUser]);
-      confetti();
+      if (isUniqueUser(newUser)) {
+        setUsers([...users, newUser]);
+        confetti();
+      }
     };
   };
 
   //function to create new user
   const createNewUser = () => {
-    var userName = document.getElementById("username").value;
+    var username = document.getElementById("username").value;
     var password = document.getElementById("floatingPassword").value;
     var nickname = document.getElementById("nickname").value;
-    return { userName, password, nickname };
+    return { username, password, nickname };
   };
-  
+
+  //function to check if user is unique
+  const isUniqueUser = (newUser) => {
+    for (let user of users) {
+      if (user.userName === newUser.username) {
+        alert("Username already taken!");
+        return false;
+      }
+      if (user.password === newUser.password) {
+        alert("Password already used by another user!");
+        return false;
+      }
+      if (user.nickname === newUser.nickname) {
+        alert("Nickname already taken!");
+        return false;
+      }
+    }
+    return true;
+  };
+
   return (
     //register button
     <div className="Dubi">
@@ -35,7 +56,7 @@ function RegistButton() {
 
 export default RegistButton;
 
-function verifyRegistration() {
+function verifyRegistration(users) {
   // extract strings
   var userName = document.getElementById("username").value;
   var password = document.getElementById("floatingPassword").value;
@@ -43,25 +64,25 @@ function verifyRegistration() {
   var nickname = document.getElementById("nickname").value;
 
   // verify username - store the return value of verifyUsername in a variable
-  if(verifyUsername(userName) === false){
+  if (verifyUsername(userName, users) === false) {
     alert("enter new username!");
     return false;
   }
 
   // verify password
-  if(verifyPassword(password) === false){
+  if (verifyPassword(password) === false) {
     alert("password invalid!");
     return false;
   }
 
   //verify password in entered again
-  if(password != password2){
+  if (password != password2) {
     alert("enter password again for verification!");
     return false;
   }
 
   //check nickname
-  if(verifyNickname(nickname) === false){
+  if (verifyNickname(nickname) === false) {
     alert("enter nickname!")
   }
 
@@ -70,13 +91,11 @@ function verifyRegistration() {
 }
 
 //function to verify username
-function verifyUsername(userName){
-  //check if valid
-  if(userName === ""){
+function verifyUsername(userName, users) {
+  //check if username is valid
+  if (userName === "") {
     return false;
   }
-
-  //check if user name already taken
 
   return true;
 }
@@ -114,11 +133,11 @@ function verifyPassword(str) {
     return false;
   }
 
-    //check if the string contains at least one lowercase English letter
-    if (!hasLowerLetter.test(str)) {
-      return false;
-    }
-  
+  //check if the string contains at least one lowercase English letter
+  if (!hasLowerLetter.test(str)) {
+    return false;
+  }
+
 
   //if all conditions are met, return true
   return true;
@@ -126,8 +145,8 @@ function verifyPassword(str) {
 
 //function to verify nickname
 function verifyNickname(nickname) {
-  if(nickname === "") {
-      return false;
+  if (nickname === "") {
+    return false;
   }
   return true;
 }
