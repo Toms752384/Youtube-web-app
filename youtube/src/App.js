@@ -19,7 +19,8 @@ function App() {
     console.log(users);
   };
 
-  //add current user functions!
+  //update the current user that is loggen in - current user with useState, and update function
+  //to be sent to LoginContainer
 
   //app to run
   return (
