@@ -9,12 +9,12 @@ import RegistUpload from './RegistUpload';
 import RegistLoginButton from './RegistLoginButton';
 
 
-function RegistrationContainer() {
+function RegistrationContainer({ users, addUser }) {
     return(
       <div className="container-rec">
       <div className="inner-container form-container">
         <RegistForm/>
-        <RegistButton/>
+        <RegistButton users ={ users } addUser = { addUser }/>
       </div>
       <div className="image-container">
         <RegistLogo/>
