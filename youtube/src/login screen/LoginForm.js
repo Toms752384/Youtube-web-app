@@ -1,6 +1,6 @@
 import LoginButton from "./LoginButton";
 
-function LoginForm({ users }) {
+function LoginForm({ users, onLogin }) {
     return (
         <>
             <div className="form-floating mb-3">
@@ -25,7 +25,7 @@ function LoginForm({ users }) {
                     english letters and symbols.
                 </div>
             </div>
-            <LoginButton users = { users }></LoginButton>
+            <LoginButton users = { users } onLogin = { onLogin }></LoginButton>
         </>
     );
 }

@@ -4,12 +4,12 @@ import LoginForm from './LoginForm.js'
 import MoveToRegistration from './MoveToRegistration.js';
 import './Login.css';
 
-function LoginContainer({ users }) {
+function LoginContainer({ users, onLogin }) {
   return (
     <div className="container form-container">
       <div className="rectangle">
         <Logo></Logo>
-        <LoginForm users = { users }></LoginForm>
+        <LoginForm users = { users } onLogin = { onLogin }></LoginForm>
         <MoveToRegistration></MoveToRegistration>
       </div>
     </div>

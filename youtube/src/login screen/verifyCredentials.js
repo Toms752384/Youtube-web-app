@@ -20,7 +20,7 @@ function verifyCredentials({ users }){
         }
     }
 
-    if(flag == 0){
+    if(flag === 0){
         alert("username is not a member!");
         return null;
     }

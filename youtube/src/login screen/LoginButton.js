@@ -1,12 +1,13 @@
 import verifyCredentials from "./verifyCredentials";
 
-function LoginButton({ users }) {
-    //define a hadle click function that does a few things:
-    //if verifyCredentials is true, then update current user to be the user entred, and move to home page (add later)
+function LoginButton({ users, onLogin }) {
+    //verify credentials
     const handleClick = () => {
         var loggedInUser = verifyCredentials({ users });
+        //log in
         if(loggedInUser !== null){
-            
+            onLogin(loggedInUser);
+            //add going to home page
         }
     }
     return (

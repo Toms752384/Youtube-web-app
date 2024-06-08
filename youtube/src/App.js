@@ -11,24 +11,26 @@ import {
 } from 'react-router-dom';
 
 function App() {
-  //local list of users to access from across the program
+  //local list of users to access from across the program, and add a new user function
   const [users, setUsers] = useState([]);
-
   const addUser = (newUser) => {
     setUsers([...users, newUser]);
   };
 
-  //update the current user that is loggen in - current user with useState, and update function
-  //to be sent to LoginContainer
-  //add the current user to the other pages, so they would extract details from it 
+  //local currently logged in user - defualt value is null, and handle login function
+  const [currentUser, setCurrentUser] = useState(null);
+  const handleLogin = (loggedInUser) => {
+    setCurrentUser(loggedInUser);
+    console.log(loggedInUser);
+  };
 
   //app to run
   return (
     <div>
       <Router>
         <Routes>
-          <Route path='/' element={<LoginContainer users = {users} />} /> 
-          <Route path='/signup' element={<RegistrationContainer users = {users} addUser = {addUser} />} />
+          <Route path='/' element={<LoginContainer users = { users } onLogin = { handleLogin }/>} /> 
+          <Route path='/signup' element={<RegistrationContainer users = { users } addUser = { addUser } />} />
           <Route path='/video' element={<VideoContainer/>} />
           <Route path='/add' element={<AddVideoContainer />}></Route> 
         </Routes>
