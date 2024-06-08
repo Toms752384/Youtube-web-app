@@ -1,6 +1,5 @@
-
 //function to validate the credentials of a new user
-export function verifyRegistration(users) {
+export function verifyRegistration() {
     // extract strings
     var userName = document.getElementById("username").value;
     var password = document.getElementById("floatingPassword").value;
@@ -8,7 +7,7 @@ export function verifyRegistration(users) {
     var nickname = document.getElementById("nickname").value;
   
     // verify username - store the return value of verifyUsername in a variable
-    if (verifyUsername(userName, users) === false) {
+    if (verifyUsername(userName) === false) {
       alert("enter new username!");
       return false;
     }
@@ -36,7 +35,7 @@ export function verifyRegistration(users) {
   }
   
   //function to verify username
-  function verifyUsername(NewUserName, users) {
+  function verifyUsername(NewUserName) {
     //check if username is valid
     if (NewUserName === "") {
       return false;

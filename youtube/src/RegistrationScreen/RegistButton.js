@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function RegistButton({ users, addUser }) {
   const handleClick = () => {
     //first check if valid
-    var valid = verifyRegistration(users);
+    var valid = verifyRegistration();
     if (valid) {
       const newUser = createNewUser();
       //check if unique

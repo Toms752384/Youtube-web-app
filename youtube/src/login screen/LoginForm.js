@@ -25,7 +25,7 @@ function LoginForm({ users }) {
                     english letters and symbols.
                 </div>
             </div>
-            <LoginButton></LoginButton>
+            <LoginButton users = { users }></LoginButton>
         </>
     );
 }

@@ -9,7 +9,7 @@ function LoginContainer({ users }) {
     <div className="container form-container">
       <div className="rectangle">
         <Logo></Logo>
-        <LoginForm user = { users }></LoginForm>
+        <LoginForm users = { users }></LoginForm>
         <MoveToRegistration></MoveToRegistration>
       </div>
     </div>
