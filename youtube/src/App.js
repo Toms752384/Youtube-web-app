@@ -21,7 +21,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const handleLogin = (loggedInUser) => {
     setCurrentUser(loggedInUser);
-    console.log(loggedInUser);
+    console.log(currentUser);
   };
 
   //app to run
