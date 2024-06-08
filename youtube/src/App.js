@@ -16,6 +16,7 @@ function App() {
 
   const addUser = (newUser) => {
     setUsers([...users, newUser]);
+    console.log(users);
   };
 
   //add current user functions!
