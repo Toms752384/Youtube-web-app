@@ -10,7 +10,7 @@ function verifyCredentials({ users }){
     var checkUser;
     if(checkUserName === ""){
         alert("enter username!");
-        return false;
+        return null;
     }
 
     for(let user of users){
@@ -22,23 +22,23 @@ function verifyCredentials({ users }){
 
     if(flag == 0){
         alert("username is not a member!");
-        return false;
+        return null;
     }
 
     //check password
     if(checkPassword === ""){
         alert("enter password!");
-        return false;
+        return null;
     }
 
     if(checkPassword !== checkUser.password){
         alert("password is not a match!")
-        return false;
+        return null;
     }
 
 
-    //if passed all tests, return true
-    return true;
+    //if passed all tests, return user object
+    return checkUser;
 }
 
 export default verifyCredentials;

@@ -4,7 +4,10 @@ function LoginButton({ users }) {
     //define a hadle click function that does a few things:
     //if verifyCredentials is true, then update current user to be the user entred, and move to home page (add later)
     const handleClick = () => {
-        var valid = verifyCredentials({ users });
+        var loggedInUser = verifyCredentials({ users });
+        if(loggedInUser !== null){
+            
+        }
     }
     return (
         <div className="form-floating mb-3 text-center">
