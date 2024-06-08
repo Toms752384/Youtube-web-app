@@ -16,11 +16,11 @@ function App() {
 
   const addUser = (newUser) => {
     setUsers([...users, newUser]);
-    console.log(users);
   };
 
   //update the current user that is loggen in - current user with useState, and update function
   //to be sent to LoginContainer
+  //add the current user to the other pages, so they would extract details from it 
 
   //app to run
   return (
