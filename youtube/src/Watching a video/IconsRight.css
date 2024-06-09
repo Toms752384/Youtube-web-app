@@ -38,3 +38,12 @@
 .options-menu li:hover {
     background: #333;
 }
+
+.button-like {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.button-like:hover {
+    color: #ddd; /* Change color on hover */
+}
