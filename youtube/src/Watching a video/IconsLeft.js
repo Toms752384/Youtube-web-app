@@ -4,6 +4,7 @@ import './Video.css';
 import FloatingMenu from './FloatingMenu';
 
 function IconsLeft() {
+    //floating menu state
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleMenuToggle = () => {
