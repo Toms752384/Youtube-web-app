@@ -1,7 +1,7 @@
 import React from 'react';
 import './SideBar.css';
 
-function SideBar() {
+function SideBar({ videos }) {
     return (
         <div className="col-md-4">
             <div className="sidebar">
@@ -29,6 +29,7 @@ function SideBar() {
                         <div>11M views</div>
                     </div>
                 </div>
+                
             </div>
         </div>
     );
