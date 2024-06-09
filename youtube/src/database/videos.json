@@ -1,8 +1,98 @@
 [
     {
-        "text" : "video1"
+        "title": "Awesome Steak",
+        "artist": "Chef John",
+        "views": "10M",
+        "subscribers": "2M",
+        "thumbnail": "/database/localVideos/thumbnails/awesome_steak.jpg",
+        "videoUrl": "/database/localVideos/awesome steak.mp4"
     },
     {
-        "text" : "video2"
+        "title": "Cheesecake",
+        "artist": "Baker Jane",
+        "views": "8M",
+        "subscribers": "1.5M",
+        "thumbnail": "/database/localVideos/thumbnails/cheesecake.jpg",
+        "videoUrl": "/database/localVideos/cheesecake.mp4"
+    },
+    {
+        "title": "Chicken Breast",
+        "artist": "Chef Mike",
+        "views": "12M",
+        "subscribers": "1.8M",
+        "thumbnail": "/database/localVideos/thumbnails/chicken_breast.jpg",
+        "videoUrl": "/database/localVideos/chicken breast.mp4"
+    },
+    {
+        "title": "Chocolate Factory",
+        "artist": "Chocolatier Willy",
+        "views": "15M",
+        "subscribers": "3M",
+        "thumbnail": "/database/localVideos/thumbnails/chocolate_factory.jpg",
+        "videoUrl": "/database/localVideos/chocolate factory.mp4"
+    },
+    {
+        "title": "Doughnut",
+        "artist": "Baker Sam",
+        "views": "7M",
+        "subscribers": "1.2M",
+        "thumbnail": "/database/localVideos/thumbnails/doughnut.jpg",
+        "videoUrl": "/database/localVideos/Doughnut.mp4"
+    },
+    {
+        "title": "Fancy Steak",
+        "artist": "Chef Anna",
+        "views": "20M",
+        "subscribers": "2.5M",
+        "thumbnail": "/database/localVideos/thumbnails/fancy_steak.jpg",
+        "videoUrl": "/database/localVideos/fancy steak.mp4"
+    },
+    {
+        "title": "Frying Stuff",
+        "artist": "Chef Bob",
+        "views": "9M",
+        "subscribers": "1.3M",
+        "thumbnail": "/database/localVideos/thumbnails/frying_stuff.jpg",
+        "videoUrl": "/database/localVideos/frying stuff.mp4"
+    },
+    {
+        "title": "Hamburger",
+        "artist": "Chef Rick",
+        "views": "18M",
+        "subscribers": "2.1M",
+        "thumbnail": "/database/localVideos/thumbnails/hamburger.jpg",
+        "videoUrl": "/database/localVideos/hamburger.mp4"
+    },
+    {
+        "title": "Pizza",
+        "artist": "Chef Luigi",
+        "views": "25M",
+        "subscribers": "3.2M",
+        "thumbnail": "/database/localVideos/thumbnails/pizza.jpg",
+        "videoUrl": "/database/localVideos/pizza.mp4"
+    },
+    {
+        "title": "Salmon",
+        "artist": "Chef Dave",
+        "views": "14M",
+        "subscribers": "1.9M",
+        "thumbnail": "/database/localVideos/thumbnails/salmon.jpg",
+        "videoUrl": "/database/localVideos/salmon.mp4"
+    },
+    {
+        "title": "Steak",
+        "artist": "Chef Maria",
+        "views": "22M",
+        "subscribers": "2.7M",
+        "thumbnail": "/database/localVideos/thumbnails/steak.jpg",
+        "videoUrl": "/database/localVideos/steak.mp4"
+    },
+    {
+        "title": "Steaks",
+        "artist": "Chef Sarah",
+        "views": "13M",
+        "subscribers": "1.6M",
+        "thumbnail": "/database/localVideos/thumbnails/steaks.jpg",
+        "videoUrl": "/database/localVideos/steaks.mp4"
     }
 ]
