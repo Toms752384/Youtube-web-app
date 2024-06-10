@@ -28,6 +28,12 @@ function App() {
   //state of videos
   const [videosList, setVideosList] = useState(videos);
 
+  //state of currnet video
+  const [currentVideo, setCurrentVideo] = useState(null);
+  const changeVideo = (clickedOnVideo) => {
+    setCurrentVideo(clickedOnVideo);
+  }
+
   //app to run
   return (
     <div>
