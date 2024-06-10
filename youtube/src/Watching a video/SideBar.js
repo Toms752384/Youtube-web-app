@@ -2,17 +2,11 @@ import React from 'react';
 import './SideBar.css';
 import SideBarVideo from './SideBarVideo.js';
 
-function SideBar({ vi }) {
+function SideBar({ videosList }) {
 
-    const videos = [{artist: "this", title: "a", views: "12", time: "3"},
-        {artist: "this!", title: "a", views: "12", time: "3"}, 
-        {artist: "this?", title: "a", views: "12", time: "3"},
-        {artist: "this!?", title: "a", views: "12", time: "3"}]
-
-    const videoList = videos.map((video, key) => {
+    const videoList = videosList.map((video, key) => {
         return <SideBarVideo {...video} key = {key} />
     });
-
 
     return (
         <div className="col-md-4">

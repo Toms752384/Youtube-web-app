@@ -1,22 +1,10 @@
 import './AddVideoContainer.css';
-import videos from "../database/videos.json";
+// import videos from "../database/videos.json";
 import { useState } from "react";
 import Logo from '../login screen/Logo';
 
 
 function AddVideoContainer() {
-    // State to manage the list of videos
-    const [getVideosList, setVideosList] = useState(videos);
-
-    // Function to add a new video to the list
-    const addVideo = () => {
-        console.log("hi");
-        const newVideo = {
-            "text": "newVideo"
-        };
-        // Update the state with the new video added
-        setVideosList([...getVideosList, newVideo]);
-    };
 
     return (
         <>
@@ -58,7 +46,7 @@ function AddVideoContainer() {
 
                 <div className="row mb-3"> {/* Row for the upload button */}
                     <div className="col">
-                        <button onClick={addVideo} type="button" className="btn btn-primary btn-lg">Upload Video</button> {/* Upload button */}
+                        <button type="button" className="btn btn-primary btn-lg">Upload Video</button> {/* Upload button */}
                     </div>
                 </div>
             </div>

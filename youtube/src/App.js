@@ -4,7 +4,7 @@ import LoginContainer from './login screen/LoginContainer.js';
 import RegistrationContainer from './RegistrationScreen/RegistrationContainer.js';
 import VideoContainer from './Watching a video/VideoContainer.js';
 import AddVideoContainer from './add video screen/AddVideoContainer.js';
-import videosList from './database/videos.json';
+import videos from './database/videos.js'; //state of videos
 
 import {
   BrowserRouter as Router,
@@ -25,22 +25,17 @@ function App() {
     setCurrentUser(loggedInUser);
   };
 
-  //state of list of videos
-  const [videos, setVideos] = useState([videosList]);
-
-  // Function to update videos
-  const updateVideos = (newVideos) => {
-    setVideos(newVideos);
-  };
+  //state of videos
+  const [videosList, setVideosList] = useState(videos);
 
   //app to run
   return (
     <div>
       <Router>
         <Routes>
-          <Route path='/' element={<LoginContainer users={ users } onLogin={ handleLogin } />} />
-          <Route path='/signup' element={<RegistrationContainer users={ users } addUser={ addUser } />} />
-          <Route path='/video' element={<VideoContainer videos={ videos }/>} />
+          <Route path='/' element={<LoginContainer users={users} onLogin={handleLogin} />} />
+          <Route path='/signup' element={<RegistrationContainer users={users} addUser={addUser} />} />
+          <Route path='/video' element={<VideoContainer videosList={videosList} />} />
           <Route path='/add' element={<AddVideoContainer />}></Route>
         </Routes>
       </Router>
