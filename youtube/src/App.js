@@ -4,7 +4,7 @@ import LoginContainer from './login screen/LoginContainer.js';
 import RegistrationContainer from './RegistrationScreen/RegistrationContainer.js';
 import VideoContainer from './Watching a video/VideoContainer.js';
 import AddVideoContainer from './add video screen/AddVideoContainer.js';
-import videos from './database/videos.js'; //state of videos
+import videos from './database/videos.js'; //database of videos
 
 import {
   BrowserRouter as Router,
@@ -25,7 +25,7 @@ function App() {
     setCurrentUser(loggedInUser);
   };
 
-  //state of videos
+  //state of videos - need to add delete and add videos function
   const [videosList, setVideosList] = useState(videos);
 
   //state of currnet video

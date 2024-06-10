@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import loaclPhoto from './localPhotos/stamLogo.png'
 
 const videos = [
