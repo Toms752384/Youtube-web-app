@@ -30,6 +30,7 @@ function IconsRight() {
                     <ul>
                         <li>Sign in</li>
                         <li>Join us</li>
+                        <li>Sign out</li>
                     </ul>
                 </div>
             )}
