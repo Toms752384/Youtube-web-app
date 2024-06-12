@@ -5,7 +5,7 @@ function SideBarVideo({ image, video, artist, title, views, time }) {
             <div className="video-info ml-3">
                 <div className="video-title">{ artist }</div>
                 <div className="video-title">{ title }</div>
-                <div>{ views } views • { time } </div>
+                <div>{ views } views • { time } years ago </div>
             </div>
         </div>
     );

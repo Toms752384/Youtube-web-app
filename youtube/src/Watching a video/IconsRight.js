@@ -31,6 +31,7 @@ function IconsRight() {
                         <li>Sign in</li>
                         <li>Join us</li>
                         <li>Sign out</li>
+                        <li>Change theme</li>
                     </ul>
                 </div>
             )}

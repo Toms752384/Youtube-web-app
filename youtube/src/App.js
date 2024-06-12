@@ -4,13 +4,8 @@ import LoginContainer from './login screen/LoginContainer.js';
 import RegistrationContainer from './RegistrationScreen/RegistrationContainer.js';
 import VideoContainer from './Watching a video/VideoContainer.js';
 import AddVideoContainer from './add video screen/AddVideoContainer.js';
-import videos from './database/videos.js'; //database of videos
-
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes
-} from 'react-router-dom';
+import videos from './database/videosList.json'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   //state of list of users to access from across the program, and add a new user function
@@ -25,7 +20,7 @@ function App() {
     setCurrentUser(loggedInUser);
   };
 
-  //state of videos - need to add delete and add videos function
+  //state of videos
   const [videosList, setVideosList] = useState(videos);
 
   //state of currnet video
