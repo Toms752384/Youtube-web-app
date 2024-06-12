@@ -38,7 +38,8 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginContainer users={users} onLogin={handleLogin} />} />
           <Route path='/signup' element={<RegistrationContainer users={users} addUser={addUser} />} />
-          <Route path='/video' element={<VideoContainer videosList={videosList} currentVideo={currentVideo} changeVideo={changeVideo} currentUser={currentUser}/>} />
+          <Route path='/video' element={<VideoContainer videosList={videosList} currentVideo={currentVideo}
+           changeVideo={changeVideo} currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleLogin}/>} />
           <Route path='/add' element={<AddVideoContainer />}></Route>
         </Routes>
       </Router>
