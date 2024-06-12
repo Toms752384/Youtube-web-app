@@ -88,5 +88,15 @@
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "videoUrl": "/localVideos/steak.mp4"
+    },
+    {
+        "title": "Food Truck",
+        "artist": "Mister Man",
+        "views": "222M",
+        "time": "23",
+        "subscribers": "10B",
+        "likes": "120M",
+        "image": "/localPhotos/stamLogo.png",
+        "videoUrl": "/localVideos/foodTruck.mp4"
     }
 ]
