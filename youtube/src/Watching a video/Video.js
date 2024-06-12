@@ -1,10 +1,9 @@
-import stamVideo from '../database/localVideos/cheesecake.mp4'
 
 function Video() {
     return (
         <>
             <div className="video-player mb-3">
-                <video src={stamVideo} controls width="100%" frameBorder="0" allowFullScreen></video>            </div>
+                <video src="" controls width="100%" frameBorder="0" allowFullScreen></video>            </div>
             <h3 className="video-title">Title</h3>
             <div className="d-flex justify-content-between align-items-center mb-3">
                 <div className="d-flex align-items-center">
