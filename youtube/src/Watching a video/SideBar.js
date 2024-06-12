@@ -5,7 +5,7 @@ import SideBarVideo from './SideBarVideo.js';
 function SideBar({ videosList }) {
 
     const videoList = videosList.map((video, key) => {
-        return <SideBarVideo {...video} key = {key} />
+        return <SideBarVideo video = {video} key = {key} />
     });
 
     return (
