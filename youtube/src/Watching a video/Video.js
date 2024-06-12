@@ -7,7 +7,7 @@ function Video( { currentVideo } ) {
             <h3 className="video-title">{currentVideo.title}</h3>
             <div className="d-flex justify-content-between align-items-center mb-3">
                 <div className="d-flex align-items-center">
-                    <img src="https://yt3.ggpht.com/ytc/AAUvwng-3_WPMUNk5YNG_CgK4--wVPqxayqMWAB6PWaN=s88-c-k-c0x00ffffff-no-rj" alt="Channel Avatar" className="mr-2" width="50" height="50" />
+                    <img src={currentVideo.avatar} alt="Channel Avatar" className="mr-2" width="50" height="50" />
                     <div>
                         <div>{currentVideo.artist}</div>
                         <div>{currentVideo.subscribers} subscribers</div>

@@ -7,6 +7,7 @@
         "subscribers": "181M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/cheesecake.mp4"
     },
     {
@@ -17,6 +18,7 @@
         "subscribers": "163M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/chicken breast.mp4"
     },
     {
@@ -27,6 +29,7 @@
         "subscribers": "100M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/Doughnut.mp4"
     },
     {
@@ -37,6 +40,7 @@
         "subscribers": "103M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/fancy steak.mp4"
     },
     {
@@ -47,6 +51,7 @@
         "subscribers": "11M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/frying stuff.mp4"
     },
     {
@@ -57,6 +62,7 @@
         "subscribers": "100M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/hamburger.mp4"
     },
     {
@@ -67,6 +73,7 @@
         "subscribers": "102M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/pizza.mp4"
     },
     {
@@ -77,6 +84,7 @@
         "subscribers": "1000",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/salmon.mp4"
     },
     {
@@ -87,6 +95,7 @@
         "subscribers": "100M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/steak.mp4"
     },
     {
@@ -97,6 +106,7 @@
         "subscribers": "10B",
         "likes": "120M",
         "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/foodTruck.mp4"
     }
 ]
