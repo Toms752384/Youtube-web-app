@@ -2,10 +2,10 @@ import React from 'react';
 import './SideBar.css';
 import SideBarVideo from './SideBarVideo.js';
 
-function SideBar({ videosList }) {
+function SideBar({ videosList, changeVideo }) {
 
     const videoList = videosList.map((video, key) => {
-        return <SideBarVideo video = {video} key = {key} />
+        return <SideBarVideo video = {video} key = {key} changeVideo = {changeVideo} />
     });
 
     return (

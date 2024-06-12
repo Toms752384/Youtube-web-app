@@ -20,16 +20,6 @@
         "videoUrl": "/localVideos/chicken breast.mp4"
     },
     {
-        "title": "Chocolate Factory",
-        "artist": "Chocolatier Willy",
-        "views": "15M",
-        "time": "2",
-        "subscribers": "100M",
-        "likes": "12k",
-        "image": "/localPhotos/stamLogo.png",
-        "videoUrl": "/localVideos/chocolate factory.mp4"
-    },
-    {
         "title": "Doughnut",
         "artist": "Baker Sam",
         "views": "7M",
@@ -98,15 +88,5 @@
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "videoUrl": "/localVideos/steak.mp4"
-    },
-    {
-        "title": "Steaks",
-        "artist": "Chef Sarah",
-        "views": "13M",
-        "time": "1",
-        "subscribers": "100M",
-        "likes": "12k",
-        "image": "/localPhotos/stamLogo.png",
-        "videoUrl": "/database/localVideos/steaks.mp4"
     }
 ]
