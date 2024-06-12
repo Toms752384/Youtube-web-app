@@ -1,5 +1,5 @@
 
-function Video() {
+function Video( { currnetVideo } ) {
     return (
         <>
             <div className="video-player mb-3">
