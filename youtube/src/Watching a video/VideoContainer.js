@@ -7,7 +7,7 @@ import IconsRight from './IconsRight';
 import SideBar from './SideBar';
 import MainBody from './MainBody';
 
-function VideoContainer({ videosList }) {
+function VideoContainer({ videosList, currentVideo }) {
     return (
         <>
             <header className="header d-flex justify-content-between align-items-center">
@@ -17,7 +17,7 @@ function VideoContainer({ videosList }) {
             </header>
             <div className="container-fluid mt-4">
                 <div className="row">
-                    <MainBody/>
+                    <MainBody currentVideo={ currentVideo }/>
                     <SideBar videosList={ videosList }/>
                 </div>
             </div>

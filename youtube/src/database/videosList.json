@@ -1,20 +1,10 @@
 [
     {
-        "title": "Awesome Steak",
-        "artist": "Chef John",
-        "views": "10M",
-        "time": "12",
-        "subcribers": "100M",
-        "likes": "12k",
-        "image": "/localPhotos/stamLogo.png",
-        "videoUrl": "/localVideos/awesome steak.mp4"
-    },
-    {
         "title": "Cheesecake",
         "artist": "Baker Jane",
         "views": "8M",
         "time": "1",
-        "subcribers": "100M",
+        "subscribers": "100M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "videoUrl": "/localVideos/cheesecake.mp4"
@@ -24,7 +14,7 @@
         "artist": "Chef Mike",
         "views": "12M",
         "time": "11",
-        "subcribers": "100M",
+        "subscribers": "100M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "videoUrl": "/localVideos/chicken breast.mp4"
@@ -34,7 +24,7 @@
         "artist": "Chocolatier Willy",
         "views": "15M",
         "time": "2",
-        "subcribers": "100M",
+        "subscribers": "100M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "videoUrl": "/localVideos/chocolate factory.mp4"
@@ -44,7 +34,7 @@
         "artist": "Baker Sam",
         "views": "7M",
         "time": "1",
-        "subcribers": "100M",
+        "subscribers": "100M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "videoUrl": "/localVideos/Doughnut.mp4"
@@ -54,7 +44,7 @@
         "artist": "Chef Anna",
         "views": "20M",
         "time": "5",
-        "subcribers": "100M",
+        "subscribers": "100M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "videoUrl": "/localVideos/fancy steak.mp4"
@@ -64,7 +54,7 @@
         "artist": "Chef Bob",
         "views": "9M",
         "time": "1",
-        "subcribers": "100M",
+        "subscribers": "100M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "videoUrl": "/localVideos/frying stuff.mp4"
@@ -74,7 +64,7 @@
         "artist": "Chef Rick",
         "views": "18M",
         "time": "1",
-        "subcribers": "100M",
+        "subscribers": "100M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "videoUrl": "/localVideos/hamburger.mp4"
@@ -84,7 +74,7 @@
         "artist": "Chef Luigi",
         "views": "25M",
         "time": "1",
-        "subcribers": "100M",
+        "subscribers": "100M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "videoUrl": "/localVideos/pizza.mp4"
@@ -94,7 +84,7 @@
         "artist": "Chef Dave",
         "views": "14M",
         "time": "4",
-        "subcribers": "100M",
+        "subscribers": "100M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "videoUrl": "/localVideos/salmon.mp4"
@@ -104,7 +94,7 @@
         "artist": "Chef Maria",
         "views": "22M",
         "time": "2",
-        "subcribers": "100M",
+        "subscribers": "100M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "videoUrl": "/localVideos/steak.mp4"
@@ -114,7 +104,7 @@
         "artist": "Chef Sarah",
         "views": "13M",
         "time": "1",
-        "subcribers": "100M",
+        "subscribers": "100M",
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "videoUrl": "/database/localVideos/steaks.mp4"

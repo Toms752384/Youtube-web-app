@@ -1,10 +1,10 @@
 import Comments from "./Comments";
 import Video from "./Video";
 
-function MainBody() {
+function MainBody({ currentVideo }) {
     return (
         <div className="col-md-8">
-            <Video />
+            <Video currentVideo={ currentVideo }/>
             <Comments />
         </div>
     );

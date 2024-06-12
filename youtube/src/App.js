@@ -24,7 +24,8 @@ function App() {
   const [videosList, setVideosList] = useState(videos);
 
   //state of currnet video
-  const [currentVideo, setCurrentVideo] = useState(null);
+  const defualtVideo = videosList[0];
+  const [currentVideo, setCurrentVideo] = useState(defualtVideo);
   const changeVideo = (clickedOnVideo) => {
     setCurrentVideo(clickedOnVideo);
   }
@@ -32,6 +33,7 @@ function App() {
   //add argument of current video to video, and change fields of the video src, title, artist, subs, likes to come from the current video  
   //add argument of current video to main body
   //add a argument of current video to videocontainer
+  //create a defualt video of the page
   //add on click function to set the current video to be the 
 
   //app to run
@@ -41,7 +43,7 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginContainer users={users} onLogin={handleLogin} />} />
           <Route path='/signup' element={<RegistrationContainer users={users} addUser={addUser} />} />
-          <Route path='/video' element={<VideoContainer videosList={videosList} />} /> 
+          <Route path='/video' element={<VideoContainer videosList={videosList} currentVideo={currentVideo} />} /> 
           <Route path='/add' element={<AddVideoContainer />}></Route>
         </Routes>
       </Router>
