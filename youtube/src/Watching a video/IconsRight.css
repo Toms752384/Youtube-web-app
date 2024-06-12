@@ -47,3 +47,20 @@
 .button-like:hover {
     color: #ddd; /* Change color on hover */
 }
+
+/* 12.6 adding new css */
+
+body.dark-theme {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  body.light-theme {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  /* Additional styles to ensure the theme applies to all necessary elements */
+  .header, .container-fluid {
+    transition: background-color 0.3s, color 0.3s;
+  }

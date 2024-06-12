@@ -7,10 +7,6 @@ import RegistLogo from './RegistLogo';
 import RegistUpload from './RegistUpload';
 import RegistLoginButton from './RegistLoginButton';
 
-//add useState of avatar and a defualt avatar
-//send avatar state to regist button and update the avatar field to come from the argument
-//check if works
-
 function RegistrationContainer({ users, addUser }) {
   const [avatar, setAvatar] = useState("/localPhotos/defualtAvatar.png");
 
