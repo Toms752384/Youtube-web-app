@@ -15,7 +15,8 @@ function App() {
   };
 
   //state of currently logged in user - defualt value is null, and handle login function
-  const [currentUser, setCurrentUser] = useState(null);
+  const defualtUser = {};
+  const [currentUser, setCurrentUser] = useState(defualtUser);
   const handleLogin = (loggedInUser) => {
     setCurrentUser(loggedInUser);
   };
