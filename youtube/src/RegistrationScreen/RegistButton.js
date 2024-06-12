@@ -25,7 +25,6 @@ function RegistButton({ users, addUser }) {
     var password = document.getElementById("floatingPassword").value;
     var nickname = document.getElementById("nickname").value;
     var avatar = document.getElementById("upload-input").value;
-    console.log(avatar);
     return { username, password, nickname, avatar };
   };
 
