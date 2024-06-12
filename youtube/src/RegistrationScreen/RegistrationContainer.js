@@ -26,7 +26,7 @@ function RegistrationContainer({ users, addUser }) {
       </div>
       <div className="image-container">
         <RegistLogo/>
-        <RegistUpload/>
+        <RegistUpload imageUpload={handleImageUpload}/>
         <RegistLoginButton/>
       </div>
     </div>
