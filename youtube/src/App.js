@@ -29,6 +29,11 @@ function App() {
     setCurrentVideo(clickedOnVideo);
   }
 
+  //add argument of current video to video, and change fields of the video src, title, artist,   
+  //add argument of current video to main body
+  //add a argument of current video to videocontainer
+  
+
   //app to run
   return (
     <div>
@@ -36,7 +41,7 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginContainer users={users} onLogin={handleLogin} />} />
           <Route path='/signup' element={<RegistrationContainer users={users} addUser={addUser} />} />
-          <Route path='/video' element={<VideoContainer videosList={videosList} />} />
+          <Route path='/video' element={<VideoContainer videosList={videosList} />} /> 
           <Route path='/add' element={<AddVideoContainer />}></Route>
         </Routes>
       </Router>
