@@ -38,7 +38,7 @@ function IconsRight({currentUser}) {
             {isOptionsOpen && (
                 <div className="options-menu">
                     <ul>
-                        <li>Hello {currentUser.username}!</li>
+                        <li>Hello {currentUser.nickname}!</li>
                         <li onClick={handnleSignInClick}>Sign in</li>
                         <li onClick={handleRegisterClick}>Join us</li>
                         <li>Sign out</li>
