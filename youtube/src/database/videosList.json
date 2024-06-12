@@ -1,0 +1,112 @@
+[
+    {
+        "title": "Cheesecake",
+        "artist": "Baker Jane",
+        "views": "8M",
+        "time": "1",
+        "subscribers": "181M",
+        "likes": "12k",
+        "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
+        "videoUrl": "/localVideos/cheesecake.mp4"
+    },
+    {
+        "title": "Chicken Breast",
+        "artist": "Chef Mike",
+        "views": "12M",
+        "time": "11",
+        "subscribers": "163M",
+        "likes": "12k",
+        "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
+        "videoUrl": "/localVideos/chicken breast.mp4"
+    },
+    {
+        "title": "Doughnut",
+        "artist": "Baker Sam",
+        "views": "7M",
+        "time": "1",
+        "subscribers": "100M",
+        "likes": "12k",
+        "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
+        "videoUrl": "/localVideos/Doughnut.mp4"
+    },
+    {
+        "title": "Fancy Steak",
+        "artist": "Chef Anna",
+        "views": "20M",
+        "time": "5",
+        "subscribers": "103M",
+        "likes": "12k",
+        "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
+        "videoUrl": "/localVideos/fancy steak.mp4"
+    },
+    {
+        "title": "Frying Stuff",
+        "artist": "Chef Bob",
+        "views": "9M",
+        "time": "1",
+        "subscribers": "11M",
+        "likes": "12k",
+        "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
+        "videoUrl": "/localVideos/frying stuff.mp4"
+    },
+    {
+        "title": "Hamburger",
+        "artist": "Chef Rick",
+        "views": "18M",
+        "time": "1",
+        "subscribers": "100M",
+        "likes": "12k",
+        "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
+        "videoUrl": "/localVideos/hamburger.mp4"
+    },
+    {
+        "title": "Pizza",
+        "artist": "Chef Luigi",
+        "views": "25M",
+        "time": "1",
+        "subscribers": "102M",
+        "likes": "12k",
+        "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
+        "videoUrl": "/localVideos/pizza.mp4"
+    },
+    {
+        "title": "Salmon",
+        "artist": "Chef Dave",
+        "views": "14M",
+        "time": "4",
+        "subscribers": "1000",
+        "likes": "12k",
+        "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
+        "videoUrl": "/localVideos/salmon.mp4"
+    },
+    {
+        "title": "Steak",
+        "artist": "Chef Maria",
+        "views": "22M",
+        "time": "2",
+        "subscribers": "100M",
+        "likes": "12k",
+        "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
+        "videoUrl": "/localVideos/steak.mp4"
+    },
+    {
+        "title": "Food Truck",
+        "artist": "Mister Man",
+        "views": "222M",
+        "time": "23",
+        "subscribers": "10B",
+        "likes": "120M",
+        "image": "/localPhotos/stamLogo.png",
+        "avatar": "/localPhotos/defualtAvatar.png",
+        "videoUrl": "/localVideos/foodTruck.mp4"
+    }
+]

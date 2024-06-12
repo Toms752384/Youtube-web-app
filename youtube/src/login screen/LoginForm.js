@@ -1,4 +1,6 @@
-function LoginForm() {
+import LoginButton from "./LoginButton";
+
+function LoginForm({ users, onLogin }) {
     return (
         <>
             <div className="form-floating mb-3">
@@ -23,11 +25,7 @@ function LoginForm() {
                     english letters and symbols.
                 </div>
             </div>
-            <div className="form-floating mb-3 text-center">
-                <button type="button" className="btn btn-danger">
-                    Sign In
-                </button>
-            </div>
+            <LoginButton users = { users } onLogin = { onLogin }></LoginButton>
         </>
     );
 }
