@@ -1,13 +1,21 @@
 import verifyCredentials from "./verifyCredentials";
+import { useNavigate } from 'react-router-dom';
 
 function LoginButton({ users, onLogin }) {
+
+    //function to navigate to video page
+    const navigate = useNavigate();
+    const handleButtonClick = () => {
+        navigate('/video');
+    };
+
     //verify credentials
     const handleClick = () => {
         var loggedInUser = verifyCredentials({ users });
         //log in
-        if(loggedInUser !== null){
+        if(loggedInUser != null){
             onLogin(loggedInUser);
-            //add going to home page
+            handleButtonClick(); //change to home page
         }
     }
     return (

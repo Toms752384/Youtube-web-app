@@ -14,17 +14,17 @@ function App() {
     setUsers([...users, newUser]);
   };
 
-  //state of currently logged in user - defualt value is null, and handle login function
-  const defualtUser = {};
+  //state of currently logged in user - defualt value no user
+  const defualtUser = { "username": "New User", "password": "", "nickname": "New user", "avatar": "/localPhotos/defualtAvatar.png" };
   const [currentUser, setCurrentUser] = useState(defualtUser);
   const handleLogin = (loggedInUser) => {
     setCurrentUser(loggedInUser);
   };
 
-  //state of videos
+  //state of list of videos
   const [videosList, setVideosList] = useState(videos);
 
-  //state of currnet video
+  //state of currnet video played
   const defualtVideo = videosList[0];
   const [currentVideo, setCurrentVideo] = useState(defualtVideo);
   const changeVideo = (clickedOnVideo) => {
@@ -38,7 +38,7 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginContainer users={users} onLogin={handleLogin} />} />
           <Route path='/signup' element={<RegistrationContainer users={users} addUser={addUser} />} />
-          <Route path='/video' element={<VideoContainer videosList={videosList} currentVideo={currentVideo} changeVideo={changeVideo} />} /> 
+          <Route path='/video' element={<VideoContainer videosList={videosList} currentVideo={currentVideo} changeVideo={changeVideo} currentUser={currentUser}/>} />
           <Route path='/add' element={<AddVideoContainer />}></Route>
         </Routes>
       </Router>
