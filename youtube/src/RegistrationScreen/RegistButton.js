@@ -3,7 +3,7 @@ import confetti from 'canvas-confetti';
 import { verifyRegistration } from './validation.js';
 import { useNavigate } from 'react-router-dom';
 
-function RegistButton({ users, addUser }) {
+function RegistButton({ users, addUser, avatar }) {
   const handleClick = () => {
     //first check if valid
     var valid = verifyRegistration();
@@ -24,7 +24,6 @@ function RegistButton({ users, addUser }) {
     var username = document.getElementById("username").value;
     var password = document.getElementById("floatingPassword").value;
     var nickname = document.getElementById("nickname").value;
-    var avatar = document.getElementById("upload-input").value;
     return { username, password, nickname, avatar };
   };
 

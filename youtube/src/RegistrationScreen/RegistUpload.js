@@ -1,8 +1,7 @@
 import React from "react";
 
-function RegistUpload() {
+function RegistUpload({imageUpload}) {
     return(
-      //upload picture
         <div className="upload-container">
           <label htmlFor="upload-input" className="upload-label">Upload Profile Picture</label>
           <input type="file" id="upload-input" className="upload-input" />
