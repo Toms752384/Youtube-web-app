@@ -8,7 +8,11 @@
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/cheesecake.mp4"
+        "videoUrl": "/localVideos/cheesecake.mp4",
+        "comments": [
+            {"username": "User1", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User2", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Chicken Breast",
@@ -19,7 +23,11 @@
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/chicken breast.mp4"
+        "videoUrl": "/localVideos/chicken breast.mp4",
+        "comments": [
+            {"username": "User3", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User4", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Doughnut",
@@ -30,7 +38,11 @@
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/Doughnut.mp4"
+        "videoUrl": "/localVideos/Doughnut.mp4",
+        "comments": [
+            {"username": "User5", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User6", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Fancy Steak",
@@ -41,7 +53,11 @@
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/fancy steak.mp4"
+        "videoUrl": "/localVideos/fancy steak.mp4",
+        "comments": [
+            {"username": "User7", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User8", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Frying Stuff",
@@ -52,7 +68,11 @@
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/frying stuff.mp4"
+        "videoUrl": "/localVideos/frying stuff.mp4",
+        "comments": [
+            {"username": "User9", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User10", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Hamburger",
@@ -63,7 +83,11 @@
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/hamburger.mp4"
+        "videoUrl": "/localVideos/hamburger.mp4",
+        "comments": [
+            {"username": "User11", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User12", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Pizza",
@@ -74,7 +98,11 @@
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/pizza.mp4"
+        "videoUrl": "/localVideos/pizza.mp4",
+        "comments": [
+            {"username": "User13", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User14", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Salmon",
@@ -85,7 +113,11 @@
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/salmon.mp4"
+        "videoUrl": "/localVideos/salmon.mp4",
+        "comments": [
+            {"username": "User15", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User16", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Steak",
@@ -96,7 +128,11 @@
         "likes": "12k",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/steak.mp4"
+        "videoUrl": "/localVideos/steak.mp4",
+        "comments": [
+            {"username": "User17", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User18", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Food Truck",
@@ -107,6 +143,10 @@
         "likes": "120M",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/foodTruck.mp4"
+        "videoUrl": "/localVideos/foodTruck.mp4",
+        "comments": [
+            {"username": "User19", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User20", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     }
 ]

@@ -48,3 +48,8 @@ function App() {
 }
 
 export default App;
+
+//update videosList.json to contain comments
+//add "comments" argument to comments.js
+//transfer the currentVideo.comments as an argument from mainBody to comments
+//map the comments in comments.js 
