@@ -31,6 +31,15 @@ function App() {
     setCurrentVideo(clickedOnVideo);
   }
 
+  //state of comments section
+  const updateComments = (videoUrl, newComments) => {
+    const updatedVideosList = videosList.map(video =>
+      video.videoUrl === videoUrl ? { ...video, comments: newComments } : video
+    );
+    setVideosList(updatedVideosList);
+    setCurrentVideo(updatedVideosList.find(video => video.videoUrl === videoUrl));
+  };
+
   //app to run
   return (
     <div>
@@ -38,8 +47,14 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginContainer users={users} onLogin={handleLogin} />} />
           <Route path='/signup' element={<RegistrationContainer users={users} addUser={addUser} />} />
-          <Route path='/video' element={<VideoContainer videosList={videosList} currentVideo={currentVideo}
-            changeVideo={changeVideo} currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleLogin} />} />
+          <Route path='/video' element={<VideoContainer
+            videosList={videosList}
+            currentVideo={currentVideo}
+            changeVideo={changeVideo}
+            currentUser={currentUser}
+            defualtUser={defualtUser}
+            handleSignOut={handleLogin}
+            updateComments={updateComments} />} />
           <Route path='/add' element={<AddVideoContainer />}></Route>
         </Routes>
       </Router>
@@ -51,13 +66,6 @@ export default App;
 
 //first feature - comments for each video - done
 
-//second feature - adding new comments
-//send currentUser state to mainBody from videoContainer
-//create useState for the comments list and adding new comment to it
-//send comments list(new useState), addComment function useState, and the current user from main body and the current user to comments.js
-//create new states of newComment comment in comments
-//add the necessery divs of input 
-
-
+//second feature - adding new comments - done!
 
 //third feature - editing and deleting comments
