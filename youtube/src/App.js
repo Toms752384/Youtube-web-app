@@ -49,4 +49,15 @@ function App() {
 
 export default App;
 
-//
+//first feature - comments for each video - done
+
+//second feature - adding new comments
+//send currentUser state to mainBody from videoContainer
+//create useState for the comments list and adding new comment to it
+//send comments list(new useState), addComment function useState, and the current user from main body and the current user to comments.js
+//create new states of newComment comment in comments
+//add the necessery divs of input 
+
+
+
+//third feature - editing and deleting comments

@@ -1,4 +1,4 @@
-function Comments({comments}) {
+function Comments({comments, currentUser, addComment}) {
     return (
         <div className="comment-section">
             <h4>Comments</h4>
