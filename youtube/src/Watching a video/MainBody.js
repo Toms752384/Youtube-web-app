@@ -7,10 +7,12 @@ function MainBody({ currentVideo, currentUser, updateComments }) {
     //state of comments of the videos displayed
     const [commentsList, setComments] = useState(currentVideo.comments);
 
+    //use effect to change the comments to be the currentVideo's
     useEffect(() => {
         setComments(currentVideo.comments);
     }, [currentVideo]);
 
+    //add comment function, that updates the useState from App.js
     const addComment = (newComment) => {
         const updatedComments = [...commentsList, newComment];
         setComments(updatedComments);

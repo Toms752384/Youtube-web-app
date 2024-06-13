@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 
 function Comments({ comments, currentUser, addComment }) {
+    //state of a new comment
     const [newComment, setNewComment] = useState('');
+    
+    //state of adding or not a new comment
     const [isAddingComment, setIsAddingComment] = useState(false);
 
+    //adding a new comment function
     const handleAddComment = () => {
         if (newComment.trim() !== '') {
             addComment({
@@ -16,6 +20,7 @@ function Comments({ comments, currentUser, addComment }) {
         }
     };
 
+    //click on cancel function that closes the new comment
     const handleCancelComment = () => {
         setNewComment('');
         setIsAddingComment(false);
