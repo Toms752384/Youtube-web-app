@@ -31,7 +31,7 @@ function App() {
     setCurrentVideo(clickedOnVideo);
   }
 
-  //state of comments section
+  //update comments function
   const updateComments = (videoUrl, newComments) => {
     const updatedVideosList = videosList.map(video =>
       video.videoUrl === videoUrl ? { ...video, comments: newComments } : video
@@ -64,8 +64,10 @@ function App() {
 
 export default App;
 
-//first feature - comments for each video - done
+//third feature - deleting comments:
+//
 
-//second feature - adding new comments - done!
 
-//third feature - editing and deleting comments
+
+
+//last feature - editing comments:

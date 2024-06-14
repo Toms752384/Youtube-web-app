@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 
-function Comments({ comments, currentUser, addComment }) {
+function Comments({ comments, currentUser, addComment, deleteComment }) {
     //state of the edit choice
-    const [isEditOpen, setEditOpen] = useState(false)
+    const [isEditOpen, setEditOpen] = useState(false);
 
-    //function to change state of edit option
-    const handleThreeDotsClick = () => {
-        setEditOpen(!isEditOpen);
-    }
-
+    //state of open comment Id
+    const [openCommentId, setOpenCommentId] = useState(null);
+    
     //state of a new comment
     const [newComment, setNewComment] = useState('');
-    
+
     //state of adding or not a new comment
     const [isAddingComment, setIsAddingComment] = useState(false);
+
+    //function to change state of edit option
+    const handleThreeDotsClick = (index) => {
+        setOpenCommentId(openCommentId === index ? null : index);
+    }
 
     //adding a new comment function
     const handleAddComment = () => {
@@ -33,6 +36,7 @@ function Comments({ comments, currentUser, addComment }) {
         setNewComment('');
         setIsAddingComment(false);
     };
+
 
     return (
         <div className="comment-section">
@@ -61,9 +65,9 @@ function Comments({ comments, currentUser, addComment }) {
                     <div className="comment-content">
                         <div className="username">{comment.username}</div>
                         <div className="text">{comment.text}</div>
-                        <i className="bi bi-three-dots" onClick={handleThreeDotsClick}></i>
+                        <i className="bi bi-three-dots" onClick={() => handleThreeDotsClick(index)}></i>
                         <div>
-                            {isEditOpen && (
+                            {openCommentId === index && (
                                 <div className="three-dots-menu">
                                 <ul>
                                     <li className='three-dots-option'>Edit comment</li>
