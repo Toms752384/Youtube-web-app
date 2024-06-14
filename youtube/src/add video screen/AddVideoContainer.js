@@ -10,7 +10,7 @@ import UploadImage from './UploadImage.js';
 //if he didn't upload, then he would get the logo
 //the artist and avatar would be received from the user that uploaded it (need to make it permanent and not change when user changes!)
 //views will be 0, likes will be 0, time wil be 0, subscribers will be (to be continued) comments will be an empty list
-
+//test
 function AddVideoContainer() {
     return (
         <>
