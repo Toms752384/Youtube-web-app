@@ -12,7 +12,6 @@ import UploadImage from './UploadImage.js';
 //views will be 0, likes will be 0, time wil be 0, subscribers will be (to be continued) comments will be an empty list
 
 function AddVideoContainer() {
-
     return (
         <>
             <div className="container-rec">
