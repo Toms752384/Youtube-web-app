@@ -37,7 +37,6 @@ function Comments({ comments, currentUser, addComment, deleteComment }) {
         setIsAddingComment(false);
     };
 
-
     return (
         <div className="comment-section">
             <h4>Comments</h4>
@@ -71,7 +70,7 @@ function Comments({ comments, currentUser, addComment, deleteComment }) {
                                 <div className="three-dots-menu">
                                 <ul>
                                     <li className='three-dots-option'>Edit comment</li>
-                                    <li className='three-dots-option'>Delete comment</li>
+                                    <li className='three-dots-option' onClick={() => deleteComment(index)}>Delete comment</li>
                                 </ul>
                             </div>
                             )}
