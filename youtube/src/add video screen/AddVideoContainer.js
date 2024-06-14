@@ -1,54 +1,26 @@
 import './AddVideoContainer.css';
-// import videos from "../database/videos.json";
-import { useState } from "react";
-import Logo from '../login screen/Logo';
+import Logo from './logo.png';
+import AddVideoForm from './AddVideoForm.js'
+//adding a new new design: user should enter title, description and upload a video. adding an image is optional -
+//if he didn't upload, then he would get the logo
+//the artist and avatar would be received from the user that uploaded it (need to make it permanent and not change when user changes!)
+//views will be 0, likes will be 0, time wil be 0, subscribers will be (to be continued) comments will be an empty list
 
-//adding a new new design:
+//structure of the page: same as register:
+//AddVideoContainer: AddVideoForm, AddVideoButton, AddVideoLogo, UploadImage, UploadVideo
 
 function AddVideoContainer() {
 
     return (
         <>
-             <Logo></Logo> 
-            <div className="container mt-5 "> {/* Bootstrap container with top margin */}
-                {/* Row for the close button positioned at the top-left */}
-                <button type="button" className="btn-close position-absolute top-0 start-0 m-3" aria-label="Close"></button>
-
-                <div className="row mb-4"> {/* Row for the page header */}
-                    <div className="col">
-                        <h2>Upload Video</h2> {/* Page title */}
-                    </div>
+            <div className="container-rec">
+                <div className="inner-container form-container">
+                    <AddVideoForm/>
+                    {/* <RegistButton users={users} addUser={addUser} avatar={avatar} /> */}
                 </div>
-
-                <div className="row mb-3"> {/* Row for video title input */}
-                    <div className="col">
-                        <div className="mb-3">
-                            <label htmlFor="videoTitle" className="form-label">Video Title</label> {/* Label for title input */}
-                            <input type="text" className="form-control" id="videoTitle" placeholder="Enter video title" /> {/* Input for video title */}
-                        </div>
-                    </div>
-                </div>
-
-                <div className="row mb-3"> {/* Row for video description input */}
-                    <div className="col">
-                        <div className="mb-3">
-                            <label htmlFor="videoDescription" className="form-label">Video Description</label> {/* Label for description input */}
-                            <textarea className="form-control" id="videoDescription" rows="3" placeholder="Enter video description"></textarea> {/* Textarea for video description */}
-                        </div>
-                    </div>
-                </div>
-
-                <div className="row mb-3"> {/* Row for file input */}
-                    <div className="col">
-                        <label htmlFor="formFile" className="form-label">Choose Video File</label> {/* Label for file input */}
-                        <input className="form-control" type="file" id="formFile" /> {/* Input for choosing file */}
-                    </div>
-                </div>
-
-                <div className="row mb-3"> {/* Row for the upload button */}
-                    <div className="col">
-                        <button type="button" className="btn btn-primary btn-lg">Upload Video</button> {/* Upload button */}
-                    </div>
+                <div className="image-container">
+                    {/* <RegistLogo /> */}
+                    {/* <RegistUpload imageUpload={handleImageUpload} /> */}
                 </div>
             </div>
         </>
