@@ -26,10 +26,19 @@ function MainBody({ currentVideo, currentUser, updateComments }) {
         updateComments(currentVideo.videoUrl, updatedComments);
     };
 
+    //edit comment function
+    const editComment = (commentIndex, newText) => {
+        const updatedComments = commentsList.map((comment, index) =>
+            index === commentIndex ? { ...comment, text: newText } : comment
+        );
+        setComments(updatedComments);
+        updateComments(currentVideo.videoUrl, updatedComments);
+    };
+
     return (
         <div className="col-md-8">
             <Video currentVideo={currentVideo}/>
-            <Comments comments={commentsList} currentUser={currentUser} addComment={addComment} deleteComment={deleteComment}/>
+            <Comments comments={commentsList} currentUser={currentUser} addComment={addComment} deleteComment={deleteComment} editComment={editComment}/>
         </div>
     );
 }
