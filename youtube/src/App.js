@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import LoginContainer from './login screen/LoginContainer.js';
 import RegistrationContainer from './RegistrationScreen/RegistrationContainer.js';
