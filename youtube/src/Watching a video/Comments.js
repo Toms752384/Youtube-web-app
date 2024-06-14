@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function Comments({ comments, currentUser, addComment, deleteComment }) {
     //state of the edit choice
-    const [isEditOpen, setEditOpen] = useState(false);
+    const [isDotsOpen, setDotsOpen] = useState(false);
 
     //state of open comment Id
     const [openCommentId, setOpenCommentId] = useState(null);

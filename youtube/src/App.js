@@ -64,10 +64,4 @@ function App() {
 
 export default App;
 
-//third feature - deleting comments:
-//
-
-
-
-
 //last feature - editing comments:
