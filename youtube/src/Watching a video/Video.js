@@ -1,5 +1,5 @@
 
-function Video( { currentVideo } ) {
+function Video({ currentVideo }) {
     return (
         <>
             <div className="video-player mb-3">
@@ -24,6 +24,12 @@ function Video( { currentVideo } ) {
                     <i className="bi bi-scissors"> Clip</i>
                     <i className="bi bi-three-dots"></i>
                 </div>
+            </div>
+            <div className="descriptin-head">
+                {currentVideo.views} views • {currentVideo.time} ago
+            </div>
+            <div className="descriptin">
+                {currentVideo.description}
             </div>
         </>
     );
