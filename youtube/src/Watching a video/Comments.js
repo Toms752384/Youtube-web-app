@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 
 function Comments({ comments, currentUser, addComment }) {
+    //state of the edit choice
+    const [isEditOpen, setEditOpen] = useState(false)
+
+    //function to change state of edit option
+    const handleThreeDotsClick = () => {
+        setEditOpen(!isEditOpen);
+    }
+
     //state of a new comment
     const [newComment, setNewComment] = useState('');
     
@@ -53,6 +61,17 @@ function Comments({ comments, currentUser, addComment }) {
                     <div className="comment-content">
                         <div className="username">{comment.username}</div>
                         <div className="text">{comment.text}</div>
+                        <i className="bi bi-three-dots" onClick={handleThreeDotsClick}></i>
+                        <div>
+                            {isEditOpen && (
+                                <div className="three-dots-menu">
+                                <ul>
+                                    <li className='three-dots-option'>Edit comment</li>
+                                    <li className='three-dots-option'>Delete comment</li>
+                                </ul>
+                            </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             ))}

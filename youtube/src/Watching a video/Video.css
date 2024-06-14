@@ -77,3 +77,18 @@ body {
     height: 100%;
 }
 
+.bi-three-dots{
+    cursor: pointer;
+}
+
+.three-dots-menu{
+    background: #121212;
+    border: 1px solid #444;
+    border-radius: 8px;
+    z-index: 1000;
+    right: 0;
+}
+
+.three-dots-option{
+    cursor: pointer;
+}
