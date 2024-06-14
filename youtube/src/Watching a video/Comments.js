@@ -1,16 +1,27 @@
 import React, { useState } from 'react';
 
 function Comments({ comments, currentUser, addComment, deleteComment, editComment }) {
+    //state of three dots - open or not
     const [openCommentId, setOpenCommentId] = useState(null);
+
+    //state of a new comment
     const [newComment, setNewComment] = useState('');
+
+    //state of adding a new comment
     const [isAddingComment, setIsAddingComment] = useState(false);
+
+    //state of editing an existing comment
     const [isEditingComment, setIsEditingComment] = useState(null);
+
+    //state of the edited comment text
     const [editCommentText, setEditCommentText] = useState('');
 
+    //function to handle three dots click
     const handleThreeDotsClick = (index) => {
         setOpenCommentId(openCommentId === index ? null : index);
     };
 
+    //function to handle add comment click
     const handleAddComment = () => {
         if (newComment.trim() !== '') {
             addComment({
@@ -23,22 +34,26 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
         }
     };
 
+    //function to handle cancel adding a new comment click
     const handleCancelComment = () => {
         setNewComment('');
         setIsAddingComment(false);
     };
 
+    //function to handle clicking on edit in three dots opening menu
     const handleEditComment = (index, text) => {
         setIsEditingComment(index);
         setEditCommentText(text);
     };
 
+    //function to handle saving the comment after editing
     const handleSaveEditComment = (index) => {
         editComment(index, editCommentText);
         setIsEditingComment(null);
         setEditCommentText('');
     };
 
+    //function to handle canceling the comment when editing
     const handleCancelEditComment = () => {
         setIsEditingComment(null);
         setEditCommentText('');
