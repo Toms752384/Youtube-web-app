@@ -26,7 +26,7 @@ function Video({ currentVideo }) {
                 </div>
             </div>
             <div className="descriptin-head">
-                {currentVideo.views} views • {currentVideo.time} ago
+                {currentVideo.views} views • {currentVideo.time} years ago
             </div>
             <div className="descriptin">
                 {currentVideo.description}
