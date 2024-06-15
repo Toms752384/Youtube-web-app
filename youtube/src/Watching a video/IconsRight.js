@@ -24,6 +24,10 @@ function IconsRight({ currentUser, defualtUser, handleSignOut }) {
     //function to navigate to add new video page
     const navigate = useNavigate();
     const handleButtonClick = () => {
+        if(currentUser.username === "username"){
+            navigate('/');
+            return;
+        };
         navigate('/add');
     };
 
