@@ -19,7 +19,7 @@ function IconsLeft({currentUser, handleSignOut, defualtUser}) {
                 onClick={handleMenuToggle}
             ></i>
             <img src={logo} alt="YouTube Logo" />
-            <FloatingMenu isOpen={isMenuOpen} onClose={handleMenuToggle} currentUser={currentUser} />
+            <FloatingMenu isOpen={isMenuOpen} onClose={handleMenuToggle} currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut}/>
         </div>
     );
 }

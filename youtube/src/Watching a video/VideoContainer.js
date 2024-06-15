@@ -11,7 +11,7 @@ function VideoContainer({ videosList, currentVideo, changeVideo, currentUser, de
     return (
         <>
             <header className="header d-flex justify-content-between align-items-center">
-                <IconsLeft currentUser={currentUser}/>
+                <IconsLeft currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut}/>
                 <WatchSearchBar />
                 <IconsRight currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} /> 
             </header>
