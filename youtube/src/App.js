@@ -61,7 +61,7 @@ function App() {
             defualtUser={defualtUser}
             handleSignOut={handleLogin}
             updateComments={updateComments} />} />
-          <Route path='/add' element={<AddVideoContainer addVideo={addVideo} videoList={videosList}/>}></Route>
+          <Route path='/add' element={<AddVideoContainer addVideo={addVideo} videoList={videosList} currentUser={currentUser}/>}></Route>
         </Routes>
       </Router>
     </div>

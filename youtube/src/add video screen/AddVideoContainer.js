@@ -12,7 +12,7 @@ import { useState } from 'react';
 //the artist and avatar would be received from the user that uploaded it (need to make it permanent and not change when user changes!)
 //views will be 0, likes will be 0, time wil be 0, subscribers will be (to be continued) comments will be an empty list
 
-function AddVideoContainer({addVideo, videoList}) {
+function AddVideoContainer({addVideo, videoList, currentUser}) {
     //state of newVideo
     const [newVideo, setNewVideo] = useState(null);
 
@@ -34,7 +34,7 @@ function AddVideoContainer({addVideo, videoList}) {
             <div className="container-rec">
                 <div className="inner-container form-container">
                     <AddVideoForm/>
-                    <AddVideoButton addVideo={addVideo} videoList={videoList}/>
+                    <AddVideoButton addVideo={addVideo} videoList={videoList} newVideo={newVideo} currentUser={currentUser}/>
                 </div>
                 <div className="image-container">
                     <AddVideoLogo/>
