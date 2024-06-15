@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-function Video({ currentVideo, currentUser }) {
+function Video({ currentVideo, currentUser, deleteVideo }) {
     // state of like button
     const [likeButton, setLikeButton] = useState(false);
 
@@ -70,6 +70,11 @@ function Video({ currentVideo, currentUser }) {
         setThreeDots(!ThreeDots);
     };
 
+    //function to handle delete function
+    const handleDeleteVidClick = () => {
+        deleteVideo(currentVideo.videoUrl);
+    }
+
     // function to handle download click
     const handleDownload = () => {
         const link = document.createElement('a');
@@ -106,7 +111,7 @@ function Video({ currentVideo, currentUser }) {
                         <div className="options-menu" ref={menuRef}>
                             <ul>
                                 <li>Edit video</li>
-                                <li>Delete video</li>
+                                <li onClick={handleDeleteVidClick}>Delete video</li>
                             </ul>
                         </div>
                     )}

@@ -37,7 +37,7 @@ function App() {
     setCurrentVideo(clickedOnVideo);
   }
 
-  //update comments function
+  //function to update comments 
   const updateComments = (videoUrl, newComments) => {
     //lambada function to update the comments of the specific video that was changed
     const updatedVideosList = videosList.map(video =>
@@ -47,6 +47,22 @@ function App() {
     //update video list and the current video
     setVideosList(updatedVideosList);
     setCurrentVideo(updatedVideosList.find(video => video.videoUrl === videoUrl));
+  };
+
+  //function to delete a video and update the current video
+  const deleteVideo = (videoUrl) => {
+    //filter list to remove the given video
+    const updatedVideosList = videosList.filter(video => video.videoUrl !== videoUrl);
+    setVideosList(updatedVideosList);
+
+    console.log(videosList); //debug
+     
+    //update the current video to be the first in the list
+    if (updatedVideosList.length > 0) {
+      setCurrentVideo(updatedVideosList[0]);
+    } else {
+      setCurrentVideo(null);
+    }
   };
 
   //app to run
@@ -63,8 +79,10 @@ function App() {
             currentUser={currentUser}
             defualtUser={defualtUser}
             handleSignOut={handleLogin}
-            updateComments={updateComments} />} />
-          <Route path='/add' element={<AddVideoContainer addVideo={addVideo} videoList={videosList} currentUser={currentUser}/>}></Route>
+            updateComments={updateComments}
+            deleteVideo={deleteVideo}
+          />} />
+          <Route path='/add' element={<AddVideoContainer addVideo={addVideo} videoList={videosList} currentUser={currentUser} />}></Route>
         </Routes>
       </Router>
     </div>
@@ -72,5 +90,3 @@ function App() {
 }
 
 export default App;
-
-

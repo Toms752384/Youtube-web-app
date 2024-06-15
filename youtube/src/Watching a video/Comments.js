@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function Comments({ comments, currentUser, addComment, deleteComment, editComment }) {
     //state of three dots - open or not
@@ -16,10 +16,39 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
     //state of the edited comment text
     const [editCommentText, setEditCommentText] = useState('');
 
+    // ref for the three dots menu
+    const menuRef = useRef(null);
+
+    //function to handle click outside the menu
+    const handleClickOutside = (event) => {
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+            setOpenCommentId(null);
+        }
+    };
+
+    useEffect(() => {
+        if (openCommentId !== null) {
+            //add a slight delay before adding the event listener to prevent immediate closing
+            const timer = setTimeout(() => {
+                document.addEventListener("click", handleClickOutside);
+            }, 0);
+
+            //clean up the timeout if the component unmounts or openCommentId changes
+            return () => clearTimeout(timer);
+        } else {
+            document.removeEventListener("click", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, [openCommentId]);
+
     //function to handle three dots click
-    const handleThreeDotsClick = (index) => {
-        if(currentUser.username === "username"){
-            alert("Yon need to log in to edit comments!");
+    const handleThreeDotsClick = (index, event) => {
+        event.stopPropagation(); // Prevent the event from propagating to the document
+        if (currentUser.username === "username") {
+            alert("You need to log in to edit comments!");
             return;
         }
         setOpenCommentId(openCommentId === index ? null : index);
@@ -27,7 +56,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
 
     //function to handle add comment click
     const handleAddComment = () => {
-        if(currentUser.username === "username"){
+        if (currentUser.username === "username") {
             alert("You need to log in to add a new comment!");
             return;
         }
@@ -109,10 +138,10 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
                         ) : (
                             <div className="text">{comment.text}</div>
                         )}
-                        <i className="bi bi-three-dots" onClick={() => handleThreeDotsClick(index)}></i>
+                        <i className="bi bi-three-dots" onClick={(event) => handleThreeDotsClick(index, event)}></i>
                         <div>
                             {openCommentId === index && (
-                                <div className="three-dots-menu">
+                                <div className="three-dots-menu" ref={menuRef}>
                                     <ul>
                                         <li className='three-dots-option' onClick={() => handleEditComment(index, comment.text)}>Edit comment</li>
                                         <li className='three-dots-option' onClick={() => deleteComment(index)}>Delete comment</li>
