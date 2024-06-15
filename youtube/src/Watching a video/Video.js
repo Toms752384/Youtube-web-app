@@ -49,7 +49,8 @@ function Video({ currentVideo }) {
     return (
         <>
             <div className="video-player mb-3">
-                <video src={currentVideo.videoUrl} controls width="100%" frameBorder="0" allowFullScreen></video>            </div>
+                <video src={currentVideo.videoUrl} controls width="100%" frameBorder="0" allowFullScreen></video>
+            </div>
             <h3 className="video-title">{currentVideo.title}</h3>
             <div className="d-flex justify-content-between align-items-center mb-3">
                 <div className="d-flex align-items-center">
