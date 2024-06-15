@@ -40,7 +40,7 @@ function MainBody({ currentVideo, currentUser, updateComments }) {
 
     return (
         <div className="col-md-8">
-            <Video currentVideo={currentVideo}/>
+            <Video currentVideo={currentVideo} currentUser={currentUser}/>
             <Comments comments={commentsList} currentUser={currentUser} addComment={addComment} deleteComment={deleteComment} editComment={editComment}/>
         </div>
     );

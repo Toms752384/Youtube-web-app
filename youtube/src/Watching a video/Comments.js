@@ -18,11 +18,19 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
 
     //function to handle three dots click
     const handleThreeDotsClick = (index) => {
+        if(currentUser.username === "username"){
+            alert("Yon need to log in to edit comments!");
+            return;
+        }
         setOpenCommentId(openCommentId === index ? null : index);
     };
 
     //function to handle add comment click
     const handleAddComment = () => {
+        if(currentUser.username === "username"){
+            alert("You need to log in to add a new comment!");
+            return;
+        }
         if (newComment.trim() !== '') {
             addComment({
                 username: currentUser.username,

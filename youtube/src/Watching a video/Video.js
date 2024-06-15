@@ -1,18 +1,47 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
-function Video({ currentVideo }) {
-    //state of like button
+function Video({ currentVideo, currentUser }) {
+    // state of like button
     const [likeButton, setLikeButton] = useState(false);
 
-    //state of three dots
+    // state of three dots
     const [ThreeDots, setThreeDots] = useState(false);
 
-    //function to handle like click
+    //useref element
+    const menuRef = useRef(null);
+
+    //useref function
+    const handleClickOutside = (event) => {
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+            setThreeDots(false);
+        }
+    };
+
+    //listener function
+    useEffect(() => {
+        if (ThreeDots) {
+            //add a slight delay before adding the event listener to prevent immediate closing
+            const timer = setTimeout(() => {
+                document.addEventListener("click", handleClickOutside);
+            }, 0);
+
+            //clean up the timeout if the component unmounts or ThreeDots changes
+            return () => clearTimeout(timer);
+        } else {
+            document.removeEventListener("click", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, [ThreeDots]);
+
+    // function to handle like click
     const handleLikeClick = () => {
         setLikeButton(!likeButton);
     };
 
-    //function to handle share click
+    // function to handle share click
     const handleShare = () => {
         const shareData = {
             title: currentVideo.title,
@@ -31,12 +60,17 @@ function Video({ currentVideo }) {
         }
     };
 
-    //function to handle three dots click
-    const handleThreeDotsClick = () => {
+    // function to handle three dots click
+    const handleThreeDotsClick = (event) => {
+        event.stopPropagation(); // Prevent the event from propagating to the document
+        if (currentUser.username === "username") {
+            alert("You need to log in to edit videos!");
+            return;
+        }
         setThreeDots(!ThreeDots);
-    }
+    };
 
-    //function to handle download click
+    // function to handle download click
     const handleDownload = () => {
         const link = document.createElement('a');
         link.href = currentVideo.videoUrl;
@@ -69,7 +103,7 @@ function Video({ currentVideo }) {
                     <i className="bi bi-download" onClick={handleDownload}> Download</i>
                     <i className="bi bi-three-dots" onClick={handleThreeDotsClick}></i>
                     {ThreeDots && (
-                        <div className="options-menu">
+                        <div className="options-menu" ref={menuRef}>
                             <ul>
                                 <li>Edit video</li>
                                 <li>Delete video</li>
