@@ -14,6 +14,11 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
 
     //handle add video page
     const uploadVideoClick = () => {
+        //if not logged in, go to sign in page
+        if(currentUser.username === "username"){
+            navigate('/');
+            return;
+        }
         navigate('/add');
     }
 
