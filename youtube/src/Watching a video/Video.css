@@ -92,3 +92,15 @@ body {
 .three-dots-option{
     cursor: pointer;
 }
+
+.bi-share{
+    cursor: pointer;
+}
+
+.bi-download{
+    cursor: pointer;
+}
+
+.like-count{
+    cursor: pointer;
+}

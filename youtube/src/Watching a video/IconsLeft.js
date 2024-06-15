@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './Video.css';
 import FloatingMenu from './FloatingMenu';
+import logo from './logo.png';
 
 function IconsLeft() {
     //floating menu state
@@ -17,7 +18,7 @@ function IconsLeft() {
                 style={{ fontSize: '1.5rem', cursor: 'pointer' }}
                 onClick={handleMenuToggle}
             ></i>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Logo" />
+            <img src={logo} alt="YouTube Logo" />
             <FloatingMenu isOpen={isMenuOpen} onClose={handleMenuToggle} />
         </div>
     );

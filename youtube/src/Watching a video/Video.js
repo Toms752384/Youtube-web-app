@@ -1,5 +1,43 @@
+import { useState } from "react";
 
 function Video({ currentVideo }) {
+    //state of like button
+    const [likeButton, setLikeButton] = useState(false);
+
+    //function to handle like click
+    const handleLikeClick = () => {
+        setLikeButton(!likeButton);
+    }
+
+    //function to handle share click
+    const handleShare = () => {
+        const shareData = {
+            title: currentVideo.title,
+            text: `Check out this video: ${currentVideo.title}`,
+            url: currentVideo.videoUrl,
+        };
+
+        if (navigator.share) {
+            navigator.share(shareData)
+                .then(() => console.log('Video shared successfully!'))
+                .catch((error) => console.log('Error sharing video:', error));
+        } else {
+            // if browser does not support this action
+            alert('Web Share API is not supported in your browser. Please copy the link manually.');
+            console.log('Share data:', shareData);
+        }
+    };
+
+    //function to handle download click
+    const handleDownload = () => {
+        const link = document.createElement('a');
+        link.href = currentVideo.videoUrl;
+        link.download = currentVideo.title;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <>
             <div className="video-player mb-3">
@@ -14,15 +52,12 @@ function Video({ currentVideo }) {
                     </div>
                 </div>
                 <div className="video-actions">
-                    <div className="like-count">
-                        <i className="bi bi-hand-thumbs-up"></i>
+                    <div className="like-count" onClick={handleLikeClick}>
+                        <i className={likeButton ? "bi bi-hand-thumbs-up-fill" : "bi bi-hand-thumbs-up"}></i>
                         <span>{currentVideo.likes}</span>
-                        <i className="bi bi-hand-thumbs-down"></i>
                     </div>
-                    <i className="bi bi-share"> Share</i>
-                    <i className="bi bi-download"> Download</i>
-                    <i className="bi bi-scissors"> Clip</i>
-                    <i className="bi bi-three-dots"></i>
+                    <i className="bi bi-share" onClick={handleShare}> Share</i>
+                    <i className="bi bi-download" onClick={handleDownload}> Download</i>
                 </div>
             </div>
             <div className="descriptin-head">

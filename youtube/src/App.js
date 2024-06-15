@@ -14,7 +14,7 @@ function App() {
   };
 
   //state of currently logged in user
-  const defualtUser = { "username": "New User", "password": "", "nickname": "New user", "avatar": "/localPhotos/defualtAvatar.png" };
+  const defualtUser = { "username": "username", "password": "", "nickname": "nickname", "avatar": "/localPhotos/defualtAvatar.png" };
   const [currentUser, setCurrentUser] = useState(defualtUser);
   const handleLogin = (loggedInUser) => {
     setCurrentUser(loggedInUser);
