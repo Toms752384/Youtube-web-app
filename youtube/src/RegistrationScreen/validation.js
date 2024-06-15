@@ -37,7 +37,7 @@ export function verifyRegistration() {
   //function to verify username
   function verifyUsername(NewUserName) {
     //check if username is valid
-    if (NewUserName === "") {
+    if (NewUserName === "" || NewUserName == "username") {
       return false;
     }  
     return true;
