@@ -45,3 +45,7 @@
 .menu-list li i {
     margin-right: 10px;
 }
+
+.bi{
+    cursor: pointer;
+}
