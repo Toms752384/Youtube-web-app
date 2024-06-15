@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Comments from "./Comments";
 import Video from "./Video";
 
-function MainBody({ currentVideo, currentUser, updateComments, deleteVideo }) {
+function MainBody({ currentVideo, currentUser, updateComments, deleteVideo, updateVideoDetails }) {
 
     //state of comments of the videos displayed
     const [commentsList, setComments] = useState(currentVideo.comments);
@@ -40,7 +40,7 @@ function MainBody({ currentVideo, currentUser, updateComments, deleteVideo }) {
 
     return (
         <div className="col-md-8">
-            <Video currentVideo={currentVideo} currentUser={currentUser} deleteVideo={deleteVideo}/>
+            <Video currentVideo={currentVideo} currentUser={currentUser} deleteVideo={deleteVideo} updateVideoDetails={updateVideoDetails}/>
             <Comments comments={commentsList} currentUser={currentUser} addComment={addComment} deleteComment={deleteComment} editComment={editComment}/>
         </div>
     );

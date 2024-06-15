@@ -1,11 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 
-function Video({ currentVideo, currentUser, deleteVideo }) {
+function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
     // state of like button
     const [likeButton, setLikeButton] = useState(false);
 
     // state of three dots
     const [ThreeDots, setThreeDots] = useState(false);
+
+    // states for editing title and description
+    const [isEditing, setIsEditing] = useState(false);
+    const [editedTitle, setEditedTitle] = useState(currentVideo.title);
+    const [editedDescription, setEditedDescription] = useState(currentVideo.description);
 
     //useref element
     const menuRef = useRef(null);
@@ -85,44 +90,87 @@ function Video({ currentVideo, currentUser, deleteVideo }) {
         document.body.removeChild(link);
     };
 
+    // function to handle edit video click
+    const handleEditVideo = () => {
+        setIsEditing(true);
+
+        // close the menu when editing starts
+        setThreeDots(false);
+    };
+
+    // function to handle save edit click
+    const handleSaveEdit = () => {
+        // use the outer function to edit the videos details
+        updateVideoDetails(currentVideo.videoUrl, { title: editedTitle, description: editedDescription });
+        setIsEditing(false);
+    };
+
+    // function to handle cancel edit click
+    const handleCancelEdit = () => {
+        //close the editing menu
+        setIsEditing(false);
+
+        //set the fields of the video to their original
+        setEditedTitle(currentVideo.title);
+        setEditedDescription(currentVideo.description);
+    };
+
     return (
         <>
             <div className="video-player mb-3">
                 <video src={currentVideo.videoUrl} controls width="100%" frameBorder="0" allowFullScreen></video>
             </div>
-            <h3 className="video-title">{currentVideo.title}</h3>
-            <div className="d-flex justify-content-between align-items-center mb-3">
-                <div className="d-flex align-items-center">
-                    <img src={currentVideo.avatar} alt="Channel Avatar" className="mr-2" width="50" height="50" />
-                    <div>
-                        <div>{currentVideo.artist}</div>
-                        <div>{currentVideo.subscribers} subscribers</div>
-                    </div>
+            {isEditing ? (
+                <div>
+                    <input
+                        type="text"
+                        value={editedTitle}
+                        onChange={(e) => setEditedTitle(e.target.value)}
+                    />
+                    <textarea
+                        value={editedDescription}
+                        onChange={(e) => setEditedDescription(e.target.value)}
+                    />
+                    <button onClick={handleSaveEdit}>Save</button>
+                    <button onClick={handleCancelEdit}>Cancel</button>
                 </div>
-                <div className="video-actions">
-                    <div className="like-count" onClick={handleLikeClick}>
-                        <i className={likeButton ? "bi bi-hand-thumbs-up-fill" : "bi bi-hand-thumbs-up"}></i>
-                        <span>{currentVideo.likes}</span>
-                    </div>
-                    <i className="bi bi-share" onClick={handleShare}> Share</i>
-                    <i className="bi bi-download" onClick={handleDownload}> Download</i>
-                    <i className="bi bi-three-dots" onClick={handleThreeDotsClick}></i>
-                    {ThreeDots && (
-                        <div className="options-menu" ref={menuRef}>
-                            <ul>
-                                <li>Edit video</li>
-                                <li onClick={handleDeleteVidClick}>Delete video</li>
-                            </ul>
+            ) : (
+                <>
+                    <h3 className="video-title">{currentVideo.title}</h3>
+                    <div className="d-flex justify-content-between align-items-center mb-3">
+                        <div className="d-flex align-items-center">
+                            <img src={currentVideo.avatar} alt="Channel Avatar" className="mr-2" width="50" height="50" />
+                            <div>
+                                <div>{currentVideo.artist}</div>
+                                <div>{currentVideo.subscribers} subscribers</div>
+                            </div>
                         </div>
-                    )}
-                </div>
-            </div>
-            <div className="descriptin-head">
-                {currentVideo.views} views • {currentVideo.time} years ago
-            </div>
-            <div className="descriptin">
-                {currentVideo.description}
-            </div>
+                        <div className="video-actions">
+                            <div className="like-count" onClick={handleLikeClick}>
+                                <i className={likeButton ? "bi bi-hand-thumbs-up-fill" : "bi bi-hand-thumbs-up"}></i>
+                                <span>{currentVideo.likes}</span>
+                            </div>
+                            <i className="bi bi-share" onClick={handleShare}> Share</i>
+                            <i className="bi bi-download" onClick={handleDownload}> Download</i>
+                            <i className="bi bi-three-dots" onClick={handleThreeDotsClick}></i>
+                            {ThreeDots && (
+                                <div className="options-menu" ref={menuRef}>
+                                    <ul>
+                                        <li onClick={handleEditVideo}>Edit video</li>
+                                        <li onClick={handleDeleteVidClick}>Delete video</li>
+                                    </ul>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    <div className="descriptin-head">
+                        {currentVideo.views} views • {currentVideo.time} years ago
+                    </div>
+                    <div className="descriptin">
+                        {currentVideo.description}
+                    </div>
+                </>
+            )}
         </>
     );
 }

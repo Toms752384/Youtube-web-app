@@ -65,6 +65,18 @@ function App() {
     }
   };
 
+  //function to update video details - title and description
+  const updateVideoDetails = (videoUrl, newDetails) => {
+    //check the videos in the list using the url and edit it using the new details
+    const updatedVideosList = videosList.map(video =>
+      video.videoUrl === videoUrl ? { ...video, ...newDetails } : video
+    );
+
+    //update the list and the current video
+    setVideosList(updatedVideosList);
+    setCurrentVideo(updatedVideosList.find(video => video.videoUrl === videoUrl));
+  };
+
   //app to run
   return (
     <div>
@@ -81,6 +93,7 @@ function App() {
             handleSignOut={handleLogin}
             updateComments={updateComments}
             deleteVideo={deleteVideo}
+            updateVideoDetails={updateVideoDetails}
           />} />
           <Route path='/add' element={<AddVideoContainer addVideo={addVideo} videoList={videosList} currentUser={currentUser} />}></Route>
         </Routes>
