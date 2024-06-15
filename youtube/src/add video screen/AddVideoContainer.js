@@ -7,11 +7,6 @@ import UploadVideo from './UploadVideo.js';
 import UploadImage from './UploadImage.js';
 import { useState } from 'react';
 
-//adding a new video: user should enter title, description and upload a video. adding an image is optional -
-//if he didn't upload, then he would get the logo
-//the artist and avatar would be received from the user that uploaded it (need to make it permanent and not change when user changes!)
-//views will be 0, likes will be 0, time wil be 0, subscribers will be (to be continued) comments will be an empty list
-
 function AddVideoContainer({addVideo, videoList, currentUser}) {
     //state of newVideo
     const [newVideo, setNewVideo] = useState(null);
@@ -24,17 +19,17 @@ function AddVideoContainer({addVideo, videoList, currentUser}) {
         setNewVideo(newVideo);
     }
 
-    //function to add the image to the state
-    const uploadNewDisImage = (newDisplayImage) => {
-        setNewDisImage(newDisplayImage);
-    }
+    // //function to add the image to the state
+    // const uploadNewDisImage = (newDisplayImage) => {
+    //     setNewDisImage(newDisplayImage);
+    // }
 
     return (
         <>
             <div className="container-rec">
                 <div className="inner-container form-container">
                     <AddVideoForm/>
-                    <AddVideoButton addVideo={addVideo} videoList={videoList} newVideo={newVideo} currentUser={currentUser}/>
+                    <AddVideoButton addVideo={addVideo} videoList={videoList} newVideo={newVideo} currentUser={currentUser} displayImage={newDisplayImage}/>
                 </div>
                 <div className="image-container">
                     <AddVideoLogo/>
@@ -55,11 +50,11 @@ export default AddVideoContainer;
 //create two function handleDisplayImageUpload, handleVideoUpload connected to the states and send to the relevent upload components - done
 //create states inside UploadImage and UploadVideo and onChange functions to handle preview of the uploads - done (image not)
 
-//second step - verification of fields
+//second step - verification of fields - done
 //create a validation.js to validate fields and validate user is logged in (send currentUser as an argument, and get all elements from the document)
 //create an onclick function on the add video button to check the field - call the function above
 
-//third step - creating and adding the new vidoe
+//third step - creating and adding the new video
 //create a function that creates a new video (getElementById and that, and creates a video object)
 // and then another function to navigate back to home page(video page for now)
 //create an on click function on the button of add video, that calls the function that verifies the input, and then calls the
