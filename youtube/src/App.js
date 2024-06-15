@@ -39,9 +39,12 @@ function App() {
 
   //update comments function
   const updateComments = (videoUrl, newComments) => {
+    //lambada function to update the comments of the specific video that was changed
     const updatedVideosList = videosList.map(video =>
       video.videoUrl === videoUrl ? { ...video, comments: newComments } : video
     );
+
+    //update video list and the current video
     setVideosList(updatedVideosList);
     setCurrentVideo(updatedVideosList.find(video => video.videoUrl === videoUrl));
   };

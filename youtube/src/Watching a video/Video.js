@@ -58,6 +58,7 @@ function Video({ currentVideo }) {
                     </div>
                     <i className="bi bi-share" onClick={handleShare}> Share</i>
                     <i className="bi bi-download" onClick={handleDownload}> Download</i>
+                    <i className="bi bi-three-dots"></i>
                 </div>
             </div>
             <div className="descriptin-head">

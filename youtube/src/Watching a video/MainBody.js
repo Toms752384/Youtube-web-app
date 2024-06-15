@@ -21,7 +21,10 @@ function MainBody({ currentVideo, currentUser, updateComments }) {
 
     //delete comment function
     const deleteComment = (commentIndex) => {
+        //filter function to keep all the other comments
         const updatedComments = commentsList.filter((_, index) => index !== commentIndex);
+
+        //update comments
         setComments(updatedComments);
         updateComments(currentVideo.videoUrl, updatedComments);
     };
