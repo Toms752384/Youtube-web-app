@@ -4,10 +4,13 @@ function Video({ currentVideo }) {
     //state of like button
     const [likeButton, setLikeButton] = useState(false);
 
+    //state of three dots
+    const [ThreeDots, setThreeDots] = useState(false);
+
     //function to handle like click
     const handleLikeClick = () => {
         setLikeButton(!likeButton);
-    }
+    };
 
     //function to handle share click
     const handleShare = () => {
@@ -27,6 +30,11 @@ function Video({ currentVideo }) {
             console.log('Share data:', shareData);
         }
     };
+
+    //function to handle three dots click
+    const handleThreeDotsClick = () => {
+        setThreeDots(!ThreeDots);
+    }
 
     //function to handle download click
     const handleDownload = () => {
@@ -58,7 +66,15 @@ function Video({ currentVideo }) {
                     </div>
                     <i className="bi bi-share" onClick={handleShare}> Share</i>
                     <i className="bi bi-download" onClick={handleDownload}> Download</i>
-                    <i className="bi bi-three-dots"></i>
+                    <i className="bi bi-three-dots" onClick={handleThreeDotsClick}></i>
+                    {ThreeDots && (
+                        <div className="options-menu">
+                            <ul>
+                                <li>Edit video</li>
+                                <li>Delete video</li>
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
             <div className="descriptin-head">

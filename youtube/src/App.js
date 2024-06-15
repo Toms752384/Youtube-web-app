@@ -73,3 +73,9 @@ function App() {
 
 export default App;
 
+//first - design
+//add three dots to each video - done
+//add an opening list to the dots with edit video and delete video options, and pointer (cursor)
+
+//feature of deleting a video
+
