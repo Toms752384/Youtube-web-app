@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import LoginContainer from './login screen/LoginContainer.js';
 import RegistrationContainer from './RegistrationScreen/RegistrationContainer.js';
 import VideoContainer from './Watching a video/VideoContainer.js';
@@ -23,9 +23,16 @@ function App() {
   //state of list of videos
   const [videosList, setVideosList] = useState(videos);
 
-  //state of currnet video played
+  //function to add videos
+  const addVideo = (newVideo) => {
+    setVideosList([...videosList, newVideo]);
+  }
+
+  //state of currnet video plays
   const defualtVideo = videosList[0];
   const [currentVideo, setCurrentVideo] = useState(defualtVideo);
+
+  //function to change the currnet video
   const changeVideo = (clickedOnVideo) => {
     setCurrentVideo(clickedOnVideo);
   }
@@ -54,7 +61,7 @@ function App() {
             defualtUser={defualtUser}
             handleSignOut={handleLogin}
             updateComments={updateComments} />} />
-          <Route path='/add' element={<AddVideoContainer />}></Route>
+          <Route path='/add' element={<AddVideoContainer addVideo={addVideo} videoList={videosList}/>}></Route>
         </Routes>
       </Router>
     </div>

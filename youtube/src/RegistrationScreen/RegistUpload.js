@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 function RegistUpload({imageUpload}) {
+  //state for preview of uploaded avatar
   const [preview, setPreview] = useState(null);
 
   const handleImageChange = (event) => {

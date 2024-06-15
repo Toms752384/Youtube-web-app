@@ -1,7 +1,7 @@
 import React from 'react';
 import './AddVideoContainer.css'
 
-function AddVideoButton() {
+function AddVideoButton({addVideo, videoList, newVideo}) {
     return (
         <>
             <div className="Dubi">
