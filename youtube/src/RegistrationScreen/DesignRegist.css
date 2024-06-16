@@ -59,6 +59,7 @@ html, body {
 .my-image {
   width: 350px;
   height: 200px;
+  cursor: pointer;
 }
 
 
@@ -86,7 +87,6 @@ html, body {
   display: none;
 }
 
-/* עד פה לעלות תמונה */
 .login-container {
   display: flex;
   justify-content: center;

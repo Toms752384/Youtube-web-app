@@ -64,3 +64,7 @@ body.dark-theme {
   .header, .container-fluid {
     transition: background-color 0.3s, color 0.3s;
   }
+
+  .left-logo{
+    cursor: pointer;
+  }

@@ -6,9 +6,14 @@
         "time": "1",
         "subscribers": "181M",
         "likes": "12k",
+        "description": "Video of cheesecake",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/cheesecake.mp4"
+        "videoUrl": "/localVideos/cheesecake.mp4",
+        "comments": [
+            {"username": "User1", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User2", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Chicken Breast",
@@ -17,9 +22,14 @@
         "time": "11",
         "subscribers": "163M",
         "likes": "12k",
+        "description":"video of chicked breast",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/chicken breast.mp4"
+        "videoUrl": "/localVideos/chicken breast.mp4",
+        "comments": [
+            {"username": "User3", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User4", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Doughnut",
@@ -28,9 +38,14 @@
         "time": "1",
         "subscribers": "100M",
         "likes": "12k",
+        "description":"video of a doughnut",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/Doughnut.mp4"
+        "videoUrl": "/localVideos/Doughnut.mp4",
+        "comments": [
+            {"username": "User5", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User6", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Fancy Steak",
@@ -39,9 +54,14 @@
         "time": "5",
         "subscribers": "103M",
         "likes": "12k",
+        "description":"video of a fancy steak",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/fancy steak.mp4"
+        "videoUrl": "/localVideos/fancy steak.mp4",
+        "comments": [
+            {"username": "User7", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User8", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Frying Stuff",
@@ -50,9 +70,14 @@
         "time": "1",
         "subscribers": "11M",
         "likes": "12k",
+        "description":"video of frying stuff",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/frying stuff.mp4"
+        "videoUrl": "/localVideos/frying stuff.mp4",
+        "comments": [
+            {"username": "User9", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User10", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Hamburger",
@@ -61,9 +86,14 @@
         "time": "1",
         "subscribers": "100M",
         "likes": "12k",
+        "description":"video of a hamburger",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/hamburger.mp4"
+        "videoUrl": "/localVideos/hamburger.mp4",
+        "comments": [
+            {"username": "User11", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User12", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Pizza",
@@ -72,9 +102,14 @@
         "time": "1",
         "subscribers": "102M",
         "likes": "12k",
+        "description":"video of a pizza",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/pizza.mp4"
+        "videoUrl": "/localVideos/pizza.mp4",
+        "comments": [
+            {"username": "User13", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User14", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Salmon",
@@ -83,9 +118,14 @@
         "time": "4",
         "subscribers": "1000",
         "likes": "12k",
+        "description":"video of a salmon",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/salmon.mp4"
+        "videoUrl": "/localVideos/salmon.mp4",
+        "comments": [
+            {"username": "User15", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User16", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Steak",
@@ -94,9 +134,14 @@
         "time": "2",
         "subscribers": "100M",
         "likes": "12k",
+        "description":"video of a steak",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/steak.mp4"
+        "videoUrl": "/localVideos/steak.mp4",
+        "comments": [
+            {"username": "User17", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User18", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     },
     {
         "title": "Food Truck",
@@ -105,8 +150,13 @@
         "time": "23",
         "subscribers": "10B",
         "likes": "120M",
+        "description":"video of a food truck",
         "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
-        "videoUrl": "/localVideos/foodTruck.mp4"
+        "videoUrl": "/localVideos/foodTruck.mp4",
+        "comments": [
+            {"username": "User19", "avatar": "/localPhotos/defualtAvatar.png", "text": "Looks delicious!" },
+            {"username": "User20", "avatar": "/localPhotos/defualtAvatar.png", "text": "Can't wait!" }
+        ]
     }
 ]
