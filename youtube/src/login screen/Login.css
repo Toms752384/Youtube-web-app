@@ -36,6 +36,7 @@ body {
     position: relative; /* Add this line */
     top: 40%; /* Adjust this value to move the image vertically */
     right: -5%; /* Adjust this value to move the image horizontally */
+    cursor: pointer;
 }
 
 #root{
