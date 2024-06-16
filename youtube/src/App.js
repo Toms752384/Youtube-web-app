@@ -3,6 +3,7 @@ import LoginContainer from './login screen/LoginContainer.js';
 import RegistrationContainer from './RegistrationScreen/RegistrationContainer.js';
 import VideoContainer from './Watching a video/VideoContainer.js';
 import AddVideoContainer from './add video screen/AddVideoContainer.js';
+import HomeContainer from './Home page/HomeContainer.js';
 import videos from './database/videosList.json'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -84,6 +85,17 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginContainer users={users} onLogin={handleLogin} />} />
           <Route path='/signup' element={<RegistrationContainer users={users} addUser={addUser} />} />
+          <Route path='/home' element={<HomeContainer 
+          videosList={videosList}
+          currentVideo={currentVideo}
+          changeVideo={changeVideo}
+          currentUser={currentUser}
+          defualtUser={defualtUser}
+          handleSignOut={handleLogin}
+          updateComments={updateComments}
+          deleteVideo={deleteVideo}
+          updateVideoDetails={updateVideoDetails}
+          />} />
           <Route path='/video' element={<VideoContainer
             videosList={videosList}
             currentVideo={currentVideo}
@@ -103,4 +115,3 @@ function App() {
 }
 
 export default App;
-//4 out of 5 done!!

@@ -1,6 +1,12 @@
+import { useNavigate } from 'react-router-dom';
+
 function SideBarVideo({ video, changeVideo }) {
+    const navigate = useNavigate();
+
+    //function to handle click on a video element
     const handleClick = () => {
         changeVideo(video);
+        navigate('/video');
     }
 
     return (
