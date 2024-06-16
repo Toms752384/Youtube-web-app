@@ -6,17 +6,21 @@ import WatchSearchBar from '../Watching a video/WatchSearchBar';
 import IconsRight from '../Watching a video/IconsRight';
 import HomeVideosList from './HomeVideosList';
 
-function HomeContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, updateComments, deleteVideo, updateVideoDetails }) {
-    return(
+function HomeContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch }) {
+    //filter videos based on search query
+    const filteredVideosList = videosList.filter(video =>
+        video.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    return (
         <>
-         <header className="header d-flex justify-content-between align-items-center">
-                <IconsLeft currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut}/>
-                <WatchSearchBar />
-                <IconsRight currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} /> 
+            <header className="header d-flex justify-content-between align-items-center">
+                <IconsLeft currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} />
+                <WatchSearchBar searchQuery={searchQuery} handleSearch={handleSearch}/>
+                <IconsRight currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} />
             </header>
             <div className="container-fluid mt-4">
                 <div className="row">
-                    <HomeVideosList videosList={ videosList } changeVideo={changeVideo}/>
+                    <HomeVideosList videosList={filteredVideosList} changeVideo={changeVideo} />
                 </div>
             </div>
         </>

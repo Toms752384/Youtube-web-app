@@ -24,6 +24,9 @@ function App() {
   //state of list of videos
   const [videosList, setVideosList] = useState(videos);
 
+  //state for search query
+  const [searchQuery, setSearchQuery] = useState("");
+
   //function to add videos
   const addVideo = (newVideo) => {
     setVideosList([...videosList, newVideo]);
@@ -57,7 +60,7 @@ function App() {
     setVideosList(updatedVideosList);
 
     console.log(videosList); //debug
-     
+
     //update the current video to be the first in the list
     if (updatedVideosList.length > 0) {
       setCurrentVideo(updatedVideosList[0]);
@@ -78,6 +81,11 @@ function App() {
     setCurrentVideo(updatedVideosList.find(video => video.videoUrl === videoUrl));
   };
 
+  //function to handle search query update
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
   //app to run
   return (
     <div>
@@ -85,16 +93,18 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginContainer users={users} onLogin={handleLogin} />} />
           <Route path='/signup' element={<RegistrationContainer users={users} addUser={addUser} />} />
-          <Route path='/home' element={<HomeContainer 
-          videosList={videosList}
-          currentVideo={currentVideo}
-          changeVideo={changeVideo}
-          currentUser={currentUser}
-          defualtUser={defualtUser}
-          handleSignOut={handleLogin}
-          updateComments={updateComments}
-          deleteVideo={deleteVideo}
-          updateVideoDetails={updateVideoDetails}
+          <Route path='/home' element={<HomeContainer
+            videosList={videosList}
+            currentVideo={currentVideo}
+            changeVideo={changeVideo}
+            currentUser={currentUser}
+            defualtUser={defualtUser}
+            handleSignOut={handleLogin}
+            updateComments={updateComments}
+            deleteVideo={deleteVideo}
+            updateVideoDetails={updateVideoDetails}
+            searchQuery={searchQuery}
+            handleSearch={handleSearch}
           />} />
           <Route path='/video' element={<VideoContainer
             videosList={videosList}
@@ -106,6 +116,8 @@ function App() {
             updateComments={updateComments}
             deleteVideo={deleteVideo}
             updateVideoDetails={updateVideoDetails}
+            searchQuery={searchQuery}
+            handleSearch={handleSearch}
           />} />
           <Route path='/add' element={<AddVideoContainer addVideo={addVideo} videoList={videosList} currentUser={currentUser} />}></Route>
         </Routes>
