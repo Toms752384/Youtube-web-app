@@ -10,12 +10,20 @@ function SideBarVideo({ video, changeVideo }) {
     }
 
     return (
-        <div className="video-item mb-3 d-flex" onClick = {handleClick}>
-            <img src={ video.image } alt="Video Thumbnail" className="img-fluid" />
-            <div className="video-info ml-3">
-                <div className="video-title">{ video.artist }</div>
-                <div className="video-title">{ video.title }</div>
-                <div>{ video.views } views • { video.time } years ago </div>
+        <div className="video-item mb-3 d-flex" onClick={handleClick}>
+            <video
+                src={video.videoUrl}
+                className="img-fluid"
+                preload="metadata"
+                onLoadedMetadata={e => {
+                    e.currentTarget.currentTime = 5;
+                }}
+            >
+                Your browser does not support the video tag.
+            </video>            <div className="video-info ml-3">
+                <div className="video-title">{video.artist}</div>
+                <div className="video-title">{video.title}</div>
+                <div>{video.views} views • {video.time} years ago </div>
             </div>
         </div>
     );
