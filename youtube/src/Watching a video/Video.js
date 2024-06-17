@@ -133,7 +133,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
     return (
         <>
             <div className="video-player mb-3">
-                <video src={currentVideo.videoUrl} controls width="100%" frameBorder="0" allowFullScreen></video>
+                <video src={currentVideo.videoUrl} controls width="100%" frameBorder="0" allowFullScreen type="video/mp4"></video>
             </div>
             {isEditing ? (
                 <div>
