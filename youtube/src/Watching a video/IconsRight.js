@@ -49,7 +49,6 @@ function IconsRight({ currentUser, defualtUser, handleSignOut }) {
                         <li onClick={handnleSignInClick}>Sign in</li>
                         <li onClick={handleRegisterClick}>Join us</li>
                         <li onClick={handleSignOutClick}>Sign out</li>
-                        {/* <li onClick={handleThemeChange}>Change Theme</li> */}
                     </ul>
                 </div>
             )}
