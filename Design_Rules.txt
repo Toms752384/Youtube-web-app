@@ -1,9 +1,0 @@
-1. Using the same logo.
-2. Using the tamplate for forms from bootstap
-3. padding between texts, and be the same size.
-4. Every logo should be a button.
-5. Logo should be interactive.
-6. Buttouns should be the same.
-7. Using the same icons in the screens between the android version and react version.
-
-commit number 1
