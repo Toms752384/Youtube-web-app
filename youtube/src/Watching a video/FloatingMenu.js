@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './FloatingMenu.css';
 
 function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser }) {
+    //state for theme 
+    const [isDarkTheme, setIsDarkTheme] = useState(true); 
+
+    //function to change theme 
+    const handleThemeChange = () => {
+        setIsDarkTheme(!isDarkTheme);
+        document.body.classList.toggle('dark-theme', !isDarkTheme);
+    };
+
     //use navigate to move to different pages
     const navigate = useNavigate();
 
@@ -41,7 +50,7 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
                     <li><i className="bi bi-box-arrow-in-right" onClick={handleLoginClick}></i> Log in</li>
                     <li><i className="bi bi-box-arrow-in-left" onClick={handleSignOutClick}></i> Log out</li>
                     <li><i className="bi bi-download" onClick={uploadVideoClick}></i> Upload video</li>
-                    <li><i className="bi bi-moon-stars-fill"></i> Change mode</li>
+                    <li><i className="bi bi-moon-stars-fill" onClick={handleThemeChange}></i> Change mode</li>
                     <li><i>Help and more</i></li>
                     <li><i className="bi bi-question-circle"></i> Help</li>
                     <li><i className="bi bi-gear"> Settings</i></li>
