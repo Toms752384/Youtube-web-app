@@ -22,7 +22,7 @@ function AddVideoButton({ addVideo, videoList, newVideo, currentUser, displayIma
         var views = "0";
         var time = "0";
         var subscribers = "0";
-        var likes = "0";
+        var likes = 0;
         var description = document.getElementById("description-input").value;
         var image = displayImage;
         var avatar = currentUser.avatar;

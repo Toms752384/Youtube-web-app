@@ -35,6 +35,7 @@ function IconsRight({ currentUser, defualtUser, handleSignOut }) {
     //function to sign out
     const handleSignOutClick = () => {
         handleSignOut(defualtUser);
+        navigate('/');
     }
     return (
         <div className="d-flex align-items-center position-relative">

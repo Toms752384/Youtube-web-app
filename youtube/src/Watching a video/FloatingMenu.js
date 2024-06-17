@@ -5,7 +5,7 @@ import './FloatingMenu.css';
 
 function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser }) {
     //state for theme 
-    const [isDarkTheme, setIsDarkTheme] = useState(true); 
+    const [isDarkTheme, setIsDarkTheme] = useState(false); 
 
     //function to change theme 
     const handleThemeChange = () => {
@@ -34,6 +34,7 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
     //function to sign out
     const handleSignOutClick = () => {
         handleSignOut(defualtUser);
+        navigate('/');
     }
 
     if (!isOpen) return null;
