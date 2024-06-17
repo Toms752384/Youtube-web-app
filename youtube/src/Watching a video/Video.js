@@ -7,6 +7,9 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
     // state of three dots
     const [ThreeDots, setThreeDots] = useState(false);
 
+    // state for likes count
+    const [likesCount, setLikesCount] = useState(currentVideo.likes);
+
     // states for editing title and description
     const [isEditing, setIsEditing] = useState(false);
     const [editedTitle, setEditedTitle] = useState(currentVideo.title);
