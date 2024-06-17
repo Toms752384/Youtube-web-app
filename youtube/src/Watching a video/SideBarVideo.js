@@ -21,8 +21,8 @@ function SideBarVideo({ video, changeVideo }) {
             >
                 Your browser does not support the video tag.
             </video>            <div className="video-info ml-3">
-                <div className="video-title">{video.artist}</div>
                 <div className="video-title">{video.title}</div>
+                <div className="video-title">{video.artist}</div>
                 <div>{video.views} views • {video.time} years ago </div>
             </div>
         </div>

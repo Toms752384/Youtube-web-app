@@ -47,10 +47,10 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
                     <li><i className="bi bi-person-circle"></i> {currentUser.username}</li>
                     <li><i className="bi bi-person-raised-hand"></i> {currentUser.nickname}</li>
                     <li><i>Actions</i></li>
-                    <li><i className="bi bi-box-arrow-in-right" onClick={handleLoginClick}></i> Log in</li>
-                    <li><i className="bi bi-box-arrow-in-left" onClick={handleSignOutClick}></i> Log out</li>
-                    <li><i className="bi bi-download" onClick={uploadVideoClick}></i> Upload video</li>
-                    <li><i className="bi bi-moon-stars-fill" onClick={handleThemeChange}></i> Change mode</li>
+                    <li onClick={handleLoginClick}><i className="bi bi-box-arrow-in-right"></i> Log in</li>
+                    <li onClick={handleSignOutClick}><i className="bi bi-box-arrow-in-left"></i> Log out</li>
+                    <li onClick={uploadVideoClick}><i className="bi bi-download"></i> Upload video</li>
+                    <li onClick={handleThemeChange}><i className="bi bi-moon-stars-fill"></i> Change mode</li>
                     <li><i>Help and more</i></li>
                     <li><i className="bi bi-question-circle"></i> Help</li>
                     <li><i className="bi bi-gear"> Settings</i></li>
