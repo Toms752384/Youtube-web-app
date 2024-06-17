@@ -1,11 +1,14 @@
 import { useState, useEffect, useRef } from "react";
-
+//
 function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
     // state of like button
     const [likeButton, setLikeButton] = useState(false);
 
     // state of three dots
     const [ThreeDots, setThreeDots] = useState(false);
+
+    //state of counting likes
+    const [likesCount, setLikesCount] = useState(currentVideo.likes);
 
     // states for editing title and description
     const [isEditing, setIsEditing] = useState(false);
@@ -41,8 +44,20 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
         };
     }, [ThreeDots]);
 
+    // useEffect to update likesCount when currentVideo changes
+    useEffect(() => {
+        setLikesCount(currentVideo.likes);
+    }, [currentVideo]);
+
     // function to handle like click
     const handleLikeClick = () => {
+        //if like button is pressed and there was no like before, add 1
+        if(!likeButton){
+            setLikesCount(likesCount + 1);
+        }
+        else{
+            setLikesCount(likesCount - 1);
+        }
         setLikeButton(!likeButton);
     };
 
@@ -118,7 +133,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
     return (
         <>
             <div className="video-player mb-3">
-                <video src={currentVideo.videoUrl} controls width="100%" frameBorder="0" allowFullScreen></video>
+                <video src={currentVideo.videoUrl} controls width="100%" frameBorder="0" allowFullScreen type="video/mp4"></video>
             </div>
             {isEditing ? (
                 <div>
@@ -148,7 +163,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
                         <div className="video-actions">
                             <div className="like-count" onClick={handleLikeClick}>
                                 <i className={likeButton ? "bi bi-hand-thumbs-up-fill" : "bi bi-hand-thumbs-up"}></i>
-                                <span>{currentVideo.likes}</span>
+                                <span>{likesCount}</span>
                             </div>
                             <i className="bi bi-share" onClick={handleShare}> Share</i>
                             <i className="bi bi-download" onClick={handleDownload}> Download</i>

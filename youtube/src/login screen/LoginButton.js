@@ -6,7 +6,7 @@ function LoginButton({ users, onLogin }) {
     //function to navigate to video page
     const navigate = useNavigate();
     const handleButtonClick = () => {
-        navigate('/video');
+        navigate('/home');
     };
 
     //verify credentials
@@ -15,7 +15,7 @@ function LoginButton({ users, onLogin }) {
         //log in
         if(loggedInUser != null){
             onLogin(loggedInUser);
-            handleButtonClick(); //change to home page
+            handleButtonClick();
         }
     }
     return (
