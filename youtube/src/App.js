@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LoginContainer from './login screen/LoginContainer.js';
 import RegistrationContainer from './RegistrationScreen/RegistrationContainer.js';
 import VideoContainer from './Watching a video/VideoContainer.js';
@@ -6,13 +6,36 @@ import AddVideoContainer from './add video screen/AddVideoContainer.js';
 import HomeContainer from './Home page/HomeContainer.js';
 import videos from './database/videosList.json'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
 
 function App() {
   //state of list of users to access from across the program, and add a new user function
   const [users, setUsers] = useState([]);
-  const addUser = (newUser) => {
-    setUsers([...users, newUser]);
+  const addUser = async (newUser) => {
+    try {
+      const response = await axios.post('http://localhost:80/users/addUser', newUser);
+      console.log(response.data.message); // Log the status message
+      setUsers([...users, newUser]);
+    } catch (error) {
+      console.error('Error adding user:', error);
+    }
+    console.log(users);
   };
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get('http://localhost:80/users/fetchUsers');
+        console.log(response); // Log the status message
+        setUsers(response.data.users);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    };
+
+    fetchUsers();
+    console.log(users);
+  }, []);
+
 
   //state of currently logged in user
   const defualtUser = { "username": "username", "password": "", "nickname": "nickname", "avatar": "/localPhotos/defualtAvatar.png" };
