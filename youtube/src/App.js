@@ -9,8 +9,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 
 function App() {
-  //state of list of users to access from across the program, and add a new user function
+  //state of list of users to access from across the program
   const [users, setUsers] = useState([]);
+
+  //add a new user function
   const addUser = async (newUser) => {
     try {
       const response = await axios.post('http://localhost:80/users/addUser', newUser);
@@ -21,6 +23,8 @@ function App() {
     }
     console.log(users);
   };
+
+  //fetch users
   useEffect(() => {
     const fetchUsers = async () => {
       try {
