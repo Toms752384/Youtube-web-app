@@ -30,7 +30,11 @@ function App() {
       try {
         const response = await axios.get('http://localhost:80/users/fetchUsers');
         console.log(response); // Log the status message
-        setUsers(response.data.users);
+        if (Array.isArray(response.data.users)) {
+          setUsers(response.data.users);
+        } else {
+          console.error('Fetched users data is not an array:', response.data.users);
+        }
       } catch (error) {
         console.error('Error fetching users:', error);
       }
