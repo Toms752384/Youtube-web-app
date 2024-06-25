@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-//
+import { useNavigate } from 'react-router-dom';
+
 function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
     // state of like button
     const [likeButton, setLikeButton] = useState(false);
@@ -130,6 +131,12 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
         setEditedDescription(currentVideo.description);
     };
 
+    //function to navigate to profile page
+    const navigate = useNavigate();
+    const handleProfileClick = () => {
+        navigate('/profile');
+    }
+
     return (
         <>
             <div className="video-player mb-3">
@@ -153,7 +160,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
                 <>
                     <h3 className="video-title">{currentVideo.title}</h3>
                     <div className="d-flex justify-content-between align-items-center mb-3">
-                        <div className="d-flex align-items-center">
+                        <div className="details d-flex align-items-center" onClick={handleProfileClick}> 
                             <img src={currentVideo.avatar} alt="Channel Avatar" className="mr-2" width="50" height="50" />
                             <div>
                                 <div>{currentVideo.artist}</div>
