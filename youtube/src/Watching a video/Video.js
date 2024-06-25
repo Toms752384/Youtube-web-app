@@ -160,7 +160,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
                 <>
                     <h3 className="video-title">{currentVideo.title}</h3>
                     <div className="d-flex justify-content-between align-items-center mb-3">
-                        <div className="d-flex align-items-center" onClick={handleProfileClick}> 
+                        <div className="details d-flex align-items-center" onClick={handleProfileClick}> 
                             <img src={currentVideo.avatar} alt="Channel Avatar" className="mr-2" width="50" height="50" />
                             <div>
                                 <div>{currentVideo.artist}</div>
