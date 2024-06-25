@@ -9,17 +9,14 @@ import ProfileContainer from './Profile page/ProfileContainer.js';
 import videos from './database/videosList.json'
 import axios from 'axios';
 import { UsersState } from './UsersState.js';
+import {CurrentUserState} from './CurrentUserState.js';
 
 function App() {
   //state of users
   const {users, addUser} = UsersState();
 
   //state of currently logged in user
-  const defualtUser = { "username": "username", "password": "", "nickname": "nickname", "avatar": "/localPhotos/defualtAvatar.png" };
-  const [currentUser, setCurrentUser] = useState(defualtUser);
-  const handleLogin = (loggedInUser) => {
-    setCurrentUser(loggedInUser);
-  };
+  const {defualtUser, currentUser, setCurrentUser, handleLogin} = CurrentUserState();
 
   //state of list of videos
   const [videosList, setVideosList] = useState(videos);
