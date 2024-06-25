@@ -84,8 +84,15 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
     // function to handle three dots click
     const handleThreeDotsClick = (event) => {
         event.stopPropagation(); // Prevent the event from propagating to the document
+        //check if user is logged in
         if (currentUser.username === "username") {
             alert("You need to log in to edit videos!");
+            return;
+        }
+
+        //check if user is the user that uploaded the video
+        if(currentUser.username !== currentVideo.artist){
+            alert("You cannot update or delete a video that isn't yours!");
             return;
         }
         setThreeDots(!ThreeDots);

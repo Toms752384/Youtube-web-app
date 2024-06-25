@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginContainer from './login screen/LoginContainer.js';
 import RegistrationContainer from './RegistrationScreen/RegistrationContainer.js';
@@ -6,8 +5,6 @@ import VideoContainer from './Watching a video/VideoContainer.js';
 import AddVideoContainer from './add video screen/AddVideoContainer.js';
 import HomeContainer from './Home page/HomeContainer.js';
 import ProfileContainer from './Profile page/ProfileContainer.js';
-import videos from './database/videosList.json'
-import axios from 'axios';
 import { UsersState } from './UsersState.js';
 import { CurrentUserState } from './CurrentUserState.js';
 import { VideosStates } from './VideosStates.js';

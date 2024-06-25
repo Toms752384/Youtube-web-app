@@ -45,10 +45,17 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
     }, [openCommentId]);
 
     //function to handle three dots click
-    const handleThreeDotsClick = (index, event) => {
+    const handleThreeDotsClick = (index, event, comment) => {
         event.stopPropagation(); // Prevent the event from propagating to the document
+        //check if user is logged in
         if (currentUser.username === "username") {
             alert("You need to log in to edit comments!");
+            return;
+        }
+
+        //check if user is the one that created the comment
+        if (currentUser.username !== comment.username) {
+            alert("You cannot edit comments that you did not create!");
             return;
         }
         setOpenCommentId(openCommentId === index ? null : index);
@@ -138,7 +145,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
                         ) : (
                             <div className="text">{comment.text}</div>
                         )}
-                        <i className="bi bi-three-dots" onClick={(event) => handleThreeDotsClick(index, event)}></i>
+                        <i className="bi bi-three-dots" onClick={(event) => handleThreeDotsClick(index, event, comment)}></i>
                         <div>
                             {openCommentId === index && (
                                 <div className="three-dots-menu" ref={menuRef}>
