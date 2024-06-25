@@ -1,50 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginContainer from './login screen/LoginContainer.js';
 import RegistrationContainer from './RegistrationScreen/RegistrationContainer.js';
 import VideoContainer from './Watching a video/VideoContainer.js';
 import AddVideoContainer from './add video screen/AddVideoContainer.js';
 import HomeContainer from './Home page/HomeContainer.js';
-import videos from './database/videosList.json'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import axios from 'axios';
 import ProfileContainer from './Profile page/ProfileContainer.js';
+import videos from './database/videosList.json'
+import axios from 'axios';
+import { UsersState } from './UsersState.js';
 
 function App() {
-  //state of list of users to access from across the program
-  const [users, setUsers] = useState([]);
-
-  //add a new user function
-  const addUser = async (newUser) => {
-    try {
-      const response = await axios.post('http://localhost:80/users/addUser', newUser);
-      console.log(response.data.message); // Log the status message
-      setUsers([...users, newUser]);
-    } catch (error) {
-      console.error('Error adding user:', error);
-    }
-    console.log(users);
-  };
-
-  //fetch users
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await axios.get('http://localhost:80/users/fetchUsers');
-        console.log(response); // Log the status message
-        if (Array.isArray(response.data.users)) {
-          setUsers(response.data.users);
-        } else {
-          console.error('Fetched users data is not an array:', response.data.users);
-        }
-      } catch (error) {
-        console.error('Error fetching users:', error);
-      }
-    };
-
-    fetchUsers();
-    console.log(users);
-  }, []);
-
+  //state of users
+  const {users, addUser} = UsersState();
 
   //state of currently logged in user
   const defualtUser = { "username": "username", "password": "", "nickname": "nickname", "avatar": "/localPhotos/defualtAvatar.png" };
@@ -56,17 +24,14 @@ function App() {
   //state of list of videos
   const [videosList, setVideosList] = useState(videos);
 
-  //state for search query
-  const [searchQuery, setSearchQuery] = useState("");
+  //state of currnet video plays
+  const defualtVideo = videosList[0];
+  const [currentVideo, setCurrentVideo] = useState(defualtVideo);
 
   //function to add videos
   const addVideo = (newVideo) => {
     setVideosList([...videosList, newVideo]);
   }
-
-  //state of currnet video plays
-  const defualtVideo = videosList[0];
-  const [currentVideo, setCurrentVideo] = useState(defualtVideo);
 
   //function to change the currnet video
   const changeVideo = (clickedOnVideo) => {
@@ -91,8 +56,6 @@ function App() {
     const updatedVideosList = videosList.filter(video => video.videoUrl !== videoUrl);
     setVideosList(updatedVideosList);
 
-    console.log(videosList); //debug
-
     //update the current video to be the first in the list
     if (updatedVideosList.length > 0) {
       setCurrentVideo(updatedVideosList[0]);
@@ -112,6 +75,9 @@ function App() {
     setVideosList(updatedVideosList);
     setCurrentVideo(updatedVideosList.find(video => video.videoUrl === videoUrl));
   };
+
+  //state for search query
+  const [searchQuery, setSearchQuery] = useState("");
 
   //function to handle search query update
   const handleSearch = (query) => {
