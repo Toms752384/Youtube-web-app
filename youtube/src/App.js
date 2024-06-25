@@ -7,6 +7,7 @@ import HomeContainer from './Home page/HomeContainer.js';
 import videos from './database/videosList.json'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
+import ProfileContainer from './Profile page/ProfileContainer.js';
 
 function App() {
   //state of list of users to access from across the program
@@ -124,6 +125,18 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginContainer users={users} onLogin={handleLogin} />} />
           <Route path='/signup' element={<RegistrationContainer users={users} addUser={addUser} />} />
+          <Route path='/profile' element={<ProfileContainer
+            videosList={videosList}
+            currentVideo={currentVideo}
+            changeVideo={changeVideo}
+            currentUser={currentUser}
+            defualtUser={defualtUser}
+            handleSignOut={handleLogin}
+            updateComments={updateComments}
+            deleteVideo={deleteVideo}
+            updateVideoDetails={updateVideoDetails}
+            searchQuery={searchQuery}
+            handleSearch={handleSearch} />} />
           <Route path='/home' element={<HomeContainer
             videosList={videosList}
             currentVideo={currentVideo}
