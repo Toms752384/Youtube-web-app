@@ -31,6 +31,9 @@ export const CurrentUserState = () => {
 
             //store the user in storage
             localStorage.setItem('currentUser', JSON.stringify(loggedInUser));
+
+            //store the token if the user in storage
+            localStorage.setItem('token', response.data.token);
         }
         catch (error) {
             console.error('Error logging in:', error);
