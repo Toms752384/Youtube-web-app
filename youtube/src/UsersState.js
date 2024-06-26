@@ -14,7 +14,7 @@ const addUser = async (newUser) => {
   } catch (error) {
     console.error('Error adding user:', error);
   }
-  console.log(users);
+  console.log(users); //debug
 };
 
 //fetch users

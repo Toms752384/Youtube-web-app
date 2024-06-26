@@ -12,22 +12,26 @@ import { SearchState } from './SearchState.js';
 
 function App() {
   //state of users
-  const {users, addUser} = UsersState();
+  const { users, addUser } = UsersState();
 
   //state of currently logged in user
-  const {defualtUser, currentUser, setCurrentUser, handleLogin} = CurrentUserState();
+  const { defualtUser, currentUser, setCurrentUser, handleLogin } = CurrentUserState();
 
-  const {videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails} = VideosStates();
+  const { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails } = VideosStates();
 
-  const {searchQuery, handleSearch, setSearchQuery} = SearchState();
+  const { searchQuery, handleSearch, setSearchQuery } = SearchState();
 
   //app to run
   return (
     <div>
       <Router>
         <Routes>
-          <Route path='/' element={<LoginContainer users={users} onLogin={handleLogin} />} />
-          <Route path='/signup' element={<RegistrationContainer users={users} addUser={addUser} />} />
+          <Route path='/' element={<LoginContainer
+            users={users}
+            onLogin={handleLogin} />} />
+          <Route path='/signup' element={<RegistrationContainer
+            users={users}
+            addUser={addUser} />} />
           <Route path='/profile' element={<ProfileContainer
             videosList={videosList}
             currentVideo={currentVideo}
@@ -66,7 +70,11 @@ function App() {
             searchQuery={searchQuery}
             handleSearch={handleSearch}
           />} />
-          <Route path='/add' element={<AddVideoContainer addVideo={addVideo} videoList={videosList} currentUser={currentUser} />}></Route>
+          <Route path='/add' element={<AddVideoContainer
+            addVideo={addVideo}
+            videoList={videosList}
+            currentUser={currentUser}
+          />} />
         </Routes>
       </Router>
     </div>
