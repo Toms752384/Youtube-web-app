@@ -25,7 +25,7 @@ export const CurrentUserState = () => {
             //send request to server
             const response = await axios.post('http://localhost:80/users/login', loggedInUser);
             console.log(response.data.message); //log the status message
-
+            console.log(response.data.token); //log the token
             //set the user
             setCurrentUser(loggedInUser);
 

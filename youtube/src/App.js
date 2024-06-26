@@ -17,8 +17,10 @@ function App() {
   //state of currently logged in user
   const { defualtUser, currentUser, setCurrentUser, handleLogin } = CurrentUserState();
 
+  //state of videos
   const { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails } = VideosStates();
 
+  //state of search query
   const { searchQuery, handleSearch, setSearchQuery } = SearchState();
 
   //app to run
