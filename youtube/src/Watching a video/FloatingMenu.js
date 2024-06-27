@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './FloatingMenu.css';
 
-function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser }) {
+function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser, handleDeleteUser }) {
     //state for theme 
-    const [isDarkTheme, setIsDarkTheme] = useState(false); 
+    const [isDarkTheme, setIsDarkTheme] = useState(false);
 
     //function to change theme 
     const handleThemeChange = () => {
@@ -24,7 +24,7 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
     //handle add video page
     const uploadVideoClick = () => {
         //if not logged in, go to sign in page
-        if(currentUser.username === "username"){
+        if (currentUser.username === "username") {
             navigate('/');
             return;
         }
@@ -37,8 +37,21 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
         navigate('/');
     }
 
-    //only if isOpen is true open the menu
     //use the deleteUser function in an onClick function and send to the button
+    const handleDeleteUserClick = () => {
+        //delete user if one is logged in
+        if (currentUser.username !== 'username') {
+
+            //delete the current user from the list
+            handleDeleteUser(currentUser);
+
+            //sign out - sign the defualt user in
+            handleSignOut(defualtUser);
+            navigate('/');
+        }
+    }
+
+    //only if isOpen is true open the menu
     if (!isOpen) return null;
     return (
         <div className="floating-menu">
@@ -53,7 +66,7 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
                     <li onClick={handleSignOutClick}><i className="bi bi-box-arrow-in-left"></i> Log out</li>
                     <li onClick={uploadVideoClick}><i className="bi bi-download"></i> Upload video</li>
                     <li onClick={handleThemeChange}><i className="bi bi-moon-stars-fill"></i> Change mode</li>
-                    <li><i className="bi bi-person-x"></i> Delete user</li>
+                    <li onClick={handleDeleteUserClick}><i className="bi bi-person-x"></i> Delete user</li>
                     <li><i>Help and more</i></li>
                     <li><i className="bi bi-question-circle"></i> Help</li>
                     <li><i className="bi bi-gear"> Settings</i></li>

@@ -15,7 +15,7 @@ function App() {
   const { users, addUser } = UsersState();
 
   //state of currently logged in user
-  const { defualtUser, currentUser, setCurrentUser, handleLogin, handleSignOut } = CurrentUserState(); //import delete user
+  const { defualtUser, currentUser, setCurrentUser, handleLogin, handleSignOut, handleDeleteUser } = CurrentUserState(); //import delete user
 
   //state of videos
   const { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails } = VideosStates();
@@ -41,6 +41,7 @@ function App() {
             currentUser={currentUser}
             defualtUser={defualtUser}
             handleSignOut={handleSignOut}
+            handleDeleteUser={handleDeleteUser}
             updateComments={updateComments}
             deleteVideo={deleteVideo}
             updateVideoDetails={updateVideoDetails}
@@ -53,6 +54,7 @@ function App() {
             currentUser={currentUser}
             defualtUser={defualtUser}
             handleSignOut={handleSignOut}
+            handleDeleteUser={handleDeleteUser}
             updateComments={updateComments}
             deleteVideo={deleteVideo}
             updateVideoDetails={updateVideoDetails}
@@ -66,6 +68,7 @@ function App() {
             currentUser={currentUser}
             defualtUser={defualtUser}
             handleSignOut={handleSignOut}
+            handleDeleteUser={handleDeleteUser}
             updateComments={updateComments}
             deleteVideo={deleteVideo}
             updateVideoDetails={updateVideoDetails}

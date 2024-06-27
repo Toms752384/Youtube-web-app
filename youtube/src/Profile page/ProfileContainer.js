@@ -7,7 +7,7 @@ import IconsRight from '../Watching a video/IconsRight';
 import ProfileDetails from './ProfileDetails';
 import HomeVideosList from '../Home page/HomeVideosList';
 
-function ProfileContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch }) {
+function ProfileContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, handleDeleteUser, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch }) {
     //filter list of videos using the currentVideo artist
     const filteredVideosList = videosList.filter(video =>
         video.artist.includes(currentVideo.artist)
@@ -15,7 +15,7 @@ function ProfileContainer({ videosList, currentVideo, changeVideo, currentUser, 
     return (
         <>
             <header className="header d-flex justify-content-between align-items-center">
-                <IconsLeft currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} />
+                <IconsLeft currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} handleDeleteUser={handleDeleteUser} />
                 <WatchSearchBar searchQuery={searchQuery} handleSearch={handleSearch} />
                 <IconsRight currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} />
             </header>

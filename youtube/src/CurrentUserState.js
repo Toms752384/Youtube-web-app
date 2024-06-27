@@ -55,10 +55,24 @@ export const CurrentUserState = () => {
 
     //function to handleSignOut
     const handleSignOut = (user) => {
+        //set the defualt user
         setCurrentUser(user);
-    }
+
+        //store the user in storage
+        localStorage.setItem('currentUser', JSON.stringify(user));
+    };
 
     //function of delete user
+    const handleDeleteUser = async (loggedInUser) => {
+        try {
+            //send requet to server
+            const response = await axios.post('http://localhost:80/users/deleteUser', loggedInUser);
+            console.log(response.data.message); //log the status message
+        }
+        catch(error) {
+            console.error('Error deleting user:', error);
+        }
+    };
 
-    return { defualtUser, currentUser, setCurrentUser, handleLogin, handleSignOut }; //export delete user
+    return { defualtUser, currentUser, setCurrentUser, handleLogin, handleSignOut, handleDeleteUser };
 };
