@@ -18,6 +18,7 @@ function IconsLeft({ currentUser, handleSignOut, defualtUser }) {
     const handleMoveToHome = () => {
         navigate('/home');
     }
+    //send the deleteUser to the floatingMenu
     return (
         <div className="d-flex align-items-center">
             <i

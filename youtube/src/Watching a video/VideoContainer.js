@@ -6,7 +6,7 @@ import WatchSearchBar from './WatchSearchBar';
 import IconsRight from './IconsRight';
 import SideBar from './SideBar';
 import MainBody from './MainBody';
-
+//send to IconsLeft the delete video
 function VideoContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch }) {
     return (
         <>

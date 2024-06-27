@@ -37,8 +37,9 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
         navigate('/');
     }
 
+    //only if isOpen is true open the menu
+    //use the deleteUser function in an onClick function and send to the button
     if (!isOpen) return null;
-
     return (
         <div className="floating-menu">
             <div className="menu-content">
@@ -52,6 +53,7 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
                     <li onClick={handleSignOutClick}><i className="bi bi-box-arrow-in-left"></i> Log out</li>
                     <li onClick={uploadVideoClick}><i className="bi bi-download"></i> Upload video</li>
                     <li onClick={handleThemeChange}><i className="bi bi-moon-stars-fill"></i> Change mode</li>
+                    <li><i className="bi bi-person-x"></i> Delete user</li>
                     <li><i>Help and more</i></li>
                     <li><i className="bi bi-question-circle"></i> Help</li>
                     <li><i className="bi bi-gear"> Settings</i></li>

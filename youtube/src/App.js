@@ -15,7 +15,7 @@ function App() {
   const { users, addUser } = UsersState();
 
   //state of currently logged in user
-  const { defualtUser, currentUser, setCurrentUser, handleLogin } = CurrentUserState();
+  const { defualtUser, currentUser, setCurrentUser, handleLogin, handleSignOut } = CurrentUserState(); //import delete user
 
   //state of videos
   const { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails } = VideosStates();
@@ -40,7 +40,7 @@ function App() {
             changeVideo={changeVideo}
             currentUser={currentUser}
             defualtUser={defualtUser}
-            handleSignOut={handleLogin}
+            handleSignOut={handleSignOut}
             updateComments={updateComments}
             deleteVideo={deleteVideo}
             updateVideoDetails={updateVideoDetails}
@@ -52,20 +52,20 @@ function App() {
             changeVideo={changeVideo}
             currentUser={currentUser}
             defualtUser={defualtUser}
-            handleSignOut={handleLogin}
+            handleSignOut={handleSignOut}
             updateComments={updateComments}
             deleteVideo={deleteVideo}
             updateVideoDetails={updateVideoDetails}
             searchQuery={searchQuery}
             handleSearch={handleSearch}
           />} />
-          <Route path='/video' element={<VideoContainer
+          <Route path='/video' element={<VideoContainer //send arg of deleteUser
             videosList={videosList}
             currentVideo={currentVideo}
             changeVideo={changeVideo}
             currentUser={currentUser}
             defualtUser={defualtUser}
-            handleSignOut={handleLogin}
+            handleSignOut={handleSignOut}
             updateComments={updateComments}
             deleteVideo={deleteVideo}
             updateVideoDetails={updateVideoDetails}

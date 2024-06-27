@@ -53,5 +53,12 @@ export const CurrentUserState = () => {
       //dependencies
        []);
 
-    return { defualtUser, currentUser, setCurrentUser, handleLogin };
+    //function to handleSignOut
+    const handleSignOut = (user) => {
+        setCurrentUser(user);
+    }
+
+    //function of delete user
+
+    return { defualtUser, currentUser, setCurrentUser, handleLogin, handleSignOut }; //export delete user
 };
