@@ -19,17 +19,16 @@ function AddVideoButton({ addVideo, videoList, newVideo, currentUser, displayIma
     const createNewVideo = () => {
         var title = document.getElementById("title-input").value;
         var artist = currentUser.username;
-        var views = "0";
-        var time = "0";
-        var subscribers = "0";
+        var views = 0;
+        var time = 0; //remove this - will be defined in schema
+        var subscribers = 0;
         var likes = 0;
         var description = document.getElementById("description-input").value;
-        var image = displayImage;
         var avatar = currentUser.avatar;
         var videoUrl = newVideo;
         var comments = [];
 
-        return {title, artist, views, time, subscribers, likes, description, image, avatar, videoUrl, comments};
+        return {title, artist, views, time, subscribers, likes, description, avatar, videoUrl, comments};
     }
 
     //function to navigate to video page - need to change to home!

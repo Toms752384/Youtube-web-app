@@ -7,7 +7,6 @@
         "subscribers": "181M",
         "likes": 1252,
         "description": "Video of cheesecake",
-        "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/cheesecake.mp4",
         "comments": [
@@ -23,7 +22,6 @@
         "subscribers": "163M",
         "likes": 1124,
         "description":"video of chicked breast",
-        "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/chicken breast.mp4",
         "comments": [
@@ -39,7 +37,6 @@
         "subscribers": "100M",
         "likes": 623,
         "description":"video of a doughnut",
-        "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/Doughnut.mp4",
         "comments": [
@@ -55,7 +52,6 @@
         "subscribers": "103M",
         "likes": 8421,
         "description":"video of a fancy steak",
-        "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/fancy steak.mp4",
         "comments": [
@@ -71,7 +67,6 @@
         "subscribers": "11M",
         "likes": 7343,
         "description":"video of frying stuff",
-        "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/frying stuff.mp4",
         "comments": [
@@ -87,7 +82,6 @@
         "subscribers": "100M",
         "likes": 634,
         "description":"video of a hamburger",
-        "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/hamburger.mp4",
         "comments": [
@@ -103,7 +97,6 @@
         "subscribers": "102M",
         "likes": 524,
         "description":"video of a pizza",
-        "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/pizza.mp4",
         "comments": [
@@ -119,7 +112,6 @@
         "subscribers": "1000",
         "likes": 5427,
         "description":"video of a salmon",
-        "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/salmon.mp4",
         "comments": [
@@ -135,7 +127,6 @@
         "subscribers": "100M",
         "likes": 971,
         "description":"video of a steak",
-        "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/steak.mp4",
         "comments": [
@@ -151,7 +142,6 @@
         "subscribers": "10B",
         "likes": 12473,
         "description":"video of a food truck",
-        "image": "/localPhotos/stamLogo.png",
         "avatar": "/localPhotos/defualtAvatar.png",
         "videoUrl": "/localVideos/foodTruck.mp4",
         "comments": [

@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import videos from './database/videosList.json'
 
 export const VideosStates = () => {
     //state of list of videos
     const [videosList, setVideosList] = useState(videos);
+
+    //add an async function of setVideosList from the server using useEffect
 
     //state of currnet video plays
     const defualtVideo = videosList[0];
