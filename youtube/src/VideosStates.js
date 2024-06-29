@@ -1,12 +1,34 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import videos from './database/videosList.json'
+import axios from 'axios';
 
 export const VideosStates = () => {
     //state of list of videos
-    const [videosList, setVideosList] = useState(videos);
+    const [videosList, setVideosList] = useState([]);
 
-    //add an async function of setVideosList from the server using useEffect
+    //function to fetch videos from user, using the useEffect hook
+    useEffect(() => {
+        const fetchVideos = async () => {
+            try {
+                const response = await axios.get('http://localhost:80/videos/fetchVideos');
+                console.log(response); // Log the status message
+
+                //check if valid info was fetched
+                if (Array.isArray(response.data.videos)) {
+                    setVideosList(response.data.videos);
+                } else {
+                    console.error('Fetched videos data is not an array:', response.data.videos);
+                }
+            }
+            catch (error) {
+                console.error('Error message:', error.message);
+            }
+        };
+        //call the function in the hook
+        fetchVideos();
+        console.log(videosList);
+    }, []);
 
     //state of currnet video plays
     const defualtVideo = videosList[0];
@@ -60,5 +82,5 @@ export const VideosStates = () => {
         setCurrentVideo(updatedVideosList.find(video => video.videoUrl === videoUrl));
     };
 
-    return {videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails};
+    return { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails };
 };
