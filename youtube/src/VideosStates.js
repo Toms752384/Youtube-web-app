@@ -40,7 +40,7 @@ export const VideosStates = () => {
         //send a request to the server
         const response = await axios.post('http://localhost:80/videos/upload', videoFile, videoBody);
         //debug this and add conditions!
-        setVideosList([...videosList, response.data.video]);//
+        setVideosList([...videosList, response.data.video]);//check if needed
         }
         catch(error){
             console.error('Error message:', error.message);
