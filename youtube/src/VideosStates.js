@@ -35,19 +35,44 @@ export const VideosStates = () => {
     const [currentVideo, setCurrentVideo] = useState(defualtVideo);
 
     //function to add videos
-    const addVideo = async (videoFile, videoBody) => {
-        try{
+    // const addVideo = async (videoFile, videoBody) => {
+    //     try{
 
-        //send a request to the server
-        const response = await axios.post('http://localhost:80/videos/upload', videoFile, videoBody);
-        //debug this and add conditions!
-        setVideosList([...videosList, response.data.video]);//check if needed
-        }
-        catch(error){
+    //     //send a request to the server
+    //     const response = await axios.post('http://localhost:80/videos/upload', videoFile, videoBody);
+    //     //debug this and add conditions!
+    //     setVideosList([...videosList, response.data.video]);//check if needed
+    //     }
+    //     catch(error){
+    //         console.error('Error message:', error.message);
+    //     }
+        
+    // }
+    const addVideo = async (videoFile, videoBody) => {
+        try {
+            // Create FormData object
+            const formData = new FormData();
+            formData.append('video', videoFile); // Ensure 'video' matches the field name in multer setup
+    
+            // Add additional video details to the FormData object
+            for (const key in videoBody) {
+                formData.append(key, videoBody[key]);
+            }
+    
+            // Send a request to the server with FormData
+            const response = await axios.post('http://localhost:80/videos/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+    
+            // Debug this and add conditions if needed
+            setVideosList([...videosList, response.data.video]); // Check if needed
+        } catch (error) {
             console.error('Error message:', error.message);
         }
-        
     }
+    
 
     //function to change the currnet video
     const changeVideo = (clickedOnVideo) => {
