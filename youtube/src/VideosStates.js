@@ -35,8 +35,17 @@ export const VideosStates = () => {
     const [currentVideo, setCurrentVideo] = useState(defualtVideo);
 
     //function to add videos
-    const addVideo = (newVideo) => {
-        setVideosList([...videosList, newVideo]);
+    const addVideo = async (videoFile, videoBody) => {
+        try{
+        //send a request to the server
+        const response = await axios.post('http://localhost:80/videos/upload', videoFile, videoBody);
+        //debug this and add conditions!
+        setVideosList([...videosList, response.data.video]);//
+        }
+        catch(error){
+            console.error('Error message:', error.message);
+        }
+        
     }
 
     //function to change the currnet video
