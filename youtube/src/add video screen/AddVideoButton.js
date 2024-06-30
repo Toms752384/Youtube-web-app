@@ -9,8 +9,8 @@ function AddVideoButton({ addVideo, videoList, newVideo, currentUser, displayIma
     const handleAddVideoClick = () => {
         var valid = VerifyVideo({ currentUser, newVideo });
         if(valid){
-            const video = createNewVideo();
-            addVideo(newVideo, {video});
+            const videoObject = createNewVideo();
+            addVideo(newVideo, videoObject);
             navigateToVideo();
         }
     };
