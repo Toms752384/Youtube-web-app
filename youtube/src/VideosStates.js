@@ -7,24 +7,26 @@ export const VideosStates = () => {
     //state of list of videos
     const [videosList, setVideosList] = useState([]);
 
-    //function to fetch videos from user, using the useEffect hook
-    useEffect(() => {
-        const fetchVideos = async () => {
-            try {
-                const response = await axios.get('http://localhost:80/videos/fetchVideos');
-                console.log(response); // Log the status message
+    //function to fetch videos from user
+    const fetchVideos = async () => {
+        try {
+            const response = await axios.get('http://localhost:80/videos/fetchVideos');
+            console.log(response); // Log the status message
 
-                //check if valid info was fetched
-                if (Array.isArray(response.data.videos)) {
-                    setVideosList(response.data.videos);
-                } else {
-                    console.error('Fetched videos data is not an array:', response.data.videos);
-                }
+            //check if valid info was fetched
+            if (Array.isArray(response.data.videos)) {
+                setVideosList(response.data.videos);
+            } else {
+                console.error('Fetched videos data is not an array:', response.data.videos);
             }
-            catch (error) {
-                console.error('Error message:', error.message);
-            }
-        };
+        }
+        catch (error) {
+            console.error('Error message:', error.message);
+        }
+    };
+
+    //call the function in hook
+    useEffect(() => {
         //call the function in the hook
         fetchVideos();
         console.log(videosList);
@@ -71,6 +73,9 @@ export const VideosStates = () => {
         } catch (error) {
             console.error('Error message:', error.message);
         }
+
+        //fetch videos when finished
+        fetchVideos();
     }
     
 
