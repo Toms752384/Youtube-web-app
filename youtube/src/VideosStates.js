@@ -56,7 +56,7 @@ export const VideosStates = () => {
             });
 
             // Debug this and add conditions if needed
-            setVideosList([...videosList, response.data.video]); // Check if needed
+            // setVideosList([...videosList, response.data.video]); // Check if needed
         } catch (error) {
             console.error('Error message:', error.message);
         }
@@ -83,25 +83,11 @@ export const VideosStates = () => {
         setCurrentVideo(updatedVideosList.find(video => video.videoUrl === videoUrl));
     };
 
-    //function to delete a video and update the current video
-    // const deleteVideo = (videoUrl) => {
-    //     //filter list to remove the given video
-    //     const updatedVideosList = videosList.filter(video => video.videoUrl !== videoUrl);
-    //     setVideosList(updatedVideosList);
-
-    //     //update the current video to be the first in the list
-    //     if (updatedVideosList.length > 0) {
-    //         setCurrentVideo(updatedVideosList[0]);
-    //     } else {
-    //         setCurrentVideo(null);
-    //     }
-    // };
-
     const deleteVideo = async (videoId) => {
         try {
             //call delete request with the id in the request
             const response = await axios.delete(`http://localhost:80/videos/${videoId}`);
-            
+
             //call fetch videos to set the videos list to be the updated
             fetchVideos();
 
@@ -113,17 +99,31 @@ export const VideosStates = () => {
         }
     }
 
-    //function to update video details - title and description
-    const updateVideoDetails = (videoUrl, newDetails) => {
-        //check the videos in the list using the url and edit it using the new details
-        const updatedVideosList = videosList.map(video =>
-            video.videoUrl === videoUrl ? { ...video, ...newDetails } : video
-        );
+    // //function to update video details - title and description
+    // const updateVideoDetails = (videoUrl, newDetails) => {
+    //     //check the videos in the list using the url and edit it using the new details
+    //     const updatedVideosList = videosList.map(video =>
+    //         video.videoUrl === videoUrl ? { ...video, ...newDetails } : video
+    //     );
 
-        //update the list and the current video
-        setVideosList(updatedVideosList);
-        setCurrentVideo(updatedVideosList.find(video => video.videoUrl === videoUrl));
-    };
+    //     //update the list and the current video
+    //     setVideosList(updatedVideosList);
+    //     setCurrentVideo(updatedVideosList.find(video => video.videoUrl === videoUrl));
+    // };
+
+    const updateVideoDetails = async (videoId, newDetails) => {
+    try{
+        //call a put request with the id and the details
+        const response = await axios.put(`http://localhost:80/videos/${videoId}`, newDetails);
+
+        //fetch the videos to show the changes
+        fetchVideos();
+    }
+    catch(error){
+        console.error('Error message:', error.message);
+    }
+}
 
     return { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails };
 };
+

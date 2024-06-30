@@ -123,8 +123,8 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
 
     // function to handle save edit click
     const handleSaveEdit = () => {
-        // use the outer function to edit the videos details
-        updateVideoDetails(currentVideo.videoUrl, { title: editedTitle, description: editedDescription });
+        // use the outer function to edit the videos details - change  to id
+        updateVideoDetails(currentVideo._id, { title: editedTitle, description: editedDescription });
         setIsEditing(false);
     };
 
