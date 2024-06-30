@@ -42,19 +42,19 @@ export const VideosStates = () => {
             // Create FormData object
             const formData = new FormData();
             formData.append('video', videoFile); // Ensure 'video' matches the field name in multer setup
-    
+
             // Add additional video details to the FormData object
             for (const key in videoBody) {
                 formData.append(key, videoBody[key]);
             }
-    
+
             // Send a request to the server with FormData
             const response = await axios.post('http://localhost:80/videos/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-    
+
             // Debug this and add conditions if needed
             setVideosList([...videosList, response.data.video]); // Check if needed
         } catch (error) {
@@ -64,7 +64,7 @@ export const VideosStates = () => {
         //fetch videos when finished
         fetchVideos();
     }
-    
+
 
     //function to change the currnet video
     const changeVideo = (clickedOnVideo) => {
@@ -84,18 +84,34 @@ export const VideosStates = () => {
     };
 
     //function to delete a video and update the current video
-    const deleteVideo = (videoUrl) => {
-        //filter list to remove the given video
-        const updatedVideosList = videosList.filter(video => video.videoUrl !== videoUrl);
-        setVideosList(updatedVideosList);
+    // const deleteVideo = (videoUrl) => {
+    //     //filter list to remove the given video
+    //     const updatedVideosList = videosList.filter(video => video.videoUrl !== videoUrl);
+    //     setVideosList(updatedVideosList);
 
-        //update the current video to be the first in the list
-        if (updatedVideosList.length > 0) {
-            setCurrentVideo(updatedVideosList[0]);
-        } else {
-            setCurrentVideo(null);
+    //     //update the current video to be the first in the list
+    //     if (updatedVideosList.length > 0) {
+    //         setCurrentVideo(updatedVideosList[0]);
+    //     } else {
+    //         setCurrentVideo(null);
+    //     }
+    // };
+
+    const deleteVideo = async (videoId) => {
+        try {
+            //call delete request with the id in the request
+            const response = await axios.delete(`http://localhost:80/videos/${videoId}`);
+            
+            //call fetch videos to set the videos list to be the updated
+            fetchVideos();
+
+            //set the current video to be the first in the list
+            setCurrentVideo(videosList[0]);
         }
-    };
+        catch (error) {
+            console.error('Error message:', error.message);
+        }
+    }
 
     //function to update video details - title and description
     const updateVideoDetails = (videoUrl, newDetails) => {

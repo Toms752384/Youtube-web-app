@@ -100,7 +100,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
 
     //function to handle delete function
     const handleDeleteVidClick = () => {
-        deleteVideo(currentVideo.videoUrl);
+        deleteVideo(currentVideo._id);
     }
 
     // function to handle download click
