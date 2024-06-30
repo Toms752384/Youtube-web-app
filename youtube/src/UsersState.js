@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export const UsersState = () => {
-
 //state of list of users to access from across the program
 const [users, setUsers] = useState([]);
 
@@ -15,7 +14,7 @@ const addUser = async (newUser) => {
   } catch (error) {
     console.error('Error adding user:', error);
   }
-  console.log(users);
+  console.log(users); //debug
 };
 
 //fetch users

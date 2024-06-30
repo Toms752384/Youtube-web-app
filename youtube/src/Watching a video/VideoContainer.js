@@ -6,12 +6,12 @@ import WatchSearchBar from './WatchSearchBar';
 import IconsRight from './IconsRight';
 import SideBar from './SideBar';
 import MainBody from './MainBody';
-
-function VideoContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch }) {
+//send to IconsLeft the delete video
+function VideoContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, handleDeleteUser, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch }) {
     return (
         <>
             <header className="header d-flex justify-content-between align-items-center">
-                <IconsLeft currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut}/>
+                <IconsLeft currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} handleDeleteUser={handleDeleteUser}/>
                 <WatchSearchBar searchQuery={searchQuery} handleSearch={handleSearch}/>
                 <IconsRight currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} /> 
             </header>

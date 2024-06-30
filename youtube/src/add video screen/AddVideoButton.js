@@ -10,7 +10,7 @@ function AddVideoButton({ addVideo, videoList, newVideo, currentUser, displayIma
         var valid = VerifyVideo({ currentUser, newVideo });
         if(valid){
             const video = createNewVideo();
-            addVideo(video);
+            addVideo(newVideo, {video});
             navigateToVideo();
         }
     };
@@ -19,23 +19,21 @@ function AddVideoButton({ addVideo, videoList, newVideo, currentUser, displayIma
     const createNewVideo = () => {
         var title = document.getElementById("title-input").value;
         var artist = currentUser.username;
-        var views = "0";
-        var time = "0";
-        var subscribers = "0";
+        var views = 0;
+        var subscribers = 0;
         var likes = 0;
         var description = document.getElementById("description-input").value;
-        var image = displayImage;
         var avatar = currentUser.avatar;
-        var videoUrl = newVideo;
+        // var videoUrl = newVideo;
         var comments = [];
 
-        return {title, artist, views, time, subscribers, likes, description, image, avatar, videoUrl, comments};
+        return {title, artist, views, subscribers, likes, description, avatar, comments};
     }
 
     //function to navigate to video page - need to change to home!
     const navigate = useNavigate();
     const navigateToVideo = () => {
-        navigate('/video');
+        navigate('/home');
           };
 
     return (

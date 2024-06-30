@@ -3,13 +3,14 @@ import React, { useState } from "react";
 function UploadVideo({ uploadNewVideo }) {
     //state of preview of the user input
     const [preview, setPreview] = useState(null);
+    const [videoFile, setVideoFile] = useState(null);
 
     const handleVideoChange = (event) => {
         const file = event.target.files[0];
         const reader = new FileReader();
         reader.onloadend = () => {
             setPreview(reader.result);
-            uploadNewVideo(reader.result);
+            uploadNewVideo(file); 
         };
         reader.readAsDataURL(file);
     };

@@ -6,7 +6,7 @@ import WatchSearchBar from '../Watching a video/WatchSearchBar';
 import IconsRight from '../Watching a video/IconsRight';
 import HomeVideosList from './HomeVideosList';
 
-function HomeContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch }) {
+function HomeContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, handleDeleteUser, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch }) {
     //filter videos based on search query
     const filteredVideosList = videosList.filter(video =>
         video.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -14,7 +14,7 @@ function HomeContainer({ videosList, currentVideo, changeVideo, currentUser, def
     return (
         <>
             <header className="header d-flex justify-content-between align-items-center">
-                <IconsLeft currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} />
+                <IconsLeft currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} handleDeleteUser={handleDeleteUser}/>
                 <WatchSearchBar searchQuery={searchQuery} handleSearch={handleSearch}/>
                 <IconsRight currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} />
             </header>

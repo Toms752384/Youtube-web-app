@@ -84,8 +84,15 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
     // function to handle three dots click
     const handleThreeDotsClick = (event) => {
         event.stopPropagation(); // Prevent the event from propagating to the document
+        //check if user is logged in
         if (currentUser.username === "username") {
             alert("You need to log in to edit videos!");
+            return;
+        }
+
+        //check if user is the user that uploaded the video
+        if(currentUser.username !== currentVideo.artist){
+            alert("You cannot update or delete a video that isn't yours!");
             return;
         }
         setThreeDots(!ThreeDots);
@@ -135,7 +142,13 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
     const navigate = useNavigate();
     const handleProfileClick = () => {
         navigate('/profile');
-    }
+    };
+
+    //function to display date in dd/mm/yy format
+    const formatDate = (dateString) => {
+        const options = { day: '2-digit', month: '2-digit', year: '2-digit' };
+        return new Date(dateString).toLocaleDateString('en-GB', options);
+      };
 
     return (
         <>
@@ -186,7 +199,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
                         </div>
                     </div>
                     <div className="descriptin-head">
-                        {currentVideo.views} views • {currentVideo.time} years ago
+                        {currentVideo.views} views • {formatDate(currentVideo.time)}
                     </div>
                     <div className="descriptin">
                         {currentVideo.description}

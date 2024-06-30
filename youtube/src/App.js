@@ -12,29 +12,36 @@ import { SearchState } from './SearchState.js';
 
 function App() {
   //state of users
-  const {users, addUser} = UsersState();
+  const { users, addUser } = UsersState();
 
   //state of currently logged in user
-  const {defualtUser, currentUser, setCurrentUser, handleLogin} = CurrentUserState();
+  const { defualtUser, currentUser, setCurrentUser, handleLogin, handleSignOut, handleDeleteUser } = CurrentUserState(); //import delete user
 
-  const {videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails} = VideosStates();
+  //state of videos
+  const { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails } = VideosStates();
 
-  const {searchQuery, handleSearch, setSearchQuery} = SearchState();
+  //state of search query
+  const { searchQuery, handleSearch, setSearchQuery } = SearchState();
 
   //app to run
   return (
     <div>
       <Router>
         <Routes>
-          <Route path='/' element={<LoginContainer users={users} onLogin={handleLogin} />} />
-          <Route path='/signup' element={<RegistrationContainer users={users} addUser={addUser} />} />
+          <Route path='/' element={<LoginContainer
+            users={users}
+            onLogin={handleLogin} />} />
+          <Route path='/signup' element={<RegistrationContainer
+            users={users}
+            addUser={addUser} />} />
           <Route path='/profile' element={<ProfileContainer
             videosList={videosList}
             currentVideo={currentVideo}
             changeVideo={changeVideo}
             currentUser={currentUser}
             defualtUser={defualtUser}
-            handleSignOut={handleLogin}
+            handleSignOut={handleSignOut}
+            handleDeleteUser={handleDeleteUser}
             updateComments={updateComments}
             deleteVideo={deleteVideo}
             updateVideoDetails={updateVideoDetails}
@@ -46,27 +53,33 @@ function App() {
             changeVideo={changeVideo}
             currentUser={currentUser}
             defualtUser={defualtUser}
-            handleSignOut={handleLogin}
+            handleSignOut={handleSignOut}
+            handleDeleteUser={handleDeleteUser}
             updateComments={updateComments}
             deleteVideo={deleteVideo}
             updateVideoDetails={updateVideoDetails}
             searchQuery={searchQuery}
             handleSearch={handleSearch}
           />} />
-          <Route path='/video' element={<VideoContainer
+          <Route path='/video' element={<VideoContainer //send arg of deleteUser
             videosList={videosList}
             currentVideo={currentVideo}
             changeVideo={changeVideo}
             currentUser={currentUser}
             defualtUser={defualtUser}
-            handleSignOut={handleLogin}
+            handleSignOut={handleSignOut}
+            handleDeleteUser={handleDeleteUser}
             updateComments={updateComments}
             deleteVideo={deleteVideo}
             updateVideoDetails={updateVideoDetails}
             searchQuery={searchQuery}
             handleSearch={handleSearch}
           />} />
-          <Route path='/add' element={<AddVideoContainer addVideo={addVideo} videoList={videosList} currentUser={currentUser} />}></Route>
+          <Route path='/add' element={<AddVideoContainer
+            addVideo={addVideo}
+            videoList={videosList}
+            currentUser={currentUser}
+          />} />
         </Routes>
       </Router>
     </div>

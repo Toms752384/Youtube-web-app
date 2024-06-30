@@ -19,11 +19,6 @@ function AddVideoContainer({ addVideo, videoList, currentUser }) {
         setNewVideo(newVideo);
     }
 
-    // //function to add the image to the state
-    // const uploadNewDisImage = (newDisplayImage) => {
-    //     setNewDisImage(newDisplayImage);
-    // }
-
     return (
         <>
             <div className="container-rec">
