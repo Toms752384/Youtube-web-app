@@ -37,6 +37,7 @@ export const VideosStates = () => {
     //function to add videos
     const addVideo = async (videoFile, videoBody) => {
         try{
+
         //send a request to the server
         const response = await axios.post('http://localhost:80/videos/upload', videoFile, videoBody);
         //debug this and add conditions!

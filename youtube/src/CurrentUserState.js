@@ -15,7 +15,7 @@ export const CurrentUserState = () => {
             return savedUser; 
         };
         //if storage is clean  
-        JSON.parse(defualtUser);
+        // JSON.parse(defualtUser);
         return defualtUser;
       });
 
