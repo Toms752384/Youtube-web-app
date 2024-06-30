@@ -25,7 +25,7 @@ function AddVideoButton({ addVideo, videoList, newVideo, currentUser, displayIma
         var description = document.getElementById("description-input").value;
         var avatar = currentUser.avatar;
         // var videoUrl = newVideo;
-        var comments = [];
+        var comments = "[]";
 
         return {title, artist, views, subscribers, likes, description, avatar, comments};
     }
