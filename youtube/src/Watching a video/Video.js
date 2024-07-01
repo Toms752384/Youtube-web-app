@@ -101,6 +101,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
     //function to handle delete function
     const handleDeleteVidClick = () => {
         deleteVideo(currentVideo._id);
+        setThreeDots(false);
     }
 
     // function to handle download click
@@ -126,6 +127,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
         // use the outer function to edit the videos details - change  to id
         updateVideoDetails(currentVideo._id, { title: editedTitle, description: editedDescription });
         setIsEditing(false);
+        setThreeDots(false);
     };
 
     // function to handle cancel edit click
