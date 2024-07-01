@@ -11,8 +11,6 @@ export const VideosStates = () => {
     const fetchVideos = async () => {
         try {
             const response = await axios.get('http://localhost:80/videos/fetchVideos');
-            // console.log(response); // Log the status message
-
             //check if valid info was fetched
             if (Array.isArray(response.data.videos)) {
                 setVideosList(response.data.videos);
