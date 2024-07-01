@@ -6,7 +6,6 @@ function SideBarVideo({ video, changeVideo }) {
     //function to handle click on a video element
     const handleClick = () => {
         changeVideo(video);
-        console.log(video.avatar);
         navigate('/video');
     };
 

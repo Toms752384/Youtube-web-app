@@ -11,8 +11,6 @@ export const VideosStates = () => {
     const fetchVideos = async () => {
         try {
             const response = await axios.get('http://localhost:80/videos/fetchVideos');
-            console.log(response); // Log the status message
-
             //check if valid info was fetched
             if (Array.isArray(response.data.videos)) {
                 setVideosList(response.data.videos);
@@ -25,11 +23,23 @@ export const VideosStates = () => {
         }
     };
 
+    //function to get a video from the server
+    const fetchVideo = async (videoId) => {
+        try {
+            const response = await axios.get(`http://localhost:80/videos/fetchVideo/${videoId}`);
+            const video = response.data.video;
+            video.videoUrl = `http://localhost:80${video.videoUrl}`; // Make URL fully qualified
+            return video;
+        } catch (error) {
+            console.error(`Error fetching video with ID: ${videoId} - ${error.message}`);
+        }
+    };
+
     //call the function in hook
     useEffect(() => {
         //call the function in the hook
         fetchVideos();
-        console.log(videosList);
+        // console.log(videosList);
     }, []);
 
     //state of currnet video plays
@@ -99,34 +109,21 @@ export const VideosStates = () => {
         }
     }
 
-    // //function to update video details - title and description
-    // const updateVideoDetails = (videoUrl, newDetails) => {
-    //     //check the videos in the list using the url and edit it using the new details
-    //     const updatedVideosList = videosList.map(video =>
-    //         video.videoUrl === videoUrl ? { ...video, ...newDetails } : video
-    //     );
-
-    //     //update the list and the current video
-    //     setVideosList(updatedVideosList);
-    //     setCurrentVideo(updatedVideosList.find(video => video.videoUrl === videoUrl));
-    // };
-
-    const updateVideoDetails = async (videoId, newDetails) => {
+    const updateVideoDetails = async (videoId, newDetails) => { 
     try{
         //call a put request with the id and the details
         const response = await axios.put(`http://localhost:80/videos/${videoId}`, newDetails);
 
-        //fetch the videos to show the changes
-        fetchVideos();
+        //fetch the updated video details
+        const updatedVideo = await fetchVideo(videoId);
+        setCurrentVideo(updatedVideo); // Ensure this sets the video correctly
 
-        //set the current video - check this!!
-        // setCurrentVideo(response.data.video);
+        console.log('Updated video details:', updatedVideo);
     }
     catch(error){
         console.error('Error message:', error.message);
     }
-}
-
+};
     return { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails };
 };
 
