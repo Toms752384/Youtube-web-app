@@ -118,6 +118,9 @@ export const VideosStates = () => {
 
         //fetch the videos to show the changes
         fetchVideos();
+
+        //set the current video - check this!!
+        // setCurrentVideo(response.data.video);
     }
     catch(error){
         console.error('Error message:', error.message);
