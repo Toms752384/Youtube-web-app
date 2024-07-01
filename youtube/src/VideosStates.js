@@ -109,7 +109,7 @@ export const VideosStates = () => {
         }
     }
 
-    const updateVideoDetails = async (videoId, newDetails) => { //add use of get function of fetchVideo
+    const updateVideoDetails = async (videoId, newDetails) => { 
     try{
         //call a put request with the id and the details
         const response = await axios.put(`http://localhost:80/videos/${videoId}`, newDetails);
