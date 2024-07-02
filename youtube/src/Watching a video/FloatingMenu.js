@@ -5,9 +5,13 @@ import './FloatingMenu.css';
 import axios from 'axios';
 
 function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser, handleDeleteUser, setCurrentUser }) {
-    //states for editing
+    //states for editing nickname
     const [isEditing, setIsEditing] = useState(false);
     const [newNickname, setNewNickname] = useState(currentUser.nickname);
+
+    //states for editing avatar
+    const [newAvatar, setNewAvatar] = useState(null);
+    const [previewAvatar, setPreviewAvatar] = useState(currentUser.avatar);
 
     //state for theme 
     const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -42,6 +46,13 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
         navigate('/');
     }
 
+    //function to handle the avatar change
+    const handleAvatarChange = (e) => {
+        const file = e.target.files[0];
+        setNewAvatar(file);
+        setPreviewAvatar(URL.createObjectURL(file));
+    }
+
     //use the deleteUser function in an onClick function and send to the button
     const handleDeleteUserClick = () => {
         //delete user if one is logged in
@@ -68,15 +79,24 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
     }
 
     //function to save the provided details
-    const handleSaveClick = async () => {
+    const handleSaveEditClick = async () => {
         try {
-            console.log(currentUser._id); //
-            const response = await axios.put(`http://localhost:80/api/users/${currentUser._id}`, { nickname: newNickname });
+            const formData = new FormData();
+            formData.append('nickname', newNickname);
+            if (newAvatar) {
+                formData.append('avatar', newAvatar);
+            }
+
+            const response = await axios.put(`http://localhost:80/api/users/${currentUser._id}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
             setCurrentUser(response.data.user);
             localStorage.setItem('currentUser', JSON.stringify(response.data.user));
             setIsEditing(false);
         } catch (error) {
-            console.error('Error updating nickname:', error);
+            console.error('Error updating profile:', error);
         }
     }
 
@@ -103,7 +123,9 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
                         {isEditing ? (
                             <div>
                                 <input type="text" value={newNickname} onChange={(e) => setNewNickname(e.target.value)} />
-                                <button onClick={handleSaveClick}>Save</button>
+                                <input type="file" accept="image/*" onChange={handleAvatarChange} />
+                                {previewAvatar && <img src={previewAvatar} alt="avatar preview" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />}
+                                <button onClick={handleSaveEditClick}>Save</button>
                                 <button onClick={handleCancelEditClick}>Cancel</button>
                             </div>
                         ) : (
