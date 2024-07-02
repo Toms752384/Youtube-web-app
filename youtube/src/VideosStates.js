@@ -129,8 +129,14 @@ export const VideosStates = () => {
 const featchVideosByID = async (userId) => {
     try {
         const response = await axios.get(`http://localhost:80/videos/user/${userId}/videos`);
-        console.log(response.data.videos);
-        return response.data.videos;
+        // Ensure video URLs are fully qualified
+        const videos = response.data.videos.map(video => {
+            video.videoUrl = `http://localhost:80${video.videoUrl}`;
+            return video;
+        });
+        
+        console.log(videos);
+        return videos;
     } catch (error) {
         console.error('Error message:', error.message);
     }
