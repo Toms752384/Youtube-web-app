@@ -10,7 +10,7 @@ export const VideosStates = () => {
     //function to fetch videos from user
     const fetchVideos = async () => {
         try {
-            const response = await axios.get('http://localhost:80/videos/fetchVideos');
+            const response = await axios.get('http://localhost:80/api/videos');
             //check if valid info was fetched
             if (Array.isArray(response.data.videos)) {
                 setVideosList(response.data.videos);
@@ -24,9 +24,9 @@ export const VideosStates = () => {
     };
 
     //function to get a video from the server
-    const fetchVideo = async (videoId) => {
+    const fetchVideo = async (userId, videoId) => {
         try {
-            const response = await axios.get(`http://localhost:80/videos/fetchVideo/${videoId}`);
+            const response = await axios.get(`http://localhost:80/api/users/${userId}/videos/${videoId}`);
             const video = response.data.video;
             video.videoUrl = `http://localhost:80${video.videoUrl}`; // Make URL fully qualified
             return video;
@@ -59,7 +59,7 @@ export const VideosStates = () => {
             }
 
             // Send a request to the server with FormData
-            const response = await axios.post('http://localhost:80/videos/upload', formData, {
+            const response = await axios.post(`http://localhost:80/api/users/${videoBody.userId}/videos`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -93,10 +93,10 @@ export const VideosStates = () => {
         setCurrentVideo(updatedVideosList.find(video => video.videoUrl === videoUrl));
     };
 
-    const deleteVideo = async (videoId) => {
+    const deleteVideo = async (videoId, userId) => {
         try {
             //call delete request with the id in the request
-            const response = await axios.delete(`http://localhost:80/videos/${videoId}`);
+            const response = await axios.delete(`http://localhost:80/api/users/${userId}/videos/${videoId}`);
 
             //call fetch videos to set the videos list to be the updated
             fetchVideos();
@@ -109,13 +109,13 @@ export const VideosStates = () => {
         }
     }
 
-    const updateVideoDetails = async (videoId, newDetails) => { 
+    const updateVideoDetails = async (videoId, newDetails, currentUser) => { 
     try{
         //call a put request with the id and the details
-        const response = await axios.put(`http://localhost:80/videos/${videoId}`, newDetails);
+        const response = await axios.put(`http://localhost:80/api/users/${currentUser._id}/videos/${videoId}`, newDetails);
 
         //fetch the updated video details
-        const updatedVideo = await fetchVideo(videoId);
+        const updatedVideo = await fetchVideo(currentUser._id, videoId); //check if works
         setCurrentVideo(updatedVideo); // Ensure this sets the video correctly
 
         console.log('Updated video details:', updatedVideo);
@@ -128,7 +128,7 @@ export const VideosStates = () => {
 // function video by id
 const featchVideosByID = async (userId) => {
     try {
-        const response = await axios.get(`http://localhost:80/videos/user/${userId}/videos`);
+        const response = await axios.get(`http://localhost:80/api/users/${userId}/videos`);
         // Ensure video URLs are fully qualified
         const videos = response.data.videos.map(video => {
             video.videoUrl = `http://localhost:80${video.videoUrl}`;
