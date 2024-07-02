@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './FloatingMenu.css';
+import axios from 'axios';
 
-function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser, handleDeleteUser }) {
+function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser, handleDeleteUser, setCurrentUser }) {
+    //states for editing
+    const [isEditing, setIsEditing] = useState(false);
+    const [newNickname, setNewNickname] = useState(currentUser.nickname);
+
     //state for theme 
     const [isDarkTheme, setIsDarkTheme] = useState(false);
 
@@ -51,6 +56,30 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
         }
     }
 
+    //function to handle the edit button click
+    const handleEditClick = () => {
+        setIsEditing(true);
+    }
+
+    //function to handle cancel edit click
+    const handleCancelEditClick = () => {
+        setNewNickname(currentUser.nickname);
+        setIsEditing(false);
+    }
+
+    //function to save the provided details
+    const handleSaveClick = async () => {
+        try {
+            console.log(currentUser._id); //
+            const response = await axios.put(`http://localhost:80/api/users/${currentUser._id}`, { nickname: newNickname });
+            setCurrentUser(response.data.user);
+            localStorage.setItem('currentUser', JSON.stringify(response.data.user));
+            setIsEditing(false);
+        } catch (error) {
+            console.error('Error updating nickname:', error);
+        }
+    }
+
     //only if isOpen is true open the menu
     if (!isOpen) return null;
     return (
@@ -69,7 +98,18 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
                     <li onClick={handleDeleteUserClick}><i className="bi bi-person-x"></i> Delete user</li>
                     <li><i>Help and more</i></li>
                     <li><i className="bi bi-question-circle"></i> Help</li>
-                    <li><i className="bi bi-gear"> Settings</i></li>
+                    <li>
+                        <i className="bi bi-gear"> Edit your profile</i>
+                        {isEditing ? (
+                            <div>
+                                <input type="text" value={newNickname} onChange={(e) => setNewNickname(e.target.value)} />
+                                <button onClick={handleSaveClick}>Save</button>
+                                <button onClick={handleCancelEditClick}>Cancel</button>
+                            </div>
+                        ) : (
+                            <button onClick={handleEditClick}>Edit</button>
+                        )}
+                    </li>
                 </ul>
             </div>
         </div>

@@ -5,7 +5,7 @@ import './Video.css';
 import FloatingMenu from './FloatingMenu';
 import logo from './logo.png';
 
-function IconsLeft({ currentUser, handleSignOut, defualtUser, handleDeleteUser }) {
+function IconsLeft({ currentUser, handleSignOut, defualtUser, handleDeleteUser, setCurrentUser }) {
     //floating menu state
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -27,7 +27,7 @@ function IconsLeft({ currentUser, handleSignOut, defualtUser, handleDeleteUser }
                 onClick={handleMenuToggle}
             ></i>
             <img src={logo} alt="YouTube Logo" className="left-logo" onClick={handleMoveToHome}/>
-            <FloatingMenu isOpen={isMenuOpen} onClose={handleMenuToggle} currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} handleDeleteUser={handleDeleteUser} />
+            <FloatingMenu isOpen={isMenuOpen} onClose={handleMenuToggle} currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} handleDeleteUser={handleDeleteUser} setCurrentUser={setCurrentUser} />
         </div>
     );
 }

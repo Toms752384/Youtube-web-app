@@ -75,6 +75,7 @@ function App() {
             updateVideoDetails={updateVideoDetails}
             searchQuery={searchQuery}
             handleSearch={handleSearch}
+            setCurrentUser={setCurrentUser}
           />} />
           <Route path='/add' element={<AddVideoContainer
             addVideo={addVideo}
