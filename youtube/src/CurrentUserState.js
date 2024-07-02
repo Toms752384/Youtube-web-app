@@ -11,11 +11,8 @@ export const CurrentUserState = () => {
         //retrieve user from localStorage if available
         const savedUser = localStorage.getItem('currentUser');
         if(savedUser !== null){
-            JSON.parse(savedUser);
-            return savedUser; 
+            return JSON.parse(savedUser); 
         };
-        //if storage is clean  
-        // JSON.parse(defualtUser);
         return defualtUser;
       });
 
@@ -26,11 +23,13 @@ export const CurrentUserState = () => {
             const response = await axios.post('http://localhost:80/users/login', loggedInUser);
             console.log(response.data.message); //log the status message
             console.log(response.data.token); //log the token
+            console.log(response.data.loggedInUser); //log the user
+
             //set the user
-            setCurrentUser(loggedInUser);
+            setCurrentUser(response.data.loggedInUser); //
 
             //store the user in storage
-            localStorage.setItem('currentUser', JSON.stringify(loggedInUser));
+            localStorage.setItem('currentUser', JSON.stringify(response.data.loggedInUser)); //
 
             //store the token if the user in storage
             localStorage.setItem('token', response.data.token);
