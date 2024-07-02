@@ -124,6 +124,19 @@ export const VideosStates = () => {
         console.error('Error message:', error.message);
     }
 };
-    return { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails };
+
+// function video by id
+const featchVideosByID = async (userId) => {
+    try {
+        const response = await axios.get(`http://localhost:80/videos/user/${userId}/videos`);
+        console.log(response.data.videos);
+        return response.data.videos;
+    } catch (error) {
+        console.error('Error message:', error.message);
+    }
+}
+
+
+    return { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails, featchVideosByID};
 };
 

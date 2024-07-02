@@ -17,6 +17,7 @@ function AddVideoButton({ addVideo, videoList, newVideo, currentUser, displayIma
 
     //function to create a new video
     const createNewVideo = () => {
+        var userId = currentUser._id;
         var title = document.getElementById("title-input").value;
         var artist = currentUser.username;
         var views = 0;
@@ -26,7 +27,7 @@ function AddVideoButton({ addVideo, videoList, newVideo, currentUser, displayIma
         var avatar = currentUser.avatar;
         var comments = "[]";
 
-        return {title, artist, views, subscribers, likes, description, avatar, comments};
+        return {userId, title, artist, views, subscribers, likes, description, avatar, comments};
     }
 
     //function to navigate to video page - need to change to home!

@@ -18,7 +18,7 @@ function App() {
   const { defualtUser, currentUser, setCurrentUser, handleLogin, handleSignOut, handleDeleteUser } = CurrentUserState();
 
   //state of videos
-  const { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails } = VideosStates();
+  const { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails, featchVideosByID } = VideosStates();
 
   //state of search query
   const { searchQuery, handleSearch, setSearchQuery } = SearchState();
@@ -46,7 +46,8 @@ function App() {
             deleteVideo={deleteVideo}
             updateVideoDetails={updateVideoDetails}
             searchQuery={searchQuery}
-            handleSearch={handleSearch} />} />
+            handleSearch={handleSearch}
+            featchVideosByID={featchVideosByID} />} />
           <Route path='/home' element={<HomeContainer
             videosList={videosList}
             currentVideo={currentVideo}
