@@ -1,22 +1,35 @@
 import { useState, useEffect } from "react";
 import Comments from "./Comments";
 import Video from "./Video";
-
-function MainBody({ currentVideo, currentUser, updateComments, deleteVideo, updateVideoDetails }) {
+import axios from "axios";
+//remove updateComments - moved here
+function MainBody({ currentVideo, currentUser, updateComments, deleteVideo, updateVideoDetails, setVideosList, setCurrentVideo, videosList }) {
 
     //state of comments of the videos displayed
-    const [commentsList, setComments] = useState(currentVideo.comments);
+    const [commentsList, setComments] = useState([]);
 
     //use effect to change the comments to be the currentVideo's comments
     useEffect(() => {
-        setComments(currentVideo.comments);
-    }, [currentVideo]);
+        getCommentsByVideoId(currentVideo._id);
+        console.log(commentsList);
+    }, []);
+
+    //fetch comments by Id of video
+    const getCommentsByVideoId = async (videoId) => {
+        try {
+            const response = await axios.get(`http://localhost:80/api/videos/${videoId}/comments`);
+            const newCommenstList = response.data.comments;
+            setComments(newCommenstList); 
+        } catch (error) {
+            console.error('Error message:', error.message);
+        }
+    }
 
     //add comment function
     const addComment = (newComment) => {
         const updatedComments = [...commentsList, newComment];
         setComments(updatedComments);
-        updateComments(currentVideo.videoUrl, updatedComments);
+        updateCommentsRemove(currentVideo.videoUrl, updatedComments);
     }
 
     //delete comment function
@@ -26,7 +39,7 @@ function MainBody({ currentVideo, currentUser, updateComments, deleteVideo, upda
 
         //update comments
         setComments(updatedComments);
-        updateComments(currentVideo.videoUrl, updatedComments);
+        updateCommentsRemove(currentVideo.videoUrl, updatedComments);
     };
 
     //edit comment function
@@ -35,8 +48,21 @@ function MainBody({ currentVideo, currentUser, updateComments, deleteVideo, upda
             index === commentIndex ? { ...comment, text: newText } : comment
         );
         setComments(updatedComments);
-        updateComments(currentVideo.videoUrl, updatedComments);
+        updateCommentsRemove(currentVideo.videoUrl, updatedComments);
     };
+
+    //weird function that needs to gooooo - updates all the comments in the list for some reason
+    const updateCommentsRemove = (videoUrl, newComments) => {
+        //lambada function to update the comments of the specific video that was changed
+        const updatedVideosList = videosList.map(video =>
+            video.videoUrl === videoUrl ? { ...video, comments: newComments } : video
+        );
+
+        //update video list and the current video
+        setVideosList(updatedVideosList);
+        setCurrentVideo(updatedVideosList.find(video => video.videoUrl === videoUrl));
+    };
+
 
     return (
         <div className="col-md-8">

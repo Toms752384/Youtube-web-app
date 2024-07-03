@@ -18,7 +18,7 @@ function App() {
   const { defualtUser, currentUser, setCurrentUser, handleLogin, handleSignOut, handleDeleteUser } = CurrentUserState();
 
   //state of videos
-  const { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails, featchVideosByID } = VideosStates();
+  const { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails, featchVideosByID, setVideosList, setCurrentVideo } = VideosStates();
 
   //state of search query
   const { searchQuery, handleSearch, setSearchQuery } = SearchState();
@@ -34,7 +34,7 @@ function App() {
           <Route path='/signup' element={<RegistrationContainer
             users={users}
             addUser={addUser} />} />
-          <Route path='/profile' element={<ProfileContainer //send arg of set current user
+          <Route path='/profile' element={<ProfileContainer 
             videosList={videosList}
             currentVideo={currentVideo}
             changeVideo={changeVideo}
@@ -64,7 +64,7 @@ function App() {
             handleSearch={handleSearch}
             setCurrentUser={setCurrentUser}
           />} />
-          <Route path='/video' element={<VideoContainer 
+          <Route path='/video' element={<VideoContainer
             videosList={videosList}
             currentVideo={currentVideo}
             changeVideo={changeVideo}
@@ -78,6 +78,8 @@ function App() {
             searchQuery={searchQuery}
             handleSearch={handleSearch}
             setCurrentUser={setCurrentUser}
+            setVideosList={setVideosList}
+            setCurrentVideo={setCurrentVideo}
           />} />
           <Route path='/add' element={<AddVideoContainer
             addVideo={addVideo}

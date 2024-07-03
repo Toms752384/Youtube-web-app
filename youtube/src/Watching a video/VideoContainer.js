@@ -7,7 +7,7 @@ import IconsRight from './IconsRight';
 import SideBar from './SideBar';
 import MainBody from './MainBody';
 //send to IconsLeft the delete video
-function VideoContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, handleDeleteUser, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch, setCurrentUser }) {
+function VideoContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, handleDeleteUser, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch, setCurrentUser, setVideosList, setCurrentVideo }) {
     return (
         <>
             <header className="header d-flex justify-content-between align-items-center">
@@ -17,7 +17,7 @@ function VideoContainer({ videosList, currentVideo, changeVideo, currentUser, de
             </header>
             <div className="container-fluid mt-4">
                 <div className="row">
-                    <MainBody currentVideo={ currentVideo } currentUser={currentUser} updateComments={updateComments} deleteVideo={deleteVideo} updateVideoDetails={updateVideoDetails}/>
+                    <MainBody currentVideo={ currentVideo } currentUser={currentUser} updateComments={updateComments} deleteVideo={deleteVideo} updateVideoDetails={updateVideoDetails} setVideosList={setVideosList} setCurrentVideo={setCurrentVideo} videosList={videosList}/>
                     <SideBar videosList={ videosList } changeVideo={changeVideo}/>
                 </div>
             </div>

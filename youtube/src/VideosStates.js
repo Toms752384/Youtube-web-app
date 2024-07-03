@@ -143,6 +143,6 @@ const featchVideosByID = async (userId) => {
 }
 
 
-    return { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails, featchVideosByID};
+    return { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails, featchVideosByID, setVideosList, setCurrentVideo};
 };
 
