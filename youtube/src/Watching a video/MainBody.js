@@ -3,7 +3,7 @@ import Comments from "./Comments";
 import Video from "./Video";
 import axios from "axios";
 
-function MainBody({ currentVideo, currentUser, deleteVideo, updateVideoDetails, setVideosList, setCurrentVideo, videosList }) {
+function MainBody({ currentVideo, currentUser, deleteVideo, updateVideoDetails, setVideosList, setCurrentVideo, videosList, changeVideo }) {
 
     //state of comments of the videos displayed
     const [commentsList, setComments] = useState([]);
@@ -87,7 +87,7 @@ function MainBody({ currentVideo, currentUser, deleteVideo, updateVideoDetails, 
 
     return (
         <div className="col-md-8">
-            <Video currentVideo={currentVideo} currentUser={currentUser} deleteVideo={deleteVideo} updateVideoDetails={updateVideoDetails} />
+            <Video currentVideo={currentVideo} currentUser={currentUser} deleteVideo={deleteVideo} updateVideoDetails={updateVideoDetails} changeVideo={changeVideo}/>
             <Comments comments={commentsList} currentUser={currentUser} addComment={addComment} deleteComment={deleteComment} editComment={editComment} />
         </div>
     );

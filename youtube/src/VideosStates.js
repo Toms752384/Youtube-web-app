@@ -42,9 +42,12 @@ export const VideosStates = () => {
         // console.log(videosList);
     }, []);
 
+    //retrieve video from localStorage on component mount
+    const savedVideo = localStorage.getItem('currentVideo');
+
     //state of currnet video that plays
     const defualtVideo = videosList[0];
-    const [currentVideo, setCurrentVideo] = useState(defualtVideo);
+    const [currentVideo, setCurrentVideo] = useState(JSON.parse(savedVideo));
 
     //function to add videos
     const addVideo = async (videoFile, videoBody) => {
