@@ -3,7 +3,7 @@ import Comments from "./Comments";
 import Video from "./Video";
 import axios from "axios";
 
-function MainBody({ currentVideo, currentUser, updateComments, deleteVideo, updateVideoDetails, setVideosList, setCurrentVideo, videosList }) {
+function MainBody({ currentVideo, currentUser, deleteVideo, updateVideoDetails, setVideosList, setCurrentVideo, videosList }) {
 
     //state of comments of the videos displayed
     const [commentsList, setComments] = useState([]);
@@ -67,12 +67,15 @@ function MainBody({ currentVideo, currentUser, updateComments, deleteVideo, upda
             });
             //if successful, update the list
             if (response.status === 200) {
+                //extract the updated comment from the response
+                const updatedComment = response.data.updatedComment;
+
                 //map over the comments list and update the specific comment
                 const updatedComments = commentsList.map(comment =>
-                    comment._id === commentId ? { ...comment, content: newContent } : comment
+                    comment._id === commentId ? updatedComment : comment
                 );
 
-                //update the state with the filtered list
+                // Update the state with the updated list
                 setComments(updatedComments);
             } else {
                 console.error('Failed to delete comment, server responded with status:', response.status);

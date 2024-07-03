@@ -17,7 +17,7 @@ function App() {
   //state of currently logged in user
   const { defualtUser, currentUser, setCurrentUser, handleLogin, handleSignOut, handleDeleteUser } = CurrentUserState();
 
-  //state of videos
+  //state of videos - remove updateComments
   const { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails, featchVideosByID, setVideosList, setCurrentVideo } = VideosStates();
 
   //state of search query
@@ -72,7 +72,6 @@ function App() {
             defualtUser={defualtUser}
             handleSignOut={handleSignOut}
             handleDeleteUser={handleDeleteUser}
-            updateComments={updateComments}
             deleteVideo={deleteVideo}
             updateVideoDetails={updateVideoDetails}
             searchQuery={searchQuery}
