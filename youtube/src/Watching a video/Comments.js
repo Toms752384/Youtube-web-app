@@ -147,7 +147,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
                                 <div className="three-dots-menu" ref={menuRef}>
                                     <ul>
                                         <li className='three-dots-option' onClick={() => handleEditComment(index, comment.text)}>Edit comment</li>
-                                        <li className='three-dots-option' onClick={() => deleteComment(index)}>Delete comment</li>
+                                        <li className='three-dots-option' onClick={() => deleteComment(comment._id)}>Delete comment</li>
                                     </ul>
                                 </div>
                             )}

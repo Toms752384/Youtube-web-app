@@ -37,22 +37,35 @@ function MainBody({ currentVideo, currentUser, updateComments, deleteVideo, upda
         }
     }
 
-    // //add comment function
-    // const addComment = (newComment) => {
-    //     const updatedComments = [...commentsList, newComment];
+    
+    //delete comment function
+    const deleteComment = async (commentId) => {
+        try {
+            //delete the comment from the server
+            const response = await axios.delete(`http://localhost:80/api/videos/${currentUser._id}/${currentVideo._id}/comments/${commentId}`);
+            
+            //if successful, update the list
+            if (response.status === 200) {
+                //filter out the deleted comment from the comments list
+                const updatedComments = commentsList.filter(comment => comment._id !== commentId);
+                
+                //update the state with the filtered list
+                setComments(updatedComments);
+            } else {
+                console.error('Failed to delete comment, server responded with status:', response.status);
+            }
+        } catch (error) {
+            console.error('Error message:', error.message);
+        }
+    }
+    // const deleteComment = (commentIndex) => {
+    //     //filter function to keep all the other comments
+    //     const updatedComments = commentsList.filter((_, index) => index !== commentIndex);
+
+    //     //update comments
     //     setComments(updatedComments);
     //     updateCommentsRemove(currentVideo.videoUrl, updatedComments);
-    // }
-
-    //delete comment function
-    const deleteComment = (commentIndex) => {
-        //filter function to keep all the other comments
-        const updatedComments = commentsList.filter((_, index) => index !== commentIndex);
-
-        //update comments
-        setComments(updatedComments);
-        updateCommentsRemove(currentVideo.videoUrl, updatedComments);
-    };
+    // };
 
     //edit comment function
     const editComment = (commentIndex, newText) => {
