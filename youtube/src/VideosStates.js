@@ -84,7 +84,7 @@ export const VideosStates = () => {
         setCurrentVideo(clickedOnVideo);
     }
 
-    //function to update comments 
+    //function to update comments - not in use
     const updateComments = (videoUrl, newComments) => {
         //lambada function to update the comments of the specific video that was changed
         const updatedVideosList = videosList.map(video =>
@@ -120,6 +120,9 @@ export const VideosStates = () => {
         //fetch the updated video details
         const updatedVideo = await fetchVideo(currentUser._id, videoId); //check if works
         setCurrentVideo(updatedVideo); // Ensure this sets the video correctly
+
+        //store updated video in local storage
+        localStorage.setItem('currentVideo', JSON.stringify(updatedVideo));
 
         console.log('Updated video details:', updatedVideo);
     }
