@@ -60,8 +60,11 @@ export const CurrentUserState = () => {
         //set the defualt user
         setCurrentUser(user);
 
-        //store the user in storage
+        //store the defualt user in storage
         localStorage.setItem('currentUser', JSON.stringify(user));
+
+        //delete the token
+        localStorage.setItem('token', null);
     };
 
     //function of delete user

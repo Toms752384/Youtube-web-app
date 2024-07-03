@@ -156,9 +156,7 @@ const featchVideosByID = async (userId) => {
         const videos = response.data.videos.map(video => {
             video.videoUrl = `http://localhost:80${video.videoUrl}`;
             return video;
-        });
-        
-        console.log(videos);
+        });        
         return videos;
     } catch (error) {
         console.error('Error message:', error.message);
