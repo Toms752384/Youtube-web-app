@@ -5,7 +5,8 @@ function SideBarVideo({ video, changeVideo }) {
 
     //function to handle click on a video element
     const handleClick = () => {
-        changeVideo(video);
+        changeVideo(video); //use the fetch video from server?
+        window.scrollTo(0, 0); //scroll to the top of the page
         navigate('/video');
     };
 
