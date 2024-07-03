@@ -115,14 +115,6 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
                     <li><i>Profile</i></li>
                     <li><i className="bi bi-person-circle"></i> {currentUser.username}</li>
                     <li><i className="bi bi-person-raised-hand"></i> {currentUser.nickname}</li>
-                    <li><i>Actions</i></li>
-                    <li onClick={handleLoginClick}><i className="bi bi-box-arrow-in-right"></i> Log in</li>
-                    <li onClick={handleSignOutClick}><i className="bi bi-box-arrow-in-left"></i> Log out</li>
-                    <li onClick={uploadVideoClick}><i className="bi bi-download"></i> Upload video</li>
-                    <li onClick={handleThemeChange}><i className="bi bi-moon-stars-fill"></i> Change mode</li>
-                    <li onClick={handleDeleteUserClick}><i className="bi bi-person-x"></i> Delete user</li>
-                    <li><i>Help and more</i></li>
-                    <li><i className="bi bi-question-circle"></i> Help</li>
                     <li>
                         <i className="bi bi-gear"> Edit your profile</i>
                         {isEditing ? (
@@ -137,6 +129,14 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
                             <button onClick={handleEditClick}>Edit</button>
                         )}
                     </li>
+                    <li><i>Actions</i></li>
+                    <li onClick={handleLoginClick}><i className="bi bi-box-arrow-in-right"></i> Log in</li>
+                    <li onClick={handleSignOutClick}><i className="bi bi-box-arrow-in-left"></i> Log out</li>
+                    <li onClick={uploadVideoClick}><i className="bi bi-download"></i> Upload video</li>
+                    <li onClick={handleThemeChange}><i className="bi bi-moon-stars-fill"></i> Change mode</li>
+                    <li onClick={handleDeleteUserClick}><i className="bi bi-person-x"></i> Delete user</li>
+                    <li><i>Help and more</i></li>
+                    <li><i className="bi bi-question-circle"></i> Help</li>
                 </ul>
             </div>
         </div>
