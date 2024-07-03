@@ -17,7 +17,7 @@ function VideoContainer({ videosList, currentVideo, changeVideo, currentUser, de
             </header>
             <div className="container-fluid mt-4">
                 <div className="row">
-                    <MainBody currentVideo={ currentVideo } currentUser={currentUser} deleteVideo={deleteVideo} updateVideoDetails={updateVideoDetails} setVideosList={setVideosList} setCurrentVideo={setCurrentVideo} videosList={videosList}/>
+                    <MainBody currentVideo={ currentVideo } currentUser={currentUser} deleteVideo={deleteVideo} updateVideoDetails={updateVideoDetails} setVideosList={setVideosList} setCurrentVideo={setCurrentVideo} videosList={videosList} changeVideo={changeVideo}/>
                     <SideBar videosList={ videosList } changeVideo={changeVideo}/>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 
-function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
+function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, changeVideo }) {
     // state of like button
     const [likeButton, setLikeButton] = useState(false);
 

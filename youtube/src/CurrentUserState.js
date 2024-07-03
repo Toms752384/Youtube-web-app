@@ -25,7 +25,7 @@ export const CurrentUserState = () => {
             console.log(response.data.loggedInUser); //log the user
 
             //set the user
-            setCurrentUser(response.data.loggedInUser); //
+            setCurrentUser(response.data.loggedInUser);
 
             //store the user in storage
             localStorage.setItem('currentUser', JSON.stringify(response.data.loggedInUser)); //
