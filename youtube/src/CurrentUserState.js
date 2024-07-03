@@ -20,9 +20,9 @@ export const CurrentUserState = () => {
     const handleLogin = async (loggedInUser) => {
         try {
             //send request to server
-            const response = await axios.post('http://localhost:80/users/login', loggedInUser);
+            const response = await axios.get(`http://localhost:80/api/users/${loggedInUser._id}`);
             console.log(response.data.message); //log the status message
-            console.log(response.data.token); //log the token
+            // console.log(response.data.token); //log the token
             console.log(response.data.loggedInUser); //log the user
 
             //set the user
@@ -32,7 +32,7 @@ export const CurrentUserState = () => {
             localStorage.setItem('currentUser', JSON.stringify(response.data.loggedInUser)); //
 
             //store the token if the user in storage
-            localStorage.setItem('token', response.data.token);
+            // localStorage.setItem('token', response.data.token);
         }
         catch (error) {
             console.error('Error logging in:', error);

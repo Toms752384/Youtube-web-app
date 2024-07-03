@@ -8,9 +8,10 @@ const [users, setUsers] = useState([]);
 //add a new user function
 const addUser = async (newUser) => {
   try {
-    const response = await axios.post('http://localhost:80/users/addUser', newUser);
-    console.log(response.data.message); // Log the status message
-    setUsers([...users, newUser]);
+    const response = await axios.post('http://localhost:80/api/users', newUser);
+    // console.log(response.data.message); // Log the status message
+    // console.log(response.data.newUser); //log
+    setUsers([...users, response.data.newUser]);
   } catch (error) {
     console.error('Error adding user:', error);
   }
@@ -33,7 +34,7 @@ useEffect(() => {
     }
   };
   fetchUsers();
-  console.log(users);
+  // console.log(users);
 }, []);
 
 return {users, addUser};

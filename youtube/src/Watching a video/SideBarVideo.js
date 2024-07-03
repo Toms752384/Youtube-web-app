@@ -1,11 +1,17 @@
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function SideBarVideo({ video, changeVideo }) {
     const navigate = useNavigate();
 
     //function to handle click on a video element
-    const handleClick = () => {
-        changeVideo(video);
+    const handleClick = async () => {
+        const response = await axios.get(`http://localhost:80/api/users/${video.userId}/videos/${video._id}`);
+        const newVideo = response.data.video;
+        newVideo.videoUrl = `${video.videoUrl}`; // Make URL fully qualified
+        changeVideo(newVideo);
+        //scroll to the top of the page
+        window.scrollTo(0, 0); 
         navigate('/video');
     };
 

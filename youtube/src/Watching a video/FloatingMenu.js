@@ -2,8 +2,17 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './FloatingMenu.css';
+import axios from 'axios';
 
-function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser, handleDeleteUser }) {
+function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser, handleDeleteUser, setCurrentUser }) {
+    //states for editing nickname
+    const [isEditing, setIsEditing] = useState(false);
+    const [newNickname, setNewNickname] = useState(currentUser.nickname);
+
+    //states for editing avatar
+    const [newAvatar, setNewAvatar] = useState(null);
+    const [previewAvatar, setPreviewAvatar] = useState(currentUser.avatar);
+
     //state for theme 
     const [isDarkTheme, setIsDarkTheme] = useState(false);
 
@@ -37,6 +46,13 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
         navigate('/');
     }
 
+    //function to handle the avatar change
+    const handleAvatarChange = (e) => {
+        const file = e.target.files[0];
+        setNewAvatar(file);
+        setPreviewAvatar(URL.createObjectURL(file));
+    }
+
     //use the deleteUser function in an onClick function and send to the button
     const handleDeleteUserClick = () => {
         //delete user if one is logged in
@@ -48,6 +64,44 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
             //sign out - sign the defualt user in
             handleSignOut(defualtUser);
             navigate('/');
+        }
+    }
+
+    //function to handle the edit button click
+    const handleEditClick = () => {
+        //check if user is logged in
+        if(currentUser.username === 'username'){
+            alert('You need to log in to edit your profile!');
+            return;
+        }
+        setIsEditing(true);
+    }
+
+    //function to handle cancel edit click
+    const handleCancelEditClick = () => {
+        setNewNickname(currentUser.nickname);
+        setIsEditing(false);
+    }
+
+    //function to save the provided details
+    const handleSaveEditClick = async () => {
+        try {
+            const formData = new FormData();
+            formData.append('nickname', newNickname);
+            if (newAvatar) {
+                formData.append('avatar', newAvatar);
+            }
+
+            const response = await axios.put(`http://localhost:80/api/users/${currentUser._id}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            setCurrentUser(response.data.user);
+            localStorage.setItem('currentUser', JSON.stringify(response.data.user));
+            setIsEditing(false);
+        } catch (error) {
+            console.error('Error updating profile:', error);
         }
     }
 
@@ -69,7 +123,20 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
                     <li onClick={handleDeleteUserClick}><i className="bi bi-person-x"></i> Delete user</li>
                     <li><i>Help and more</i></li>
                     <li><i className="bi bi-question-circle"></i> Help</li>
-                    <li><i className="bi bi-gear"> Settings</i></li>
+                    <li>
+                        <i className="bi bi-gear"> Edit your profile</i>
+                        {isEditing ? (
+                            <div>
+                                <input type="text" value={newNickname} onChange={(e) => setNewNickname(e.target.value)} />
+                                <input type="file" accept="image/*" onChange={handleAvatarChange} />
+                                {previewAvatar && <img src={previewAvatar} alt="avatar preview" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />}
+                                <button onClick={handleSaveEditClick}>Save</button>
+                                <button onClick={handleCancelEditClick}>Cancel</button>
+                            </div>
+                        ) : (
+                            <button onClick={handleEditClick}>Edit</button>
+                        )}
+                    </li>
                 </ul>
             </div>
         </div>

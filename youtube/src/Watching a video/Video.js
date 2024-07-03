@@ -100,7 +100,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
 
     //function to handle delete function
     const handleDeleteVidClick = () => {
-        deleteVideo(currentVideo._id);
+        deleteVideo(currentVideo._id, currentUser._id); //check
         setThreeDots(false);
     }
 
@@ -125,7 +125,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
     // function to handle save edit click
     const handleSaveEdit = () => {
         // use the outer function to edit the videos details - change  to id
-        updateVideoDetails(currentVideo._id, { title: editedTitle, description: editedDescription });
+        updateVideoDetails(currentVideo._id, { title: editedTitle, description: editedDescription }, currentUser); //check if works
         setIsEditing(false);
         setThreeDots(false);
     };
