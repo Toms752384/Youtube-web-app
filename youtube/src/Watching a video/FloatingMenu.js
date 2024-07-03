@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './FloatingMenu.css';
 import axios from 'axios';
 
 function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser, handleDeleteUser, setCurrentUser }) {
+    //state of token with useEffect hook to render it from the local storage
+    const [jwt, setJwt] = useState(null);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setJwt(JSON.parse(token));
+    }, []);
+
     //states for editing nickname
     const [isEditing, setIsEditing] = useState(false);
     const [newNickname, setNewNickname] = useState(currentUser.nickname);
@@ -56,21 +64,22 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
     //use the deleteUser function in an onClick function and send to the button
     const handleDeleteUserClick = () => {
         //delete user if one is logged in
-        if (currentUser.username !== 'username') {
-
-            //delete the current user from the list
-            handleDeleteUser(currentUser);
-
-            //sign out - sign the defualt user in
-            handleSignOut(defualtUser);
-            navigate('/');
+        if (!jwt) {
+            alert("You need to log in to delete user");
+            return;
         }
+        //delete the current user from the list
+        handleDeleteUser(currentUser);
+
+        //sign out - sign the defualt user in
+        handleSignOut(defualtUser);
+        navigate('/');
     }
 
     //function to handle the edit button click
     const handleEditClick = () => {
         //check if user is logged in
-        if(currentUser.username === 'username'){
+        if (!jwt) {
             alert('You need to log in to edit your profile!');
             return;
         }
@@ -94,7 +103,7 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
             if (newAvatar) {
                 formData.append('avatar', newAvatar);
             }
-           
+
             const response = await axios.put(`http://localhost:80/api/users/${currentUser._id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',

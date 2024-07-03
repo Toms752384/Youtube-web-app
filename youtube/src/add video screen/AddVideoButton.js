@@ -2,13 +2,22 @@ import React from 'react';
 import './AddVideoContainer.css'
 import { VerifyVideo } from './VerifyNewVideo.js';
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
 
 function AddVideoButton({ addVideo, videoList, newVideo, currentUser, displayImage }) {
+    //state of token with useEffect hook to render it from the local storage
+    const [jwt, setJwt] = useState(null);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setJwt(JSON.parse(token));
+    }, []);
+
 
     //function to handle click on the add video
     const handleAddVideoClick = () => {
-        var valid = VerifyVideo({ currentUser, newVideo });
-        if(valid){
+        var valid = VerifyVideo({ currentUser, newVideo, jwt });
+        if (valid) {
             const videoObject = createNewVideo();
             addVideo(newVideo, videoObject);
             navigateToVideo();
@@ -27,14 +36,14 @@ function AddVideoButton({ addVideo, videoList, newVideo, currentUser, displayIma
         var avatar = currentUser.avatar;
         var comments = "[]";
 
-        return {userId, title, artist, views, subscribers, likes, description, avatar, comments};
+        return { userId, title, artist, views, subscribers, likes, description, avatar, comments };
     }
 
     //function to navigate to video page - need to change to home!
     const navigate = useNavigate();
     const navigateToVideo = () => {
         navigate('/home');
-          };
+    };
 
     return (
         <>
