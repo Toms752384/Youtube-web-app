@@ -68,11 +68,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
             return;
         }
         if (newComment.trim() !== '') {
-            addComment({
-                username: currentUser.username,
-                avatar: currentUser.avatar,
-                text: newComment,
-            });
+            addComment({ content : newComment });
             setNewComment('');
             setIsAddingComment(false);
         }
@@ -143,7 +139,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
                                 </div>
                             </div>
                         ) : (
-                            <div className="text">{comment.text}</div>
+                            <div className="text">{comment.content}</div>
                         )}
                         <i className="bi bi-three-dots" onClick={(event) => handleThreeDotsClick(index, event, comment)}></i>
                         <div>

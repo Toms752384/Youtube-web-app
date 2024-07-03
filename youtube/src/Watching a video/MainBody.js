@@ -25,12 +25,24 @@ function MainBody({ currentVideo, currentUser, updateComments, deleteVideo, upda
         }
     }
 
+    
     //add comment function
-    const addComment = (newComment) => {
-        const updatedComments = [...commentsList, newComment];
-        setComments(updatedComments);
-        updateCommentsRemove(currentVideo.videoUrl, updatedComments);
+    const addComment = async (newComment) => {
+        try {
+            const response = await axios.post(`http://localhost:80/api/videos/${currentVideo._id}/comments/${currentUser._id}`, newComment);
+            const updatedComments = [...commentsList, response.data.comment];
+            setComments(updatedComments);
+        } catch (error) {
+            console.error('Error message:', error.message);
+        }
     }
+
+    // //add comment function
+    // const addComment = (newComment) => {
+    //     const updatedComments = [...commentsList, newComment];
+    //     setComments(updatedComments);
+    //     updateCommentsRemove(currentVideo.videoUrl, updatedComments);
+    // }
 
     //delete comment function
     const deleteComment = (commentIndex) => {
