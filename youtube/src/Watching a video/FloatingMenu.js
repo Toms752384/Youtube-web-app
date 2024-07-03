@@ -69,6 +69,11 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
 
     //function to handle the edit button click
     const handleEditClick = () => {
+        //check if user is logged in
+        if(currentUser.username === 'username'){
+            alert('You need to log in to edit your profile!');
+            return;
+        }
         setIsEditing(true);
     }
 
