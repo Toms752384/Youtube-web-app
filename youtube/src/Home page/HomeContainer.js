@@ -6,7 +6,7 @@ import WatchSearchBar from '../Watching a video/WatchSearchBar';
 import IconsRight from '../Watching a video/IconsRight';
 import HomeVideosList from './HomeVideosList';
 
-function HomeContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, handleDeleteUser, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch }) {
+function HomeContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, handleDeleteUser, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch, setCurrentUser }) {
     //function to filter 20 videos from the list - 10 most viewed, and 10 random
     const getTopAndRandomVideos = (videos) => {
         if (videos.length <= 10) {
@@ -45,7 +45,7 @@ function HomeContainer({ videosList, currentVideo, changeVideo, currentUser, def
     return (
         <>
             <header className="header d-flex justify-content-between align-items-center">
-                <IconsLeft currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} handleDeleteUser={handleDeleteUser}/>
+                <IconsLeft currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} handleDeleteUser={handleDeleteUser} setCurrentUser={setCurrentUser}/>
                 <WatchSearchBar searchQuery={searchQuery} handleSearch={handleSearch}/>
                 <IconsRight currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} />
             </header>

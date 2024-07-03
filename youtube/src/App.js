@@ -34,7 +34,7 @@ function App() {
           <Route path='/signup' element={<RegistrationContainer
             users={users}
             addUser={addUser} />} />
-          <Route path='/profile' element={<ProfileContainer
+          <Route path='/profile' element={<ProfileContainer //send arg of set current user
             videosList={videosList}
             currentVideo={currentVideo}
             changeVideo={changeVideo}
@@ -47,8 +47,9 @@ function App() {
             updateVideoDetails={updateVideoDetails}
             searchQuery={searchQuery}
             handleSearch={handleSearch}
-            featchVideosByID={featchVideosByID} />} />
-          <Route path='/home' element={<HomeContainer
+            featchVideosByID={featchVideosByID}
+            setCurrentUser={setCurrentUser} />} />
+          <Route path='/home' element={<HomeContainer 
             videosList={videosList}
             currentVideo={currentVideo}
             changeVideo={changeVideo}
@@ -61,8 +62,9 @@ function App() {
             updateVideoDetails={updateVideoDetails}
             searchQuery={searchQuery}
             handleSearch={handleSearch}
+            setCurrentUser={setCurrentUser}
           />} />
-          <Route path='/video' element={<VideoContainer //send arg of deleteUser
+          <Route path='/video' element={<VideoContainer 
             videosList={videosList}
             currentVideo={currentVideo}
             changeVideo={changeVideo}

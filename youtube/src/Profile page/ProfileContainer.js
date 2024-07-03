@@ -8,7 +8,7 @@ import ProfileDetails from './ProfileDetails';
 import HomeVideosList from '../Home page/HomeVideosList';
 import { useState, useEffect } from 'react';
 
-function ProfileContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, handleDeleteUser, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch, featchVideosByID}) {
+function ProfileContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, handleDeleteUser, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch, featchVideosByID, setCurrentUser}) {
     // // filter list of videos using the currentVideo artist
     // const filteredVideosList = videosList.filter(video =>
     //     video.artist.includes(currentVideo.artist)
@@ -31,7 +31,7 @@ function ProfileContainer({ videosList, currentVideo, changeVideo, currentUser, 
     return (
         <>
             <header className="header d-flex justify-content-between align-items-center">
-                <IconsLeft currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} handleDeleteUser={handleDeleteUser} />
+                <IconsLeft currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} handleDeleteUser={handleDeleteUser} setCurrentUser={setCurrentUser}/>
                 <WatchSearchBar searchQuery={searchQuery} handleSearch={handleSearch} />
                 <IconsRight currentUser={currentUser} defualtUser={defualtUser} handleSignOut={handleSignOut} />
             </header>
