@@ -9,13 +9,6 @@ import HomeVideosList from '../Home page/HomeVideosList';
 import { useState, useEffect } from 'react';
 
 function ProfileContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, handleDeleteUser, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch, featchVideosByID, setCurrentUser}) {
-    // // filter list of videos using the currentVideo artist
-    // const filteredVideosList = videosList.filter(video =>
-    //     video.artist.includes(currentVideo.artist)
-    // );
-    // const test = featchVideosByID(currentVideo.userId);
-    // console.log(test);
-
     const [filteredVideosList, setFilteredVideosList] = useState([]);
 
     useEffect(() => {
