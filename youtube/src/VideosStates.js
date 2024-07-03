@@ -42,7 +42,7 @@ export const VideosStates = () => {
         // console.log(videosList);
     }, []);
 
-    //state of currnet video plays
+    //state of currnet video that plays
     const defualtVideo = videosList[0];
     const [currentVideo, setCurrentVideo] = useState(defualtVideo);
 
@@ -143,6 +143,6 @@ const featchVideosByID = async (userId) => {
 }
 
 
-    return { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails, featchVideosByID};
+    return { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails, featchVideosByID, setVideosList, setCurrentVideo};
 };
 

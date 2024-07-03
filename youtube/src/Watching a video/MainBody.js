@@ -1,47 +1,94 @@
 import { useState, useEffect } from "react";
 import Comments from "./Comments";
 import Video from "./Video";
+import axios from "axios";
 
-function MainBody({ currentVideo, currentUser, updateComments, deleteVideo, updateVideoDetails }) {
+function MainBody({ currentVideo, currentUser, deleteVideo, updateVideoDetails, setVideosList, setCurrentVideo, videosList }) {
 
     //state of comments of the videos displayed
-    const [commentsList, setComments] = useState(currentVideo.comments);
+    const [commentsList, setComments] = useState([]);
+
+    //fetch comments by Id of video
+    const getCommentsByVideoId = async (videoId) => {
+        try {
+            const response = await axios.get(`http://localhost:80/api/videos/${videoId}/comments`);
+            const newCommenstList = response.data.comments;
+            setComments(newCommenstList);
+        } catch (error) {
+            console.error('Error message:', error.message);
+        }
+    };
 
     //use effect to change the comments to be the currentVideo's comments
     useEffect(() => {
-        setComments(currentVideo.comments);
-    }, [currentVideo]);
+        getCommentsByVideoId(currentVideo._id);
+    }, []);
 
     //add comment function
-    const addComment = (newComment) => {
-        const updatedComments = [...commentsList, newComment];
-        setComments(updatedComments);
-        updateComments(currentVideo.videoUrl, updatedComments);
-    }
+    const addComment = async (newComment) => {
+        try {
+            const response = await axios.post(`http://localhost:80/api/videos/${currentVideo._id}/comments/${currentUser._id}`, newComment);
+            const updatedComments = [...commentsList, response.data.comment];
+            setComments(updatedComments);
+        } catch (error) {
+            console.error('Error message:', error.message);
+        }
+    };
+
 
     //delete comment function
-    const deleteComment = (commentIndex) => {
-        //filter function to keep all the other comments
-        const updatedComments = commentsList.filter((_, index) => index !== commentIndex);
+    const deleteComment = async (commentId) => {
+        try {
+            //delete the comment from the server
+            const response = await axios.delete(`http://localhost:80/api/videos/${currentUser._id}/${currentVideo._id}/comments/${commentId}`);
 
-        //update comments
-        setComments(updatedComments);
-        updateComments(currentVideo.videoUrl, updatedComments);
+            //if successful, update the list
+            if (response.status === 200) {
+                //filter out the deleted comment from the comments list
+                const updatedComments = commentsList.filter(comment => comment._id !== commentId);
+
+                //update the state with the filtered list
+                setComments(updatedComments);
+            } else {
+                console.error('Failed to delete comment, server responded with status:', response.status);
+            }
+        } catch (error) {
+            console.error('Error message:', error.message);
+        }
     };
 
     //edit comment function
-    const editComment = (commentIndex, newText) => {
-        const updatedComments = commentsList.map((comment, index) =>
-            index === commentIndex ? { ...comment, text: newText } : comment
-        );
-        setComments(updatedComments);
-        updateComments(currentVideo.videoUrl, updatedComments);
+    const editComment = async (commentId, newContent) => {
+        try {
+            const response = await axios.put(`http://localhost:80/api/videos/${currentUser._id}/${currentVideo._id}/comments/${commentId}`, { content: newContent }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            //if successful, update the list
+            if (response.status === 200) {
+                //extract the updated comment from the response
+                const updatedComment = response.data.updatedComment;
+
+                //map over the comments list and update the specific comment
+                const updatedComments = commentsList.map(comment =>
+                    comment._id === commentId ? updatedComment : comment
+                );
+
+                // Update the state with the updated list
+                setComments(updatedComments);
+            } else {
+                console.error('Failed to delete comment, server responded with status:', response.status);
+            }
+        } catch (error) {
+            console.error('Error message:', error.message);
+        }
     };
 
     return (
         <div className="col-md-8">
-            <Video currentVideo={currentVideo} currentUser={currentUser} deleteVideo={deleteVideo} updateVideoDetails={updateVideoDetails}/>
-            <Comments comments={commentsList} currentUser={currentUser} addComment={addComment} deleteComment={deleteComment} editComment={editComment}/>
+            <Video currentVideo={currentVideo} currentUser={currentUser} deleteVideo={deleteVideo} updateVideoDetails={updateVideoDetails} />
+            <Comments comments={commentsList} currentUser={currentUser} addComment={addComment} deleteComment={deleteComment} editComment={editComment} />
         </div>
     );
 }
