@@ -19,13 +19,13 @@ function MainBody({ currentVideo, currentUser, updateComments, deleteVideo, upda
         try {
             const response = await axios.get(`http://localhost:80/api/videos/${videoId}/comments`);
             const newCommenstList = response.data.comments;
-            setComments(newCommenstList); 
+            setComments(newCommenstList);
         } catch (error) {
             console.error('Error message:', error.message);
         }
     }
 
-    
+
     //add comment function
     const addComment = async (newComment) => {
         try {
@@ -37,18 +37,18 @@ function MainBody({ currentVideo, currentUser, updateComments, deleteVideo, upda
         }
     }
 
-    
+
     //delete comment function
     const deleteComment = async (commentId) => {
         try {
             //delete the comment from the server
             const response = await axios.delete(`http://localhost:80/api/videos/${currentUser._id}/${currentVideo._id}/comments/${commentId}`);
-            
+
             //if successful, update the list
             if (response.status === 200) {
                 //filter out the deleted comment from the comments list
                 const updatedComments = commentsList.filter(comment => comment._id !== commentId);
-                
+
                 //update the state with the filtered list
                 setComments(updatedComments);
             } else {
@@ -58,23 +58,38 @@ function MainBody({ currentVideo, currentUser, updateComments, deleteVideo, upda
             console.error('Error message:', error.message);
         }
     }
-    // const deleteComment = (commentIndex) => {
-    //     //filter function to keep all the other comments
-    //     const updatedComments = commentsList.filter((_, index) => index !== commentIndex);
 
-    //     //update comments
+    //edit comment function
+    const editComment = async (commentId, newContent) => {
+        try {
+            const response = await axios.put(`http://localhost:80/api/videos/${currentUser._id}/${currentVideo._id}/comments/${commentId}`, { content: newContent }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });            
+            //if successful, update the list
+            if (response.status === 200) {
+                //map over the comments list and update the specific comment
+                const updatedComments = commentsList.map(comment =>
+                    comment._id === commentId ? { ...comment, content: newContent } : comment
+                );
+
+                //update the state with the filtered list
+                setComments(updatedComments);
+            } else {
+                console.error('Failed to delete comment, server responded with status:', response.status);
+            }
+        } catch (error) {
+            console.error('Error message:', error.message);
+        }
+    }
+    // const editComment = (commentIndex, newText) => {
+    //     const updatedComments = commentsList.map((comment, index) =>
+    //         index === commentIndex ? { ...comment, text: newText } : comment
+    //     );
     //     setComments(updatedComments);
     //     updateCommentsRemove(currentVideo.videoUrl, updatedComments);
     // };
-
-    //edit comment function
-    const editComment = (commentIndex, newText) => {
-        const updatedComments = commentsList.map((comment, index) =>
-            index === commentIndex ? { ...comment, text: newText } : comment
-        );
-        setComments(updatedComments);
-        updateCommentsRemove(currentVideo.videoUrl, updatedComments);
-    };
 
     //weird function that needs to gooooo - updates all the comments in the list for some reason
     const updateCommentsRemove = (videoUrl, newComments) => {
@@ -91,8 +106,8 @@ function MainBody({ currentVideo, currentUser, updateComments, deleteVideo, upda
 
     return (
         <div className="col-md-8">
-            <Video currentVideo={currentVideo} currentUser={currentUser} deleteVideo={deleteVideo} updateVideoDetails={updateVideoDetails}/>
-            <Comments comments={commentsList} currentUser={currentUser} addComment={addComment} deleteComment={deleteComment} editComment={editComment}/>
+            <Video currentVideo={currentVideo} currentUser={currentUser} deleteVideo={deleteVideo} updateVideoDetails={updateVideoDetails} />
+            <Comments comments={commentsList} currentUser={currentUser} addComment={addComment} deleteComment={deleteComment} editComment={editComment} />
         </div>
     );
 }

@@ -87,8 +87,8 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
     };
 
     //function to handle saving the comment after editing
-    const handleSaveEditComment = (index) => {
-        editComment(index, editCommentText);
+    const handleSaveEditComment = (commentId, newContent) => {
+        editComment(commentId, newContent);
         setIsEditingComment(null);
         setEditCommentText('');
     };
@@ -135,7 +135,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
                                 />
                                 <div className="edit-comment-actions d-flex justify-content-end mt-2">
                                     <button onClick={handleCancelEditComment} className="btn btn-secondary mr-2">Cancel</button>
-                                    <button onClick={() => handleSaveEditComment(index)} className="btn btn-primary">Save</button>
+                                    <button onClick={() => handleSaveEditComment(comment._id, editCommentText)} className="btn btn-primary">Save</button>
                                 </div>
                             </div>
                         ) : (
@@ -146,7 +146,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
                             {openCommentId === index && (
                                 <div className="three-dots-menu" ref={menuRef}>
                                     <ul>
-                                        <li className='three-dots-option' onClick={() => handleEditComment(index, comment.text)}>Edit comment</li>
+                                        <li className='three-dots-option' onClick={() => handleEditComment(index, comment.content)}>Edit comment</li>
                                         <li className='three-dots-option' onClick={() => deleteComment(comment._id)}>Delete comment</li>
                                     </ul>
                                 </div>
