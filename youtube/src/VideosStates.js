@@ -52,6 +52,8 @@ export const VideosStates = () => {
     //function to add videos
     const addVideo = async (videoFile, videoBody) => {
         try {
+            const token = localStorage.getItem('token');
+
             // Create FormData object
             const formData = new FormData();
             formData.append('video', videoFile); // Ensure 'video' matches the field name in multer setup
@@ -64,7 +66,8 @@ export const VideosStates = () => {
             // Send a request to the server with FormData
             const response = await axios.post(`http://localhost:80/api/users/${videoBody.userId}/videos`, formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${token}`
                 }
             });
 
@@ -98,9 +101,16 @@ export const VideosStates = () => {
 
     const deleteVideo = async (videoId, userId) => {
         try {
-            //call delete request with the id in the request
-            const response = await axios.delete(`http://localhost:80/api/users/${userId}/videos/${videoId}`);
 
+            const token = localStorage.getItem('token');
+
+            //call delete request with the id in the request
+            const response = await axios.delete(`http://localhost:80/api/users/${userId}/videos/${videoId}`, {  
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+              
             //call fetch videos to set the videos list to be the updated
             fetchVideos();
 
@@ -114,8 +124,15 @@ export const VideosStates = () => {
 
     const updateVideoDetails = async (videoId, newDetails, currentUser) => { 
     try{
+
+        const token = localStorage.getItem('token');
+
         //call a put request with the id and the details
-        const response = await axios.put(`http://localhost:80/api/users/${currentUser._id}/videos/${videoId}`, newDetails);
+        const response = await axios.put(`http://localhost:80/api/users/${currentUser._id}/videos/${videoId}`, newDetails ,{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
 
         //fetch the updated video details
         const updatedVideo = await fetchVideo(currentUser._id, videoId); //check if works

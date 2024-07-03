@@ -86,15 +86,21 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
     //function to save the provided details
     const handleSaveEditClick = async () => {
         try {
+            //////////////
+            const token = localStorage.getItem('token');
+            /////////////
             const formData = new FormData();
             formData.append('nickname', newNickname);
             if (newAvatar) {
                 formData.append('avatar', newAvatar);
             }
-
+           
             const response = await axios.put(`http://localhost:80/api/users/${currentUser._id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
+                    /////////////
+                    'Authorization': `Bearer ${token}`
+                    //////////////////
                 },
             });
             setCurrentUser(response.data.user);
