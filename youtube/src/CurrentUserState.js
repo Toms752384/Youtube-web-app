@@ -65,7 +65,7 @@ export const CurrentUserState = () => {
     const handleDeleteUser = async (loggedInUser) => {
         try {
             //send requet to server
-            const response = await axios.post('http://localhost:80/users/deleteUser', loggedInUser);
+            const response = await axios.delete(`http://localhost:80/api/users/${loggedInUser._id}`);
             console.log(response.data.message); //log the status message
         }
         catch(error) {
