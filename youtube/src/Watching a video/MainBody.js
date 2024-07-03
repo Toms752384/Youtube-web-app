@@ -27,7 +27,16 @@ function MainBody({ currentVideo, currentUser, deleteVideo, updateVideoDetails, 
     //add comment function
     const addComment = async (newComment) => {
         try {
-            const response = await axios.post(`http://localhost:80/api/videos/${currentVideo._id}/comments/${currentUser._id}`, newComment);
+
+            const token = localStorage.getItem('token');
+
+            //send requet to server
+            const response = await axios.post(`http://localhost:80/api/videos/${currentVideo._id}/comments/${currentUser._id}`, newComment , {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
             const updatedComments = [...commentsList, response.data.comment];
             setComments(updatedComments);
         } catch (error) {
@@ -39,8 +48,15 @@ function MainBody({ currentVideo, currentUser, deleteVideo, updateVideoDetails, 
     //delete comment function
     const deleteComment = async (commentId) => {
         try {
+
+            const token = localStorage.getItem('token');
+
             //delete the comment from the server
-            const response = await axios.delete(`http://localhost:80/api/videos/${currentUser._id}/${currentVideo._id}/comments/${commentId}`);
+            const response = await axios.delete(`http://localhost:80/api/videos/${currentUser._id}/${currentVideo._id}/comments/${commentId}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
 
             //if successful, update the list
             if (response.status === 200) {
@@ -59,10 +75,14 @@ function MainBody({ currentVideo, currentUser, deleteVideo, updateVideoDetails, 
 
     //edit comment function
     const editComment = async (commentId, newContent) => {
+
+        const token = localStorage.getItem('token');
+
         try {
             const response = await axios.put(`http://localhost:80/api/videos/${currentUser._id}/${currentVideo._id}/comments/${commentId}`, { content: newContent }, {
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
             });
             //if successful, update the list

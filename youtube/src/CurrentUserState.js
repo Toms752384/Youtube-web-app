@@ -28,11 +28,18 @@ export const CurrentUserState = () => {
             setCurrentUser(response.data.loggedInUser);
 
             //store the user in storage
-            localStorage.setItem('currentUser', JSON.stringify(response.data.loggedInUser)); //
+            localStorage.setItem('currentUser', JSON.stringify(response.data.loggedInUser)); 
+
+            const tokenResponse = await axios.post('http://localhost:80/api/tokens', { userId: loggedInUser._id });
+            localStorage.setItem('token', tokenResponse.data.token); 
         }
         catch (error) {
             console.error('Error logging in:', error);
         }
+
+    // // crete a token for our login user
+    // const response = await axios.post('http://localhost:80/api/tokens', loggedInUser._id);
+    // localStorage.setItem('token' , JSON.stringify(response.data.token)); 
     };
 
     //useEffect hook to bring the currentUser from storage
@@ -60,8 +67,16 @@ export const CurrentUserState = () => {
     //function of delete user
     const handleDeleteUser = async (loggedInUser) => {
         try {
+
+            const token = localStorage.getItem('token');
+
             //send requet to server
-            const response = await axios.delete(`http://localhost:80/api/users/${loggedInUser._id}`);
+            const response = await axios.delete(`http://localhost:80/api/users/${loggedInUser._id}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
             console.log(response.data.message); //log the status message
         }
         catch(error) {
