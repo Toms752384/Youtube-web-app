@@ -1,13 +1,16 @@
 Description:
 This YouTube React app is a video player application that runs on the web. Its design and functionality are inspired by YouTube, created as a project for the Advanced Systems Programming course in the BIU Computer Science Department.
+This branch contains part 2 of the project - make sure you first download the server repository to your computer, and run it before you start working on this.
+Here is a link: https://github.com/Toms752384/Youtube-web-server.git
 
 Download Instructions:
+# first make sure to download the server and run its script to add videos and users.
 1. Clone the repository into your IDE from this link into a new folder:  https://github.com/AlonLivne007/YouTube-project-.git
 2. Open the terminal in your new React project and enter: npm install to add node_modules.
 3. Enter in the terminal the command: npm start to open the project in localhost:3000 on the web.
 4. Enjoy browsing the project!
 
-The app contains five main pages: Sign In, Sign Up, Home, Watch a Video, and Upload a New Video. Each page has functionality, and to experience the full experience, we recommend signing up for the app. You can also upload a photo of yourself!
+The app contains six main pages: Sign In, Sign Up, Home, Watch a Video, Upload a New Video, and a profile page. Each page has functionality, and to experience the full experience, we recommend signing up for the app. You can also upload a photo of yourself!
 
 This is a sample of the different pages, with their functionalities
 
