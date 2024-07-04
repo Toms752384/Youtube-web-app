@@ -10,7 +10,7 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        setJwt(JSON.parse(token));
+        setJwt(token);
     }, []);
 
     //states for editing nickname
