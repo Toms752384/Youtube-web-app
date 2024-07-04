@@ -98,7 +98,7 @@ function MainBody({ currentVideo, currentUser, deleteVideo, updateVideoDetails, 
                 // Update the state with the updated list
                 setComments(updatedComments);
             } else {
-                console.error('Failed to delete comment, server responded with status:', response.status);
+                console.error('Failed to edit comment, server responded with status:', response.status);
             }
         } catch (error) {
             console.error('Error message:', error.message);

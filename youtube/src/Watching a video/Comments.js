@@ -1,6 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 function Comments({ comments, currentUser, addComment, deleteComment, editComment }) {
+    //state of token with useEffect hook to render it from the local storage
+    const [jwt, setJwt] = useState(null);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setJwt(JSON.parse(token));
+    }, []);
+
     //state of three dots - open or not
     const [openCommentId, setOpenCommentId] = useState(null);
 
@@ -48,7 +56,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
     const handleThreeDotsClick = (index, event, comment) => {
         event.stopPropagation(); // Prevent the event from propagating to the document
         //check if user is logged in
-        if (currentUser.username === "username") {
+        if (!jwt) {
             alert("You need to log in to edit comments!");
             return;
         }
@@ -63,12 +71,12 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
 
     //function to handle add comment click
     const handleAddComment = () => {
-        if (currentUser.username === "username") {
+        if (!jwt) {
             alert("You need to log in to add a new comment!");
             return;
         }
         if (newComment.trim() !== '') {
-            addComment({ content : newComment });
+            addComment({ content: newComment });
             setNewComment('');
             setIsAddingComment(false);
         }

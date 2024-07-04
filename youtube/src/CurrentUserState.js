@@ -36,10 +36,6 @@ export const CurrentUserState = () => {
         catch (error) {
             console.error('Error logging in:', error);
         }
-
-    // // crete a token for our login user
-    // const response = await axios.post('http://localhost:80/api/tokens', loggedInUser._id);
-    // localStorage.setItem('token' , JSON.stringify(response.data.token)); 
     };
 
     //useEffect hook to bring the currentUser from storage
@@ -60,8 +56,11 @@ export const CurrentUserState = () => {
         //set the defualt user
         setCurrentUser(user);
 
-        //store the user in storage
+        //store the defualt user in storage
         localStorage.setItem('currentUser', JSON.stringify(user));
+
+        //delete the token
+        localStorage.setItem('token', null);
     };
 
     //function of delete user

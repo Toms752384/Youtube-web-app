@@ -2,6 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 
 function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, changeVideo }) {
+    //state of token with useEffect hook to render it from the local storage
+    const [jwt, setJwt] = useState(null);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setJwt(JSON.parse(token));
+    }, []);
+
     // state of like button
     const [likeButton, setLikeButton] = useState(false);
 
@@ -53,10 +61,10 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, cha
     // function to handle like click
     const handleLikeClick = () => {
         //if like button is pressed and there was no like before, add 1
-        if(!likeButton){
+        if (!likeButton) {
             setLikesCount(likesCount + 1);
         }
-        else{
+        else {
             setLikesCount(likesCount - 1);
         }
         setLikeButton(!likeButton);
@@ -85,13 +93,13 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, cha
     const handleThreeDotsClick = (event) => {
         event.stopPropagation(); // Prevent the event from propagating to the document
         //check if user is logged in
-        if (currentUser.username === "username") {
+        if (!jwt) {
             alert("You need to log in to edit videos!");
             return;
         }
 
         //check if user is the user that uploaded the video
-        if(currentUser.username !== currentVideo.artist){
+        if (currentUser.username !== currentVideo.artist) {
             alert("You cannot update or delete a video that isn't yours!");
             return;
         }
@@ -150,7 +158,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, cha
     const formatDate = (dateString) => {
         const options = { day: '2-digit', month: '2-digit', year: '2-digit' };
         return new Date(dateString).toLocaleDateString('en-GB', options);
-      };
+    };
 
     return (
         <>
@@ -175,7 +183,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, cha
                 <>
                     <h3 className="video-title">{currentVideo.title}</h3>
                     <div className="d-flex justify-content-between align-items-center mb-3">
-                        <div className="details d-flex align-items-center" onClick={handleProfileClick}> 
+                        <div className="details d-flex align-items-center" onClick={handleProfileClick}>
                             <img src={currentVideo.avatar} alt="Channel Avatar" className="mr-2" width="50" height="50" />
                             <div>
                                 <div>{currentVideo.artist}</div>
