@@ -1,4 +1,3 @@
-Description:
 This YouTube React app is a video player application that runs on the web. Its design and functionality are inspired by YouTube, created as a project for the Advanced Systems Programming course in the BIU Computer Science Department.
 This branch contains part 2 of the project - make sure you first download the server repository to your computer, and run it before you start working on this.
 Here is a link: https://github.com/Toms752384/Youtube-web-server.git
