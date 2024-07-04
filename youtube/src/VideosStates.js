@@ -48,10 +48,10 @@ export const VideosStates = () => {
      //default new video object - only to prevent runtime errors
      const newVideo = {
         likes: 0,
-        title: "",
-        description: "",
+        title: "no video chosen",
+        description: "go to home page and choose a video",
         videoUrl: "",
-        artist: "",
+        artist: "If you see this, you tried to crash my app :(",
         avatar: "",
         subscribers: 0,
         views: 0,
