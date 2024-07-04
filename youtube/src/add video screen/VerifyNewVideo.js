@@ -1,5 +1,5 @@
 export function VerifyVideo({currentUser, newVideo, jwt}) {
-    //first check if user is logged in
+    //first check if user is logged in using token
     if(jwt === 'null' || !jwt){
         alert("You need to log in in order to add a new video!");
         return false;

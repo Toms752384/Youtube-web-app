@@ -4,6 +4,7 @@ function UploadImage({uploadNewDisImage}) {
     //state of preview of the user input
     const [preview, setPreview] = useState(null);
 
+    //function to handle image upload
     const handleVideoChange = (event) => {
         const file = event.target.files[0];
         const reader = new FileReader();
