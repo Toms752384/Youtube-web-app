@@ -45,12 +45,27 @@ export const VideosStates = () => {
         // console.log(videosList);
     }, []);
 
+     //default new video object - only to prevent runtime errors
+     const newVideo = {
+        likes: 0,
+        title: "",
+        description: "",
+        videoUrl: "",
+        artist: "",
+        avatar: "",
+        subscribers: 0,
+        views: 0,
+        time: new Date(),
+        _id: ""
+    };
+
     //retrieve video from localStorage on component mount
     const savedVideo = localStorage.getItem('currentVideo');
+    const initialVideo = savedVideo ? JSON.parse(savedVideo) : newVideo;
 
     //state of currnet video that plays
     const defualtVideo = videosList[0];
-    const [currentVideo, setCurrentVideo] = useState(JSON.parse(savedVideo));
+    const [currentVideo, setCurrentVideo] = useState(initialVideo);
 
     //function to add videos
     const addVideo = async (videoFile, videoBody) => {
