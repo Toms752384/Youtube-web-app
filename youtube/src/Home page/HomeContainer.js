@@ -29,17 +29,17 @@ function HomeContainer({ videosList, currentVideo, changeVideo, currentUser, def
                 randomVideos.push(remainingVideos.splice(randomIndex, 1)[0]);
             }
 
-            // Combine the two sets of videos
+            //combine the two sets of videos
             return [...mostViewed, ...randomVideos];
         }
     };
 
-    // Filter videos based on search query
+    //filter videos based on search query
     const filteredVideosList = videosList.filter(video =>
         video.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    // Get the combined list of top and random videos
+    //get the combined list of top and random videos
     const videosToShow = getTopAndRandomVideos(filteredVideosList);
     
     return (

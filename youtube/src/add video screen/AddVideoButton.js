@@ -36,10 +36,11 @@ function AddVideoButton({ addVideo, videoList, newVideo, currentUser, displayIma
         var avatar = currentUser.avatar;
         var comments = "[]";
 
+        //return a new video object
         return { userId, title, artist, views, subscribers, likes, description, avatar, comments };
     }
 
-    //function to navigate to video page - need to change to home!
+    //function to navigate to home page
     const navigate = useNavigate();
     const navigateToVideo = () => {
         navigate('/home');

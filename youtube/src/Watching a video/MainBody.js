@@ -4,7 +4,6 @@ import Video from "./Video";
 import axios from "axios";
 
 function MainBody({ currentVideo, currentUser, deleteVideo, updateVideoDetails, setVideosList, setCurrentVideo, videosList, changeVideo }) {
-
     //state of comments of the videos displayed
     const [commentsList, setComments] = useState([]);
 
@@ -27,16 +26,16 @@ function MainBody({ currentVideo, currentUser, deleteVideo, updateVideoDetails, 
     //add comment function
     const addComment = async (newComment) => {
         try {
-
+            //fetch token from storage
             const token = localStorage.getItem('token');
 
-            //send requet to server
+            //send post request to server
             const response = await axios.post(`http://localhost:80/api/videos/${currentVideo._id}/comments/${currentUser._id}`, newComment , {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             });
-
+            //update the comment list
             const updatedComments = [...commentsList, response.data.comment];
             setComments(updatedComments);
         } catch (error) {

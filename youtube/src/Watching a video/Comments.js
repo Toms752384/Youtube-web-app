@@ -24,7 +24,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
     //state of the edited comment text
     const [editCommentText, setEditCommentText] = useState('');
 
-    // ref for the three dots menu
+    //ref hook for the three dots menu
     const menuRef = useRef(null);
 
     //function to handle click outside the menu
@@ -54,9 +54,10 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
 
     //function to handle three dots click
     const handleThreeDotsClick = (index, event, comment) => {
-        event.stopPropagation(); // Prevent the event from propagating to the document
+        // Prevent the event from propagating to the document
+        event.stopPropagation(); 
         //check if user is logged in
-        if (!jwt) {
+        if (jwt === 'null' || !jwt) {
             alert("You need to log in to edit comments!");
             return;
         }
@@ -71,7 +72,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
 
     //function to handle add comment click
     const handleAddComment = () => {
-        if (!jwt) {
+        if (jwt === 'null' || !jwt) {
             alert("You need to log in to add a new comment!");
             return;
         }
@@ -123,7 +124,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
                 </div>
                 {isAddingComment && (
                     <div className="new-comment-actions d-flex justify-content-end mt-2">
-                        <button onClick={handleCancelComment} className="btn btn-secondary mr-2">Cancel</button>
+                        <button onClick={handleCancelComment} className="btn btn-secondary">Cancel</button>
                         <button onClick={handleAddComment} className="btn btn-primary">Comment</button>
                     </div>
                 )}
@@ -142,7 +143,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
                                     placeholder="Edit your comment..."
                                 />
                                 <div className="edit-comment-actions d-flex justify-content-end mt-2">
-                                    <button onClick={handleCancelEditComment} className="btn btn-secondary mr-2">Cancel</button>
+                                    <button onClick={handleCancelEditComment} className="btn btn-secondary">Cancel</button>
                                     <button onClick={() => handleSaveEditComment(comment._id, editCommentText)} className="btn btn-primary">Save</button>
                                 </div>
                             </div>

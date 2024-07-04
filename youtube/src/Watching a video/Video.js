@@ -10,16 +10,16 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, cha
         setJwt(token);
     }, []);
 
-    // state of like button
+    //state of like button
     const [likeButton, setLikeButton] = useState(false);
 
-    // state of three dots
+    //state of three dots
     const [ThreeDots, setThreeDots] = useState(false);
 
     //state of counting likes
     const [likesCount, setLikesCount] = useState(currentVideo.likes);
 
-    // states for editing title and description
+    //states for editing title and description
     const [isEditing, setIsEditing] = useState(false);
     const [editedTitle, setEditedTitle] = useState(currentVideo.title);
     const [editedDescription, setEditedDescription] = useState(currentVideo.description);
@@ -47,18 +47,17 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, cha
         } else {
             document.removeEventListener("click", handleClickOutside);
         }
-
         return () => {
             document.removeEventListener("click", handleClickOutside);
         };
     }, [ThreeDots]);
 
-    // useEffect to update likesCount when currentVideo changes
+    //useEffect to update likesCount when currentVideo changes
     useEffect(() => {
         setLikesCount(currentVideo.likes);
     }, [currentVideo]);
 
-    // function to handle like click
+    //function to handle like click
     const handleLikeClick = () => {
         //if like button is pressed and there was no like before, add 1
         if (!likeButton) {
@@ -70,7 +69,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, cha
         setLikeButton(!likeButton);
     };
 
-    // function to handle share click
+    //function to handle share click
     const handleShare = () => {
         const shareData = {
             title: currentVideo.title,
@@ -83,17 +82,18 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, cha
                 .then(() => console.log('Video shared successfully!'))
                 .catch((error) => console.log('Error sharing video:', error));
         } else {
-            // if browser does not support this action
+            //if browser does not support this action
             alert('Web Share API is not supported in your browser. Please copy the link manually.');
             console.log('Share data:', shareData);
         }
     };
 
-    // function to handle three dots click
+    //function to handle three dots click
     const handleThreeDotsClick = (event) => {
-        event.stopPropagation(); // Prevent the event from propagating to the document
+        //prevent the event from propagating to the document
+        event.stopPropagation(); 
         //check if user is logged in
-        if (!jwt) {
+        if (jwt === 'null' || !jwt) {
             alert("You need to log in to edit videos!");
             return;
         }
@@ -108,11 +108,11 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, cha
 
     //function to handle delete function
     const handleDeleteVidClick = () => {
-        deleteVideo(currentVideo._id, currentUser._id); //check
+        deleteVideo(currentVideo._id, currentUser._id);
         setThreeDots(false);
     }
 
-    // function to handle download click
+    //function to handle download click
     const handleDownload = () => {
         const link = document.createElement('a');
         link.href = currentVideo.videoUrl;
@@ -122,23 +122,23 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, cha
         document.body.removeChild(link);
     };
 
-    // function to handle edit video click
+    //function to handle edit video click
     const handleEditVideo = () => {
         setIsEditing(true);
 
-        // close the menu when editing starts
+        //close the menu when editing starts
         setThreeDots(false);
     };
 
-    // function to handle save edit click
+    //function to handle save edit click
     const handleSaveEdit = () => {
-        // use the outer function to edit the videos details - change  to id
+        //use the outer function to edit the videos details
         updateVideoDetails(currentVideo._id, { title: editedTitle, description: editedDescription }, currentUser); //check if works
         setIsEditing(false);
         setThreeDots(false);
     };
 
-    // function to handle cancel edit click
+    //function to handle cancel edit click
     const handleCancelEdit = () => {
         //close the editing menu
         setIsEditing(false);

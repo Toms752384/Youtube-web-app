@@ -41,7 +41,7 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
     //handle add video page
     const uploadVideoClick = () => {
         //if not logged in, go to sign in page
-        if (currentUser.username === "username") {
+        if (jwt === 'null' || !jwt) {
             navigate('/');
             return;
         }
@@ -64,7 +64,7 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
     //use the deleteUser function in an onClick function and send to the button
     const handleDeleteUserClick = () => {
         //delete user if one is logged in
-        if (!jwt) {
+        if (jwt === 'null' || !jwt) {
             alert("You need to log in to delete user");
             return;
         }
@@ -79,7 +79,7 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
     //function to handle the edit button click
     const handleEditClick = () => {
         //check if user is logged in
-        if (!jwt) {
+        if (jwt === 'null' || !jwt) {
             alert('You need to log in to edit your profile!');
             return;
         }
@@ -95,24 +95,27 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
     //function to save the provided details
     const handleSaveEditClick = async () => {
         try {
-            //////////////
+            //fetch token from storage
             const token = localStorage.getItem('token');
-            /////////////
+
+            //create a form data object to add to request
             const formData = new FormData();
             formData.append('nickname', newNickname);
             if (newAvatar) {
                 formData.append('avatar', newAvatar);
             }
 
+            //send a put request to server
             const response = await axios.put(`http://localhost:80/api/users/${currentUser._id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    /////////////
                     'Authorization': `Bearer ${token}`
-                    //////////////////
                 },
             });
+            //set the currentUser to be the new edited one
             setCurrentUser(response.data.user);
+
+            //save the user in local storage
             localStorage.setItem('currentUser', JSON.stringify(response.data.user));
             setIsEditing(false);
         } catch (error) {

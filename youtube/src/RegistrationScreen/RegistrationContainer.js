@@ -8,8 +8,10 @@ import RegistUpload from './RegistUpload';
 import RegistLoginButton from './RegistLoginButton';
 
 function RegistrationContainer({ users, addUser }) {
+  //state of avatar - set a defualt
   const [avatar, setAvatar] = useState("/localPhotos/defualtAvatar.png");
 
+  //function to handle upload of an avatar
   const handleImageUpload = (imageData) => {
     setAvatar(imageData);
   };
