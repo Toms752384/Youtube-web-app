@@ -7,7 +7,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, cha
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        setJwt(JSON.parse(token));
+        setJwt(token);
     }, []);
 
     // state of like button

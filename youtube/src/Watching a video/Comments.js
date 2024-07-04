@@ -6,7 +6,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        setJwt(JSON.parse(token));
+        setJwt(token);
     }, []);
 
     //state of three dots - open or not

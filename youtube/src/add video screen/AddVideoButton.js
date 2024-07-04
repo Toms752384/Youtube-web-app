@@ -10,7 +10,7 @@ function AddVideoButton({ addVideo, videoList, newVideo, currentUser, displayIma
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        setJwt(JSON.parse(token));
+        setJwt(token);
     }, []);
 
 
