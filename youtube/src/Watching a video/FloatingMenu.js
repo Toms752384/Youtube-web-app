@@ -41,7 +41,7 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
     //handle add video page
     const uploadVideoClick = () => {
         //if not logged in, go to sign in page
-        if (currentUser.username === "username") {
+        if (jwt === 'null' || !jwt) {
             navigate('/');
             return;
         }
@@ -64,7 +64,7 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
     //use the deleteUser function in an onClick function and send to the button
     const handleDeleteUserClick = () => {
         //delete user if one is logged in
-        if (!jwt) {
+        if (jwt === 'null' || !jwt) {
             alert("You need to log in to delete user");
             return;
         }
@@ -79,7 +79,7 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
     //function to handle the edit button click
     const handleEditClick = () => {
         //check if user is logged in
-        if (!jwt) {
+        if (jwt === 'null' || !jwt) {
             alert('You need to log in to edit your profile!');
             return;
         }

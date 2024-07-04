@@ -93,7 +93,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, cha
     const handleThreeDotsClick = (event) => {
         event.stopPropagation(); // Prevent the event from propagating to the document
         //check if user is logged in
-        if (!jwt) {
+        if (jwt === 'null' || !jwt) {
             alert("You need to log in to edit videos!");
             return;
         }
