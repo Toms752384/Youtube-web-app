@@ -4,8 +4,11 @@ import './ProfilePage.css';
 import { useNavigate } from "react-router-dom";
 
 function ProfileDetails({ currentVideo }) {
+    //fetch the user state and useEffect hook to render it
     const navigate = useNavigate();
     const [user, setUser] = useState({});
+
+    //useRef hook to make the useEffect hook render once
     const alertShownRef = useRef(false);
 
     useEffect(() => {
@@ -26,9 +29,9 @@ function ProfileDetails({ currentVideo }) {
                 console.error('Error fetching user:', error);
             }
         };
-
+        //reset alertShownRef when userId changes
         if (currentVideo.userId) {
-            alertShownRef.current = false; // Reset alertShownRef when userId changes
+            alertShownRef.current = false;
             fetchUser(currentVideo.userId);
         }
     }, [currentVideo.userId, navigate]);
@@ -40,7 +43,7 @@ function ProfileDetails({ currentVideo }) {
                 <div className="username">{user.username}</div>
                 <div className="subscribers">{currentVideo.subscribers} subscribers</div>
                 <div className="welcome-message">
-                    <b>Welcome to {user.username}'s profile page!</b>
+                    <b>Welcome to {user.nickname}'s profile page!</b>
                 </div>
             </div>
         </div>

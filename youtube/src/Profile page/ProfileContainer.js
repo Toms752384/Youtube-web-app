@@ -9,8 +9,8 @@ import HomeVideosList from '../Home page/HomeVideosList';
 import { useState, useEffect } from 'react';
 
 function ProfileContainer({ videosList, currentVideo, changeVideo, currentUser, defualtUser, handleSignOut, handleDeleteUser, updateComments, deleteVideo, updateVideoDetails, searchQuery, handleSearch, featchVideosByID, setCurrentUser}) {
+    //state of the video list to show in the profile page, and useEffect hook to render it
     const [filteredVideosList, setFilteredVideosList] = useState([]);
-
     useEffect(() => {
         const fetchUserVideos = async () => {
             if (currentVideo && currentVideo.userId) {
