@@ -8,7 +8,8 @@ Download Instructions:
 1. Clone the repository into your IDE from this link into a new folder:  https://github.com/AlonLivne007/YouTube-project-.git
 2. Open the terminal in your new React project and enter: npm install to add node_modules.
 3. Enter in the terminal the command: npm start to open the project in localhost:3000 on the web.
-4. Enjoy browsing the project!
+4. Note that you should receive from the server 3 defualt users you can log into, and 20 defualt videos for you to enjoy.
+5. Enjoy browsing the project!
 
 The app contains six main pages: Sign In, Sign Up, Home, Watch a Video, Upload a New Video, and a profile page. Each page has functionality, and to experience the full experience, we recommend signing up for the app. You can also upload a photo of yourself!
 
@@ -36,7 +37,7 @@ Navigate to sign in, sign up and upload pages.
 Change theme button - takes into account that the user has light mode - if he does not, takes two clicks to chang at first.
 Delete user - sends a delete request to the server to delete the current user.
 Edit user - opens a menu to edit a user's nickname and avatar. Changes are seen in the profile page.
-![image](https://github.com/AlonLivne007/YouTube-project-/assets/120726615/74ff732d-1b1b-4ac4-83c7-eb07e27d32ee)
+![image](https://github.com/AlonLivne007/YouTube-project-/assets/120726615/2dbf91d9-ea09-4860-8518-3092b92e528e)
 
 Sign in:
 All fields need to be filled.
