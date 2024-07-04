@@ -24,7 +24,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
     //state of the edited comment text
     const [editCommentText, setEditCommentText] = useState('');
 
-    // ref for the three dots menu
+    //ref hook for the three dots menu
     const menuRef = useRef(null);
 
     //function to handle click outside the menu
@@ -54,7 +54,8 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
 
     //function to handle three dots click
     const handleThreeDotsClick = (index, event, comment) => {
-        event.stopPropagation(); // Prevent the event from propagating to the document
+        // Prevent the event from propagating to the document
+        event.stopPropagation(); 
         //check if user is logged in
         if (jwt === 'null' || !jwt) {
             alert("You need to log in to edit comments!");

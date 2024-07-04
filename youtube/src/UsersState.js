@@ -13,15 +13,15 @@ const addUser = async (newUser) => {
   } catch (error) {
     console.error('Error adding user:', error);
   }
-  console.log(users); //debug
 };
 
 //fetch users
 useEffect(() => {
   const fetchUsers = async () => {
     try {
+      //send a get request to fetch users
       const response = await axios.get('http://localhost:80/users/fetchUsers');
-      console.log(response); // Log the status message
+      console.log(response); 
       if (Array.isArray(response.data.users)) {
         setUsers(response.data.users);
       } else {

@@ -10,6 +10,7 @@ export const VideosStates = () => {
     //function to fetch videos from user
     const fetchVideos = async () => {
         try {
+            //send a get request to fetch videos from server
             const response = await axios.get('http://localhost:80/api/videos');
             //check if valid info was fetched
             if (Array.isArray(response.data.videos)) {
@@ -26,9 +27,11 @@ export const VideosStates = () => {
     //function to get a video from the server
     const fetchVideo = async (userId, videoId) => {
         try {
+            //send a get request to fetch a video from server
             const response = await axios.get(`http://localhost:80/api/users/${userId}/videos/${videoId}`);
             const video = response.data.video;
-            video.videoUrl = `http://localhost:80${video.videoUrl}`; // Make URL fully qualified
+            //make URL fully qualified
+            video.videoUrl = `http://localhost:80${video.videoUrl}`; 
             return video;
         } catch (error) {
             console.error(`Error fetching video with ID: ${videoId} - ${error.message}`);
@@ -52,31 +55,30 @@ export const VideosStates = () => {
     //function to add videos
     const addVideo = async (videoFile, videoBody) => {
         try {
+            //fetch token from local storage
             const token = localStorage.getItem('token');
 
-            // Create FormData object
+            //create FormData object
             const formData = new FormData();
-            formData.append('video', videoFile); // Ensure 'video' matches the field name in multer setup
 
-            // Add additional video details to the FormData object
+             //ensure video matches the field name in multer setup
+            formData.append('video', videoFile);
+
+            //add additional video details to the FormData object
             for (const key in videoBody) {
                 formData.append(key, videoBody[key]);
             }
 
-            // Send a request to the server with FormData
+            //send a post request to the server with FormData to add video
             const response = await axios.post(`http://localhost:80/api/users/${videoBody.userId}/videos`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`
                 }
             });
-
-            // Debug this and add conditions if needed
-            // setVideosList([...videosList, response.data.video]); // Check if needed
         } catch (error) {
             console.error('Error message:', error.message);
         }
-
         //fetch videos when finished
         fetchVideos();
     }
@@ -101,7 +103,7 @@ export const VideosStates = () => {
 
     const deleteVideo = async (videoId, userId) => {
         try {
-
+            //fetch token from storage
             const token = localStorage.getItem('token');
 
             //call delete request with the id in the request
@@ -124,7 +126,7 @@ export const VideosStates = () => {
 
     const updateVideoDetails = async (videoId, newDetails, currentUser) => { 
     try{
-
+        //fetch token from storage
         const token = localStorage.getItem('token');
 
         //call a put request with the id and the details
@@ -140,7 +142,6 @@ export const VideosStates = () => {
 
         //store updated video in local storage
         localStorage.setItem('currentVideo', JSON.stringify(updatedVideo));
-
         console.log('Updated video details:', updatedVideo);
     }
     catch(error){
@@ -148,11 +149,12 @@ export const VideosStates = () => {
     }
 };
 
-// function video by id
+//function video by id
 const featchVideosByID = async (userId) => {
     try {
+        //send a get request to fetch videos of a specific user
         const response = await axios.get(`http://localhost:80/api/users/${userId}/videos`);
-        // Ensure video URLs are fully qualified
+        //ensure video URLs are fully qualified
         const videos = response.data.videos.map(video => {
             video.videoUrl = `http://localhost:80${video.videoUrl}`;
             return video;
@@ -162,8 +164,6 @@ const featchVideosByID = async (userId) => {
         console.error('Error message:', error.message);
     }
 }
-
-
     return { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails, featchVideosByID, setVideosList, setCurrentVideo};
 };
 

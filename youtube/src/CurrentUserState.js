@@ -19,7 +19,7 @@ export const CurrentUserState = () => {
     //fetch user from server
     const handleLogin = async (loggedInUser) => {
         try {
-            //send request to server
+            //send get request to server
             const response = await axios.get(`http://localhost:80/api/users/${loggedInUser._id}`);
             console.log(response.data.message); //log the status message
             console.log(response.data.loggedInUser); //log the user
@@ -30,6 +30,7 @@ export const CurrentUserState = () => {
             //store the user in storage
             localStorage.setItem('currentUser', JSON.stringify(response.data.loggedInUser)); 
 
+            //send a post request to create a token
             const tokenResponse = await axios.post('http://localhost:80/api/tokens', { userId: loggedInUser._id });
             localStorage.setItem('token', tokenResponse.data.token); 
         }
@@ -66,16 +67,15 @@ export const CurrentUserState = () => {
     //function of delete user
     const handleDeleteUser = async (loggedInUser) => {
         try {
-
+            //fetch token from storage
             const token = localStorage.getItem('token');
 
-            //send requet to server
+            //send a delete request to server
             const response = await axios.delete(`http://localhost:80/api/users/${loggedInUser._id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             });
-
             console.log(response.data.message); //log the status message
         }
         catch(error) {

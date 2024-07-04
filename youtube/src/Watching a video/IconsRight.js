@@ -11,6 +11,7 @@ function IconsRight({ currentUser, defualtUser, handleSignOut }) {
         const token = localStorage.getItem('token');
         setJwt(token);
     }, []);
+    
     //useState of the avatar menu
     const [isOptionsOpen, setIsOptionsOpen] = useState(false);
 

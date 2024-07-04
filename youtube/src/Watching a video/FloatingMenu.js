@@ -95,24 +95,27 @@ function FloatingMenu({ isOpen, onClose, currentUser, handleSignOut, defualtUser
     //function to save the provided details
     const handleSaveEditClick = async () => {
         try {
-            //////////////
+            //fetch token from storage
             const token = localStorage.getItem('token');
-            /////////////
+
+            //create a form data object to add to request
             const formData = new FormData();
             formData.append('nickname', newNickname);
             if (newAvatar) {
                 formData.append('avatar', newAvatar);
             }
 
+            //send a put request to server
             const response = await axios.put(`http://localhost:80/api/users/${currentUser._id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    /////////////
                     'Authorization': `Bearer ${token}`
-                    //////////////////
                 },
             });
+            //set the currentUser to be the new edited one
             setCurrentUser(response.data.user);
+
+            //save the user in local storage
             localStorage.setItem('currentUser', JSON.stringify(response.data.user));
             setIsEditing(false);
         } catch (error) {
