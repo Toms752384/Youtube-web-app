@@ -24,7 +24,9 @@ watch a video by clicking it.
 **Watch a video: **
 Like, comment, edit comment and video's title and description.
 Logo leads back to home page.
-Please notice, editing a video and comments require signing up to the app
+Please notice, editing a video and comments require signing up to the app - token is required for it.
+Video is being fetched from the server using a get request.
+Comments of the video are being fetched using a get request.
 ![image](https://github.com/AlonLivne007/YouTube-project-/assets/120726615/c046997b-5fd5-4bdf-aeae-e01af51a959f)
 ![image](https://github.com/AlonLivne007/YouTube-project-/assets/120726615/0b0373af-6327-4ff4-9fda-9e6fefccbe7b)
 
@@ -32,11 +34,16 @@ Opening menus:
 Details of the logged in user are presented.
 Navigate to sign in, sign up and upload pages.
 Change theme button - takes into account that the user has light mode - if he does not, takes two clicks to chang at first.
+Delete user - sends a delete request to the server to delete the current user.
+Edit user - opens a menu to edit a user's nickname and avatar. Changes are seen in the profile page.
 ![image](https://github.com/AlonLivne007/YouTube-project-/assets/120726615/74ff732d-1b1b-4ac4-83c7-eb07e27d32ee)
 
 Sign in:
 All fields need to be filled.
 Username and password are cross referenced from the database of the app's users.
+Using a get request we fetch the user.
+CurrentUser is being set as the logged user, and stored in local storage.
+A token is created in a post request and also being stored in the local storage.
 ![image](https://github.com/AlonLivne007/YouTube-project-/assets/120726615/57bcc423-f8bc-4a2c-baed-c5e658f1de00)
 
 Sign up:
@@ -44,13 +51,20 @@ All fields need to be filled, an avatar is optional - if user did not add, he wi
 Password must be in the required standrat.
 All fields must be unique of the user.
 Please notice that a defualt user is "logged in" when we are not signed in, with username = "username" and nickname = "nickname" - you can't create a new user with username = "username".
+Using a post request we create a new user the is stored in the database.
 ![image](https://github.com/AlonLivne007/YouTube-project-/assets/120726615/cf00ab2e-ac0c-4141-9dab-02005f71089f)
 
 Upload video: 
 All fields are required.
 The display picture of the video will be the frame of the video after 5 seconds.
-Please notice that uploading a video requires signing up to the app.
+Please notice that uploading a video requires signing up to the app - this page, and the upload button are protected by a token - it is required.
+Sends a post request to the server with a new video object.
 ![image](https://github.com/AlonLivne007/YouTube-project-/assets/120726615/459c5eec-6416-47f9-ab0e-3a9d07f6e060)
+
+Profile page:
+Uses a get request to fetch the videos of the user we want to see.
+![image](https://github.com/AlonLivne007/YouTube-project-/assets/120726615/d1054031-f9e9-4c0a-abbe-bdf8358dcf9e)
+
 
 
 
