@@ -4,7 +4,7 @@ This branch contains part 2 of the project - make sure you first download the se
 Here is a link: https://github.com/Toms752384/Youtube-web-server.git
 
 Download Instructions:
-# first make sure to download the server and run its script to add videos and users.
+*first make sure to download the server and run its script to add videos and users.
 1. Clone the repository into your IDE from this link into a new folder:  https://github.com/AlonLivne007/YouTube-project-.git
 2. Open the terminal in your new React project and enter: npm install to add node_modules.
 3. Enter in the terminal the command: npm start to open the project in localhost:3000 on the web.
