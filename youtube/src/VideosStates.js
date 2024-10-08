@@ -179,6 +179,22 @@ const featchVideosByID = async (userId) => {
         console.error('Error message:', error.message);
     }
 }
-    return { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails, featchVideosByID, setVideosList, setCurrentVideo};
+
+//function to fetch recommended videos 
+const fetchRecommendedVideos = async(userId, videoId) => {
+    try {
+    //send a get request to fetch reccommended videos
+    const response = await axios.get(`http://localhost:80/api/videos/recommendations/${userId}/${videoId}`);
+    //ensure video URLs are fully qualified
+    const videos = response.data.videos.map(video => {
+        video.videoUrl = `http://localhost:80${video.videoUrl}`;
+        return video;
+    });        
+    return videos;
+    } catch (error) {
+        console.error('Error message:', error.message);
+    }
+} 
+    return { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails, featchVideosByID, setVideosList, setCurrentVideo, fetchRecommendedVideos};
 };
 

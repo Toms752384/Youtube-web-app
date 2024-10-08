@@ -18,7 +18,7 @@ function App() {
   const { defualtUser, currentUser, setCurrentUser, handleLogin, handleSignOut, handleDeleteUser } = CurrentUserState();
 
   //state of videos - remove updateComments
-  const { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails, featchVideosByID, setVideosList, setCurrentVideo } = VideosStates();
+  const { videosList, currentVideo, defualtVideo, addVideo, changeVideo, updateComments, deleteVideo, updateVideoDetails, featchVideosByID, setVideosList, setCurrentVideo, fetchRecommendedVideos } = VideosStates();
 
   //state of search query
   const { searchQuery, handleSearch, setSearchQuery } = SearchState();
