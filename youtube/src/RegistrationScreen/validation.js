@@ -1,18 +1,18 @@
 //function to validate the credentials of a new user
 export function verifyRegistration() {
-    // extract strings
+    //extract strings
     var userName = document.getElementById("username").value;
     var password = document.getElementById("floatingPassword").value;
     var password2 = document.getElementById("floatingPassword2").value;
     var nickname = document.getElementById("nickname").value;
   
-    // verify username - store the return value of verifyUsername in a variable
+    //verify username - store the return value of verifyUsername in a variable
     if (verifyUsername(userName) === false) {
       alert("enter new username!");
       return false;
     }
   
-    // verify password
+    //verify password
     if (verifyPassword(password) === false) {
       alert("password invalid!");
       return false;
@@ -30,7 +30,7 @@ export function verifyRegistration() {
       return false;
     }
   
-    // if finished all tests, return true
+    //if finished all tests, return true
     return true;
   }
   
@@ -80,7 +80,6 @@ export function verifyRegistration() {
     if (!hasLowerLetter.test(str)) {
       return false;
     }
-  
   
     //if all conditions are met, return true
     return true;

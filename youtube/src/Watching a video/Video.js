@@ -1,16 +1,25 @@
 import { useState, useEffect, useRef } from "react";
-//
-function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
-    // state of like button
+import { useNavigate } from 'react-router-dom';
+
+function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails, changeVideo }) {
+    //state of token with useEffect hook to render it from the local storage
+    const [jwt, setJwt] = useState(null);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setJwt(token);
+    }, []);
+
+    //state of like button
     const [likeButton, setLikeButton] = useState(false);
 
-    // state of three dots
+    //state of three dots
     const [ThreeDots, setThreeDots] = useState(false);
 
     //state of counting likes
     const [likesCount, setLikesCount] = useState(currentVideo.likes);
 
-    // states for editing title and description
+    //states for editing title and description
     const [isEditing, setIsEditing] = useState(false);
     const [editedTitle, setEditedTitle] = useState(currentVideo.title);
     const [editedDescription, setEditedDescription] = useState(currentVideo.description);
@@ -38,30 +47,29 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
         } else {
             document.removeEventListener("click", handleClickOutside);
         }
-
         return () => {
             document.removeEventListener("click", handleClickOutside);
         };
     }, [ThreeDots]);
 
-    // useEffect to update likesCount when currentVideo changes
+    //useEffect to update likesCount when currentVideo changes
     useEffect(() => {
         setLikesCount(currentVideo.likes);
     }, [currentVideo]);
 
-    // function to handle like click
+    //function to handle like click
     const handleLikeClick = () => {
         //if like button is pressed and there was no like before, add 1
-        if(!likeButton){
+        if (!likeButton) {
             setLikesCount(likesCount + 1);
         }
-        else{
+        else {
             setLikesCount(likesCount - 1);
         }
         setLikeButton(!likeButton);
     };
 
-    // function to handle share click
+    //function to handle share click
     const handleShare = () => {
         const shareData = {
             title: currentVideo.title,
@@ -74,17 +82,25 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
                 .then(() => console.log('Video shared successfully!'))
                 .catch((error) => console.log('Error sharing video:', error));
         } else {
-            // if browser does not support this action
+            //if browser does not support this action
             alert('Web Share API is not supported in your browser. Please copy the link manually.');
             console.log('Share data:', shareData);
         }
     };
 
-    // function to handle three dots click
+    //function to handle three dots click
     const handleThreeDotsClick = (event) => {
-        event.stopPropagation(); // Prevent the event from propagating to the document
-        if (currentUser.username === "username") {
+        //prevent the event from propagating to the document
+        event.stopPropagation(); 
+        //check if user is logged in
+        if (jwt === 'null' || !jwt) {
             alert("You need to log in to edit videos!");
+            return;
+        }
+
+        //check if user is the user that uploaded the video
+        if (currentUser.username !== currentVideo.artist) {
+            alert("You cannot update or delete a video that isn't yours!");
             return;
         }
         setThreeDots(!ThreeDots);
@@ -92,10 +108,11 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
 
     //function to handle delete function
     const handleDeleteVidClick = () => {
-        deleteVideo(currentVideo.videoUrl);
+        deleteVideo(currentVideo._id, currentUser._id);
+        setThreeDots(false);
     }
 
-    // function to handle download click
+    //function to handle download click
     const handleDownload = () => {
         const link = document.createElement('a');
         link.href = currentVideo.videoUrl;
@@ -105,22 +122,23 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
         document.body.removeChild(link);
     };
 
-    // function to handle edit video click
+    //function to handle edit video click
     const handleEditVideo = () => {
         setIsEditing(true);
 
-        // close the menu when editing starts
+        //close the menu when editing starts
         setThreeDots(false);
     };
 
-    // function to handle save edit click
+    //function to handle save edit click
     const handleSaveEdit = () => {
-        // use the outer function to edit the videos details
-        updateVideoDetails(currentVideo.videoUrl, { title: editedTitle, description: editedDescription });
+        //use the outer function to edit the videos details
+        updateVideoDetails(currentVideo._id, { title: editedTitle, description: editedDescription }, currentUser); //check if works
         setIsEditing(false);
+        setThreeDots(false);
     };
 
-    // function to handle cancel edit click
+    //function to handle cancel edit click
     const handleCancelEdit = () => {
         //close the editing menu
         setIsEditing(false);
@@ -128,6 +146,18 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
         //set the fields of the video to their original
         setEditedTitle(currentVideo.title);
         setEditedDescription(currentVideo.description);
+    };
+
+    //function to navigate to profile page
+    const navigate = useNavigate();
+    const handleProfileClick = () => {
+        navigate('/profile');
+    };
+
+    //function to display date in dd/mm/yy format
+    const formatDate = (dateString) => {
+        const options = { day: '2-digit', month: '2-digit', year: '2-digit' };
+        return new Date(dateString).toLocaleDateString('en-GB', options);
     };
 
     return (
@@ -153,7 +183,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
                 <>
                     <h3 className="video-title">{currentVideo.title}</h3>
                     <div className="d-flex justify-content-between align-items-center mb-3">
-                        <div className="d-flex align-items-center">
+                        <div className="details d-flex align-items-center" onClick={handleProfileClick}>
                             <img src={currentVideo.avatar} alt="Channel Avatar" className="mr-2" width="50" height="50" />
                             <div>
                                 <div>{currentVideo.artist}</div>
@@ -179,7 +209,7 @@ function Video({ currentVideo, currentUser, deleteVideo, updateVideoDetails }) {
                         </div>
                     </div>
                     <div className="descriptin-head">
-                        {currentVideo.views} views • {currentVideo.time} years ago
+                        {currentVideo.views} views • {formatDate(currentVideo.time)}
                     </div>
                     <div className="descriptin">
                         {currentVideo.description}

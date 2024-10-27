@@ -1,6 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 function Comments({ comments, currentUser, addComment, deleteComment, editComment }) {
+    //state of token with useEffect hook to render it from the local storage
+    const [jwt, setJwt] = useState(null);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setJwt(token);
+    }, []);
+
     //state of three dots - open or not
     const [openCommentId, setOpenCommentId] = useState(null);
 
@@ -16,7 +24,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
     //state of the edited comment text
     const [editCommentText, setEditCommentText] = useState('');
 
-    // ref for the three dots menu
+    //ref hook for the three dots menu
     const menuRef = useRef(null);
 
     //function to handle click outside the menu
@@ -45,10 +53,18 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
     }, [openCommentId]);
 
     //function to handle three dots click
-    const handleThreeDotsClick = (index, event) => {
-        event.stopPropagation(); // Prevent the event from propagating to the document
-        if (currentUser.username === "username") {
+    const handleThreeDotsClick = (index, event, comment) => {
+        // Prevent the event from propagating to the document
+        event.stopPropagation(); 
+        //check if user is logged in
+        if (jwt === 'null' || !jwt) {
             alert("You need to log in to edit comments!");
+            return;
+        }
+
+        //check if user is the one that created the comment
+        if (currentUser.username !== comment.username) {
+            alert("You cannot edit comments that you did not create!");
             return;
         }
         setOpenCommentId(openCommentId === index ? null : index);
@@ -56,16 +72,12 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
 
     //function to handle add comment click
     const handleAddComment = () => {
-        if (currentUser.username === "username") {
+        if (jwt === 'null' || !jwt) {
             alert("You need to log in to add a new comment!");
             return;
         }
         if (newComment.trim() !== '') {
-            addComment({
-                username: currentUser.username,
-                avatar: currentUser.avatar,
-                text: newComment,
-            });
+            addComment({ content: newComment });
             setNewComment('');
             setIsAddingComment(false);
         }
@@ -84,8 +96,8 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
     };
 
     //function to handle saving the comment after editing
-    const handleSaveEditComment = (index) => {
-        editComment(index, editCommentText);
+    const handleSaveEditComment = (commentId, newContent) => {
+        editComment(commentId, newContent);
         setIsEditingComment(null);
         setEditCommentText('');
     };
@@ -112,7 +124,7 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
                 </div>
                 {isAddingComment && (
                     <div className="new-comment-actions d-flex justify-content-end mt-2">
-                        <button onClick={handleCancelComment} className="btn btn-secondary mr-2">Cancel</button>
+                        <button onClick={handleCancelComment} className="btn btn-secondary">Cancel</button>
                         <button onClick={handleAddComment} className="btn btn-primary">Comment</button>
                     </div>
                 )}
@@ -131,20 +143,20 @@ function Comments({ comments, currentUser, addComment, deleteComment, editCommen
                                     placeholder="Edit your comment..."
                                 />
                                 <div className="edit-comment-actions d-flex justify-content-end mt-2">
-                                    <button onClick={handleCancelEditComment} className="btn btn-secondary mr-2">Cancel</button>
-                                    <button onClick={() => handleSaveEditComment(index)} className="btn btn-primary">Save</button>
+                                    <button onClick={handleCancelEditComment} className="btn btn-secondary">Cancel</button>
+                                    <button onClick={() => handleSaveEditComment(comment._id, editCommentText)} className="btn btn-primary">Save</button>
                                 </div>
                             </div>
                         ) : (
-                            <div className="text">{comment.text}</div>
+                            <div className="text">{comment.content}</div>
                         )}
-                        <i className="bi bi-three-dots" onClick={(event) => handleThreeDotsClick(index, event)}></i>
+                        <i className="bi bi-three-dots" onClick={(event) => handleThreeDotsClick(index, event, comment)}></i>
                         <div>
                             {openCommentId === index && (
                                 <div className="three-dots-menu" ref={menuRef}>
                                     <ul>
-                                        <li className='three-dots-option' onClick={() => handleEditComment(index, comment.text)}>Edit comment</li>
-                                        <li className='three-dots-option' onClick={() => deleteComment(index)}>Delete comment</li>
+                                        <li className='three-dots-option' onClick={() => handleEditComment(index, comment.content)}>Edit comment</li>
+                                        <li className='three-dots-option' onClick={() => deleteComment(comment._id)}>Delete comment</li>
                                     </ul>
                                 </div>
                             )}

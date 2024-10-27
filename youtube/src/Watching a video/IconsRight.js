@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './IconsRight.css';
 
 function IconsRight({ currentUser, defualtUser, handleSignOut }) {
+    //state of token with useEffect hook to render it from the local storage
+    const [jwt, setJwt] = useState(null);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setJwt(token);
+    }, []);
+    
     //useState of the avatar menu
     const [isOptionsOpen, setIsOptionsOpen] = useState(false);
 
@@ -15,7 +23,7 @@ function IconsRight({ currentUser, defualtUser, handleSignOut }) {
     //function to navigate to add new video page
     const navigate = useNavigate();
     const handleButtonClick = () => {
-        if(currentUser.username === "username"){
+        if (jwt === 'null' || !jwt) {
             navigate('/');
             return;
         };

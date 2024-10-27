@@ -4,6 +4,7 @@ function RegistUpload({imageUpload}) {
   //state for preview of uploaded avatar
   const [preview, setPreview] = useState(null);
 
+  //function to handle uploading avatar and displaying it
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();

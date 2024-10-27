@@ -15,6 +15,7 @@ function RegistButton({ users, addUser, avatar }) {
         addUser(newUser);
         confetti();
         navigateToLogin();
+        window.location.reload();
       }
     };
   };

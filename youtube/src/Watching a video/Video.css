@@ -86,7 +86,6 @@ body {
 }
 
 .three-dots-menu{
-    background: #121212;
     border: 1px solid #444;
     border-radius: 8px;
     z-index: 1000;
@@ -138,4 +137,17 @@ body {
 
 .options-menu li:hover {
     background-color: #f0f0f0;
+}
+
+.details {
+    cursor: pointer;
+}
+
+.mr-2 {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    margin-right: 10px;
 }
